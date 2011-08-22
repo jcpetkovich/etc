@@ -1,0 +1,19 @@
+use 5.12.3;
+use strict;
+use warnings;
+$_REPL->load_plugin($_) for qw(
+    Colors
+    Refresh
+    Completion
+    CompletionDriver::INC
+    CompletionDriver::LexEnv
+    CompletionDriver::Keywords
+    CompletionDriver::Methods
+    CompletionDriver::Globals
+    LexEnv
+    History
+    DDS
+    Packages
+    Commands
+    MultiLine::PPI
+);

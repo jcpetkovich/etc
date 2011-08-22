@@ -1,0 +1,43 @@
+urxvt*secondaryScroll    : true
+urxvt*foreground         : white
+urxvt*inheritPixmap      : True
+urxvt*termName           : rxvt
+urxvt*visualBell         : True
+urxvt*scrollTtyKeypress  : True
+urxvt*scrollTtyOutput    : False
+urxvt*saveLines          : 1024
+urxvt*multichar_encoding : utf-8
+urxvt*inputMethod        : fcitx
+urxvt*transparent        : True
+urxvt*tintColor          : white
+urxvt*shading            : 20
+urxvt*fading             : 30
+urxvt*scrollBar          : false
+urxvt*font:             xft:Bitstream Vera Sans Mono:pixelsize=12:VL Gothic:size=7:antialias=true:hinting=true
+
+urxvt*background:     #121212
+!black
+urxvt*color0:         #353535
+urxvt*color8:         #666666
+!red
+urxvt*color1:         #AE4747
+urxvt*color9:         #EE6363
+!green
+urxvt*color2:         #556B2F
+urxvt*color10:        #9ACD32
+!brown/yellow
+urxvt*color3:         #DAA520
+urxvt*color11:        #FFC125
+!blue
+urxvt*color4:         #6F99B4
+urxvt*color12:        #7C96B0
+!magenta
+urxvt*color5:         #8B7B8B
+urxvt*color13:        #D8BFD8
+!cyan
+urxvt*color6:         #A7A15E
+urxvt*color14:        #F0E68C
+!white
+urxvt*color7:         #DDDDDD
+urxvt*color15:        #FFFFFF
+

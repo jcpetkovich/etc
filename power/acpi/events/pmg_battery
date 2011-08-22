@@ -1,0 +1,5 @@
+# replace "battery" below with the event generated on your laptop
+# For example, battery.* will match battery BAT0 00000080 00000001
+event=battery.*
+action=/etc/acpi/actions/pmg_switch_runlevel.sh %e
+

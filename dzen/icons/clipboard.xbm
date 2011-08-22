@@ -1,0 +1,4 @@
+#define clipboard_width 8
+#define clipboard_height 8
+static unsigned char clipboard_bits[] = {
+   0x3c, 0x7e, 0x42, 0x5a, 0x42, 0x5a, 0x42, 0x7e };
