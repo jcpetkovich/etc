@@ -23,7 +23,7 @@ import Data.Char
  
 dmenuCommand = "exe=`dmenu_path | dmenu -nb '#242424' -nf '#D8BFD8'` && eval \"exec $exe\""
 
-dzenCommand = readFile "/home/jcp/etc/dzen/dzencommand"
+dzenCommand = readFile "/home/jcpetkovich/etc/dzen/dzencommand"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -31,7 +31,7 @@ dzenCommand = readFile "/home/jcp/etc/dzen/dzencommand"
 jcKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ -- applications
       ((modm, xK_Return          ), spawn $ XMonad.terminal conf                                               ) -- launch terminal
-    , ((modm, xK_s               ), windows W.swapMaster                                                       ) -- swap current and master
+    , ((modm, xK_v               ), windows W.swapMaster                                                       ) -- swap current and master
     , ((modm, xK_p               ), spawn dmenuCommand                                                         ) -- launch krunner
     , ((modm, xK_b               ), sendMessage ToggleStruts                                                   ) -- Toggle Struts
     , ((modm, xK_f               ), spawn "firefox"                                                            ) -- launch firefox
@@ -52,6 +52,11 @@ jcKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_minus           ), spawn "mpc volume -5"                                                      ) -- volume - 5
     , ((modm, xK_equal           ), spawn "mpc volume +5"                                                      ) -- volume + 5
     ]
+
+    ++
+    [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+        | (key, sc) <- zip [xK_s, xK_a, xK_d] [0..]
+        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
     
 ------------------------------------------------------------------------
 -- Layout Hook:
