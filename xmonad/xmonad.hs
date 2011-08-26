@@ -23,7 +23,7 @@ import Data.Char
  
 dmenuCommand = "exe=`dmenu_path | dmenu -nb '#242424' -nf '#D8BFD8'` && eval \"exec $exe\""
 
-dzenCommand = readFile "/home/jcpetkovich/etc/dzen/dzencommand"
+dzenCommand = readFile "etc/dzen/dzencommand"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
