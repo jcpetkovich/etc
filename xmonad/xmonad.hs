@@ -24,7 +24,7 @@ import System.Environment
  
 dmenuCommand = "exe=`dmenu_path | dmenu -nb '#242424' -nf '#D8BFD8'` && eval \"exec $exe\""
 
-dzenCommand = readFile $ "etc/dzen/dzencommand"
+dzenCommand = readFile "etc/dzen/dzencommand"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -40,7 +40,7 @@ jcKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_s ), spawn "wine ~/.wine/drive_c/Program\\ Files/StarCraft/StarCraft.exe"       ) -- launch SC:BW
 --    , ((modm, xK_d             ), spawn "konqueror --profile 'JC profile'"                                   ) -- launch konqueror
     , ((modm, xK_c               ), kill                                                                       ) -- close window
-    , ((modm, xK_q               ), spawn "thunar"                                                             ) -- launch kde systemsettings
+    -- , ((modm, xK_q               ), spawn "thunar"                                                             ) -- launch kde systemsettings
     , ((modm .|. shiftMask, xK_l ), spawn "slock"                                                              ) -- lock
 
     -- music
@@ -52,11 +52,12 @@ jcKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_0               ), spawn "mpc next"                                                           ) -- next song
     , ((modm, xK_minus           ), spawn "mpc volume -5"                                                      ) -- volume - 5
     , ((modm, xK_equal           ), spawn "mpc volume +5"                                                      ) -- volume + 5
+    , ((modm .|. shiftMask, xK_z ), io (exitWith ExitSuccess)                                                  ) -- exit xmonad
     ]
 
     ++
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_s, xK_a, xK_d] [0..]
+        | (key, sc) <- zip [xK_w, xK_q, xK_d] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
     
 ------------------------------------------------------------------------
