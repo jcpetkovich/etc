@@ -96,6 +96,9 @@ alias cemacs='emacsclient -nw'
 # Dirty hack to fix python sillyness for when I have to use archlinux
 which python > /dev/null || alias python='python2'
 
+# Same thing but for dmenu
+which dmenu_path > /dev/null || alias dmenu_path='dmenu_path_c'
+
 # EMERGE Aliases
 alias emerge-sync='sudo emerge --sync && echo "----DONE EMERGE SYNC----" && sudo layman -S && echo "----DONE SYNC LAYMAN----" && eix-update && echo "----DONE SYNCING EIX CACHE----"'
 alias check-update-world='emerge -puDN world'
