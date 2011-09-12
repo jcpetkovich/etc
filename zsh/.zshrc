@@ -39,7 +39,7 @@ source $ZSH/oh-my-zsh.sh
 # fix "gentoo" prompt
 PROMPT[76]='c'
 
-export PYTHONPATH=/home/jcp/src/python
+export PYTHONPATH=/home/jcp/src/thesis/src:~/src/python
 
 if [ -d ~/bin ] ; then
     PATH=~/bin:"${PATH}"
