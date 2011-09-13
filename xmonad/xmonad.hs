@@ -118,7 +118,7 @@ main = do
                               --   ppCurrent = xmobarColor "white" "" 
                               --   -- . wrap "[" "]",
                               -- , ppTitle = xmobarColor "#9ACD32" "" 
-                              } >> updatePointer Nearest
+                              } >> updatePointer (Relative 0.99 0.99) --Nearest
 
        -- Rules for applications:
        , manageHook         = manageHook defaultConfig <+> myManageHook
