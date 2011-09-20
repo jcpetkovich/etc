@@ -5,7 +5,7 @@ ZSH=$HOME/jc-personal/etc/zsh/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="jc"
+ZSH_THEME="gentoo"
 
 
 # Uncomment following line if you want to disable autosetting terminal title.
@@ -37,7 +37,7 @@ source $ZSH/oh-my-zsh.sh
 # export CLASSPATH=$PWD:$CLOJURE:$CONTRIB:$MYCLASSES:$MYSRC:$MYCLOJURE:$SWANK:$INCANTER:.
 
 # fix "gentoo" prompt
-# PROMPT[76]='c'
+PROMPT[76]='c'
 
 export PYTHONPATH=/home/jcp/src/thesis/src:~/src/python
 
