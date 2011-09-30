@@ -39,7 +39,18 @@ source $ZSH/oh-my-zsh.sh
 # fix "gentoo" prompt
 PROMPT[76]='c'
 
+# Language exports ===============================================================
+
+# Python exports
 export PYTHONPATH=/home/jcp/src/thesis/src:~/src/python
+
+# Perl exports
+export PERL_LOCAL_LIB_ROOT="~/perl5";
+export PERL_MB_OPT="--install_base ~/perl5";
+export PERL_MM_OPT="INSTALL_BASE=~/perl5";
+export PERL5LIB="~/perl5/lib/perl5/i686-linux-thread-multi:~/perl5/lib/perl5";
+export PATH="~/perl5/bin:$PATH";
+
 
 if [ -d ~/bin ] ; then
     PATH=~/bin:"${PATH}"
