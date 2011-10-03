@@ -1,4 +1,4 @@
-use 5.12.3;
+use v5.12;
 use strict;
 use warnings;
 $_REPL->load_plugin($_) for qw(
