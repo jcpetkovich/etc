@@ -55,6 +55,10 @@ export PERL_MB_OPT="--install_base $HOME/perl5";
 export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
 export PATH="$HOME/perl5/bin:$PATH"
 
+if [ -d ~/perl5 ] ; then
+    export MANPATH=~/perl5/man:"$MANPATH"
+fi
+
 
 if [ -d ~/bin ] ; then
     PATH=~/bin:"${PATH}"
