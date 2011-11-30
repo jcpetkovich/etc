@@ -22,7 +22,7 @@ import Control.Monad
 import Data.Char
 import System.Environment
  
-dmenuCommand = "exe=`dmenu_path | dmenu -nb '#242424' -nf '#D8BFD8'` && eval \"exec $exe\""
+dmenuCommand = "dmenu_run -nb '#242424' -nf '#D8BFD8'"
 
 dzenCommand = readFile "etc/dzen/dzencommand"
 
