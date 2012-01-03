@@ -695,16 +695,16 @@
        on-blur="0.50"
        animate-time="100" />
     <group
-       h="198"
-       w="338"
-       y="0"
-       x="0"
-       state="2"
-       panel_wrap="0"
-       panel_mode="1"
-       panel_ratio="100"
+       id="livepatheffect"
        panel_size="1"
-       id="livepatheffect" />
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
+       state="2"
+       x="0"
+       y="0"
+       w="338"
+       h="198" />
   </group>
   <group
      id="printing">

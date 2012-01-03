@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/jc-personal/etc/zsh/.oh-my-zsh
+ZSH=$HOME/jc-personal/etc/zsh/oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
