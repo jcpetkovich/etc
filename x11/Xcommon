@@ -2,7 +2,6 @@ urxvt*secondaryScroll    : true
 urxvt*foreground         : white
 urxvt*inheritPixmap      : True
 urxvt*termName           : rxvt
-urxvt*visualBell         : True
 urxvt*scrollTtyKeypress  : True
 urxvt*scrollTtyOutput    : False
 urxvt*saveLines          : 1024
@@ -13,6 +12,7 @@ urxvt*tintColor          : white
 urxvt*shading            : 20
 urxvt*fading             : 30
 urxvt*scrollBar          : false
+urxvt*visualBell	 : false
 urxvt*font:             xft:Bitstream Vera Sans Mono:pixelsize=12:VL Gothic:size=7:antialias=true:hinting=true
 
 urxvt*background:     #121212
