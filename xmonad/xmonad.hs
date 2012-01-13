@@ -73,6 +73,7 @@ jcLayoutHook = tiled ||| Mirror tiled ||| noBorders Full
 -- Main:
 --
 main = do
+  xmproc <- spawnPipe =<< dzenCommand
   xmonad $ defaultConfig
        { 
        -----------------------------------------------------------------
@@ -84,6 +85,14 @@ main = do
        , focusedBorderColor = "#ff0000"
                               
        -----------------------------------------------------------------
+       -- Screen related keys
+       --
+       , keys = \c -> M.fromList [((m .|. modMask c, key), screenWorkspace sc >>= flip whenJust (windows . f))
+                                  | (key, sc) <- zip [xK_q, xK_w, xK_d] [0..]
+                                 , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+                `M.union` keys defaultConfig c 
+
+       -----------------------------------------------------------------
        -- Workspaces:
        --
        , workspaces         = ["term","web","emacs","doc","vid","misc"] 
@@ -93,18 +102,27 @@ main = do
        --
        , startupHook        = startupHook defaultConfig >> setWMName "LG3D"
        , layoutHook         = avoidStruts jcLayoutHook
-       , logHook            =  myLogHook
+
+       , logHook            = do 
+         ws <- gets windowset
+         let sl = if null $ W.visible ws then [] else W.screens ws
+         let m = map ((W.tag . W.workspace) &&& W.screen) sl
+         dynamicLogWithPP $ defaultPP
+                              { ppCurrent = myPPCurrent m
+                              , ppVisible = myPPVisible m
+                              , ppHidden = myPPHidden
+                              , ppHiddenNoWindows = myPPHidden . (++ "-empty")
+                              , ppUrgent = const ""
+                              , ppSep = ""
+                              , ppWsSep = ""
+                              , ppTitle = const ""
+                              , ppLayout = myPPLayout
+                              , ppOrder = id
+                              , ppOutput = hPutStrLn xmproc
+                              } 
        
        -- Rules for applications:
        , manageHook         = manageHook defaultConfig <+> myManageHook
-
-       -----------------------------------------------------------------
-       -- Screen related keys
-       --
-       , keys = \c -> M.fromList [((m .|. modMask c, key), screenWorkspace sc >>= flip whenJust (windows . f))
-                                  | (key, sc) <- zip [xK_q, xK_w, xK_d] [0..]
-                                 , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-                `M.union` keys defaultConfig c 
        } `mergeKeys` jckeys 
 
        where
@@ -121,30 +139,11 @@ main = do
                         , className =? "Pidgin"             --> doF(W.shift "term")
                         , isFullscreen --> doFullFloat ]
 
+         myPPCurrent m t = activeWorkspace t ++ iconScreen (lookup t m)
+         myPPVisible m t = inactiveWorkspace t ++ iconScreen (lookup t m)
+         myPPHidden = (++ screenPad) . inactiveWorkspace
+         myPPLayout = wrap "-^p(+6)" "^p(+7)" . iconLayout
 
-myLogHook = do 
-  xmproc <- io $ spawnPipe =<< dzenCommand
-  ws <- gets windowset
-  let sl = if null $ W.visible ws then [] else W.screens ws
-  let m = map ((W.tag . W.workspace) &&& W.screen) sl
-  dynamicLogWithPP $ defaultPP
-                       { ppCurrent = myPPCurrent m
-                       , ppVisible = myPPVisible m
-                       , ppHidden = myPPHidden
-                       , ppHiddenNoWindows = myPPHidden . (++ "-empty")
-                       , ppUrgent = const ""
-                       , ppSep = ""
-                       , ppWsSep = ""
-                       , ppTitle = const ""
-                       , ppLayout = myPPLayout
-                       , ppOrder = id
-                       , ppOutput = hPutStrLn xmproc
-                       }
-      where
-        myPPCurrent m t = activeWorkspace t ++ iconScreen (lookup t m)
-        myPPVisible m t = inactiveWorkspace t ++ iconScreen (lookup t m)
-        myPPHidden = (++ screenPad) . inactiveWorkspace
-        myPPLayout = wrap "-^p(+6)" "^p(+7)" . iconLayout
 
 iconWrap :: String -> String
 iconWrap = wrap "^i(/home/jcp/etc/dzen/pixmaps/" ".xpm)"
