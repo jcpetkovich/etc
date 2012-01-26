@@ -107,7 +107,7 @@ main = do
          ws <- gets windowset
          let sl = if null $ W.visible ws then [] else W.screens ws
          let m = map ((W.tag . W.workspace) &&& W.screen) sl
-         dynamicLogWithPP $ defaultPP
+         updatePointer (Relative 0.99 0.99) << dynamicLogWithPP defaultPP
                               { ppCurrent = myPPCurrent m
                               , ppVisible = myPPVisible m
                               , ppHidden = myPPHidden
@@ -119,7 +119,7 @@ main = do
                               , ppLayout = myPPLayout
                               , ppOrder = id
                               , ppOutput = hPutStrLn xmproc
-                              } 
+                              }
        
        -- Rules for applications:
        , manageHook         = manageHook defaultConfig <+> myManageHook
@@ -134,8 +134,8 @@ main = do
                         , title =? "Brood War"              --> doIgnore
                         , className =? "trayer"             --> doIgnore
                         , className =? "feh"                --> doFloat
-                        , className =? "Firefox"            --> doF(W.shift "net")
-                        , className =? "OpenOffice.org 3.0" --> doF(W.shift "docs")
+                        , className =? "Firefox"            --> doF(W.shift "web")
+                        , className =? "OpenOffice.org 3.0" --> doF(W.shift "doc")
                         , className =? "Pidgin"             --> doF(W.shift "term")
                         , isFullscreen --> doFullFloat ]
 
@@ -168,3 +168,5 @@ iconLayout = iconWrap . ("layout-" ++) . map ((\c -> if c == ' ' then '-' else c
 iconScreen :: Maybe ScreenId -> String
 iconScreen Nothing = "^p(+4)"
 iconScreen (Just (S s)) = iconWrap $ ("screen-" ++) . show $ s + 1
+
+(<<) = flip (>>)
