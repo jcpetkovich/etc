@@ -59,6 +59,9 @@ if [ -d ~/perl5 ] ; then
     export MANPATH=~/perl5/man:"$MANPATH"
 fi
 
+if [ -d ~/jc-public/projects/eval-lab/install ] ; then
+    export PERL5LIB="$PERL5LIB:$HOME/jc-public/projects/eval-lab/install"
+fi
 
 if [ -d ~/bin ] ; then
     PATH=~/bin:"${PATH}"
