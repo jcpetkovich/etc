@@ -103,6 +103,7 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 # Aliases
 alias ls='ls --color=auto'
+alias clr='clear'
 alias grep='grep --colour=auto'
 alias mocp='mocp -T transparent-background'
 alias mscreen='screen -x -R -S main'
