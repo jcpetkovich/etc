@@ -26,7 +26,7 @@ dmenuCommand = "dmenu_run -nb '#242424' -nf '#D8BFD8'"
 
 dzenCommand = readFile "etc/dzen/dzencommand"
 
-emacsCommand = "emacsclient -c ~/org/whiteboard.org || (emacs --daemon && emacsclient -c ~/org/whiteboard.org)"
+emacsCommand = "emacsclient -c || (emacs --daemon && emacsclient -c)"
 
 starcraft = "wine ~/.wine/drive_c/Program\\ Files/StarCraft/StarCraft.exe"
 
