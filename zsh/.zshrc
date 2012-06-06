@@ -51,6 +51,10 @@ if [ -d ~/perl5/lib/perl5/i686-linux-thread-multi ] ; then
 else
     export PERL5LIB="$HOME/perl5/lib/perl5/x86_64-linux:$HOME/perl5/lib/perl5";
 fi
+
+if [ -d ~/src/perl ] ; then
+    export PERL5LIB="$PERL5LIB:$HOME/src/perl";
+fi
 export PERL_MB_OPT="--install_base $HOME/perl5";
 export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
 export PATH="$HOME/perl5/bin:$PATH"
