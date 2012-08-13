@@ -36,7 +36,12 @@ starcraft = "wine ~/.wine/drive_c/Program\\ Files/StarCraft/StarCraft.exe"
 mergeKeys c k = c `additionalKeysP` k c
 jckeys c = [ ("M-<Return>", spawn $ terminal c)   -- launch terminal
            , ("M-v", windows W.swapMaster)        -- swap current and master
-           , ("M-p", spawn dmenuCommand)          -- launch dmenu
+           , ("M-o", spawn dmenuCommand)          -- launch dmenu
+           , ("M-n", windows W.focusDown)         -- launch dmenu
+           , ("M-p", windows W.focusUp)           -- launch dmenu
+           , ("M-S-n", windows W.swapDown)         -- launch dmenu
+           , ("M-S-p", windows W.swapUp)           -- launch dmenu
+           -- , ("M-p", spawn dmenuCommand)          -- launch dmenu
            , ("M-b", sendMessage ToggleStruts)    -- Toggle Struts
            , ("M-f", spawn "firefox")             -- launch firefox
            , ("M-e", spawn emacsCommand)          -- launch emacs
