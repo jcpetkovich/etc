@@ -23,7 +23,8 @@ urxvt*color8:         #666666
 urxvt*color1:         #AE4747
 urxvt*color9:         #EE6363
 !green
-urxvt*color2:         #556B2F
+urxvt*color2:         #CDB5EF
+!urxvt*color2:         #556B2F
 urxvt*color10:        #9ACD32
 !brown/yellow
 urxvt*color3:         #DAA520
