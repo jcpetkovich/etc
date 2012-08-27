@@ -117,8 +117,7 @@ alias f=finger
 alias ll='ls -al'
 alias ls='ls --color=auto '
 alias zsnes='aoss32 zsnes'
-alias qemacs='emacsclient -c'
-alias cemacs='emacsclient -nw'
+alias e='emacsclient'
 
 # Dirty hack to fix python sillyness for when I have to use archlinux
 which python > /dev/null || alias python='python2'
