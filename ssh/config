@@ -1,0 +1,70 @@
+
+Host mini
+  HostName mini.resl.uwaterloo.ca
+  User root
+
+Host b7
+  HostName benchmark7.resl.uwaterloo.ca
+  User root
+
+Host b4
+  HostName benchmark4.resl.uwaterloo.ca
+  User root
+
+Host b6
+  HostName benchmark6.resl.uwaterloo.ca
+  User root
+
+Host b12
+  HostName benchmark12.resl.uwaterloo.ca
+  User root
+
+Host b15
+  HostName benchmark15.resl.uwaterloo.ca
+  User root
+
+Host b32
+  HostName benchmark32.resl.uwaterloo.ca
+  User root
+
+Host b33
+  HostName benchmark33.resl.uwaterloo.ca
+  User root
+
+Host b35
+  HostName benchmark35.resl.uwaterloo.ca
+  User root
+
+Host queen
+  HostName queen.resl.uwaterloo.ca
+  User root
+
+Host server1
+  HostName server1.resl.uwaterloo.ca
+  User root
+
+Host pi1
+  HostName pi1.resl.uwaterloo.ca
+  User root
+
+Host pi2
+  HostName pi2.resl.uwaterloo.ca
+  User root
+
+Host pi3
+  HostName pi3.resl.uwaterloo.ca
+  User root
+
+Host pi4
+  HostName pi4.resl.uwaterloo.ca
+  User root
+
+Host pi5
+  HostName pi5.resl.uwaterloo.ca
+  User root
+
+Host pi6
+  HostName pi6.resl.uwaterloo.ca
+  User root
+
+
