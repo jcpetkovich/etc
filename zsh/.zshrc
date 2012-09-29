@@ -139,5 +139,3 @@ bindkey ' ' magic-space    # also do history expansion on space
 
 # Completion modifications
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-
