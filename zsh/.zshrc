@@ -37,7 +37,10 @@ source $ZSH/oh-my-zsh.sh
 # export CLASSPATH=$PWD:$CLOJURE:$CONTRIB:$MYCLASSES:$MYSRC:$MYCLOJURE:$SWANK:$INCANTER:.
 
 # fix "gentoo" prompt
-PROMPT[76]='c'
+
+if [[ $ZSH_THEME == "gentoo" ]] ; then
+    PROMPT[76]='c'
+fi
 
 # Language exports ===============================================================
 
@@ -88,7 +91,8 @@ typeset -U PATH
 # Vars
 export VISUAL="emacsclient -nw"
 export LANG=en_US.UTF-8         # buggs out some stuff but fixes more
-export EDITOR="emacsclient -c"
+export EDITOR="emacsclient -t"
+export SUDO_EDITOR="emacsclient -t"
 export RSENSE_HOME=$HOME/jc-public/site-lisp/rsense-0.3
 
 # eval `dircolors`
@@ -118,8 +122,22 @@ alias ll='ls -al'
 alias ls='ls --color=auto '
 alias zsnes='aoss32 zsnes'
 
+# Functions
+
+# `e [option] file...` : open a file with an emacsclient, starting
+#                        emacs if it hasn't been already
 e () {
     emacsclient -t $1 || (emacs --daemon && emacsclient -t $1)
+}
+
+# Ack the text of a pdf
+ackp () {
+	pdftotext $1 - | ack $argv[2,-1]
+}
+
+# Stream and cache a dvd using mplayer
+streamdvd () {
+	mplayer -cache 100000 -dvd-device $@ dvd://1
 }
 
 # Dirty hack to fix python sillyness for when I have to use archlinux
