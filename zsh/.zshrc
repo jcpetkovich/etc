@@ -89,10 +89,10 @@ fi
 typeset -U PATH
 
 # Vars
-export VISUAL="emacsclient -nw"
+export VISUAL="e"
+export EDITOR=$VISUAL
+export SUDO_EDITOR=$VISUAL
 export LANG=en_US.UTF-8         # buggs out some stuff but fixes more
-export EDITOR="emacsclient -t"
-export SUDO_EDITOR="emacsclient -t"
 export RSENSE_HOME=$HOME/jc-public/site-lisp/rsense-0.3
 
 # eval `dircolors`
@@ -127,7 +127,7 @@ alias zsnes='aoss32 zsnes'
 # `e [option] file...` : open a file with an emacsclient, starting
 #                        emacs if it hasn't been already
 e () {
-    emacsclient -t $1 || (emacs --daemon && emacsclient -t $1)
+    emacsclient -t $@ || (emacs --daemon && emacsclient -t $@)
 }
 
 # Ack the text of a pdf
