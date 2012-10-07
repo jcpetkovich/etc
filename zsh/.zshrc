@@ -122,13 +122,10 @@ alias ll='ls -al'
 alias ls='ls --color=auto '
 alias zsnes='aoss32 zsnes'
 
-# Functions
+# Global aliases
+alias -g SEL='| xsel -i'
 
-# `e [option] file...` : open a file with an emacsclient, starting
-#                        emacs if it hasn't been already
-e () {
-    emacsclient -t $@ || (emacs --daemon && emacsclient -t $@)
-}
+# Functions
 
 # Ack the text of a pdf
 ackp () {
