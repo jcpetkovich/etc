@@ -1,3 +1,15 @@
+Extension "LaTeX formula" failed to load because a dependency was not met.
+Dependency:
+  type: executable
+  location: path
+  string: pstoedit
+
+Extension "Sketch Input" failed to load because a dependency was not met.
+Dependency:
+  type: executable
+  location: path
+  string: skconvert
+
 Extension "Dia Input" failed to load because a dependency was not met.
 Dependency:
   type: executable
@@ -11,16 +23,4 @@ Dependency:
   location: path
   string: pstoedit
   description: pstoedit must be installed to run; see http://www.pstoedit.net/pstoedit
-
-Extension "Sketch Input" failed to load because a dependency was not met.
-Dependency:
-  type: executable
-  location: path
-  string: skconvert
-
-Extension "LaTeX formula" failed to load because a dependency was not met.
-Dependency:
-  type: executable
-  location: path
-  string: pstoedit
 
