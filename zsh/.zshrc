@@ -139,20 +139,35 @@ streamdvd () {
 
 GIT_REPOSITORIES=(~/jc-public/ ~/jc-personal/ ~/etc/ ~/.emacs.d/ ~/mobileorg/)
 
-gp-repos () {
+gpull-repos () {
    olddir=`pwd`
    for directory in $GIT_REPOSITORIES; do
        cd $directory
+       echo "Pulling for $directory"
        git pull
+       echo "--------------------------------"
    done
    cd $olddir
 }
 
-gc-repos () {
+gcommit-repos () {
     olddir=`pwd`
     for directory in $GIT_REPOSITORIES; do
         cd $directory
+        echo "Committing for $directory"
         git commit -a
+        echo "--------------------------------"
+    done 
+    cd $olddir
+}
+
+gpush-repos () {
+    olddir=`pwd`
+    for directory in $GIT_REPOSITORIES; do
+        cd $directory
+        echo "Pushing for $directory"
+        git push
+        echo "--------------------------------"
     done 
     cd $olddir
 }
