@@ -89,7 +89,7 @@ fi
 typeset -U PATH
 
 # Vars
-export VISUAL="e"
+export VISUAL="`which e`"
 export EDITOR=$VISUAL
 export SUDO_EDITOR=$VISUAL
 export LANG=en_US.UTF-8         # buggs out some stuff but fixes more
@@ -137,6 +137,26 @@ streamdvd () {
 	mplayer -cache 100000 -dvd-device $@ dvd://1
 }
 
+GIT_REPOSITORIES=(~/jc-public/ ~/jc-personal/ ~/etc/ ~/.emacs.d/ ~/mobileorg/)
+
+gp-repos () {
+   olddir=`pwd`
+   for directory in $GIT_REPOSITORIES; do
+       cd $directory
+       git pull
+   done
+   cd $olddir
+}
+
+gc-repos () {
+    olddir=`pwd`
+    for directory in $GIT_REPOSITORIES; do
+        cd $directory
+        git commit -a
+    done 
+    cd $olddir
+}
+
 # Dirty hack to fix python sillyness for when I have to use archlinux
 which python > /dev/null || alias python='python2'
 
@@ -147,7 +167,6 @@ which dmenu_path > /dev/null || alias dmenu_path='dmenu_path_c'
 alias emerge-sync='sudo emerge --sync && echo "----DONE EMERGE SYNC----" && sudo layman -S && echo "----DONE SYNC LAYMAN----" && eix-update && echo "----DONE SYNCING EIX CACHE----"'
 alias check-update-world='emerge -puDN world'
 alias update-world='sudo emerge -uDN world'
-alias git-update='cd /etc/portage && (sudo git pull || cd -) && cd - && cd /usr/local/portage/local-overlay/ && (git pull || cd -) && cd - && cd /home/jcp/jc-personal/ && (git pull || cd -) && cd - && cd /home/jcp/jc-personal/emacs-config/ && (git pull || cd -) && cd -'
 
 # Bindings
 bindkey "^?" backward-delete-char
@@ -156,4 +175,4 @@ bindkey ' ' magic-space    # also do history expansion on space
 # bindkey '^I' complete-word # complete on tab, leave expansion to _expand
 
 # Completion modifications
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
