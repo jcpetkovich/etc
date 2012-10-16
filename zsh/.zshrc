@@ -187,7 +187,5 @@ alias update-world='sudo emerge -uDN world'
 bindkey "^?" backward-delete-char
 bindkey "^r" history-incremental-search-backward
 bindkey ' ' magic-space    # also do history expansion on space
-# bindkey '^I' complete-word # complete on tab, leave expansion to _expand
 
-# Completion modifications
 
