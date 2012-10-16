@@ -121,6 +121,7 @@ alias f=finger
 alias ll='ls -al'
 alias ls='ls --color=auto '
 alias zsnes='aoss32 zsnes'
+alias E='sudo -e'
 
 # Global aliases
 alias -g SEL='| xsel -i'
