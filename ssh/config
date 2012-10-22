@@ -1,6 +1,6 @@
 
 Host mini
-  HostName mini.resl.uwaterloo.ca
+  HostName nat1.esg.uwaterloo.ca
   User root
 
 Host b7

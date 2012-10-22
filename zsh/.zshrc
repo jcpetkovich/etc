@@ -138,6 +138,11 @@ streamdvd () {
 	mplayer -cache 100000 -dvd-device $@ dvd://1
 }
 
+# Ultra simple countdown timer functionality
+countdown () {
+	utimer -c $@ && aplay /usr/share/sounds/purple/alert.wav
+}
+
 GIT_REPOSITORIES=(~/jc-public/ ~/jc-personal/ ~/etc/ ~/.emacs.d/ ~/mobileorg/)
 
 gpull-repos () {
@@ -188,5 +193,3 @@ alias update-world='sudo emerge -uDN world'
 bindkey "^?" backward-delete-char
 bindkey "^r" history-incremental-search-backward
 bindkey ' ' magic-space    # also do history expansion on space
-
-
