@@ -145,37 +145,26 @@ countdown () {
 
 GIT_REPOSITORIES=(~/jc-public/ ~/jc-personal/ ~/etc/ ~/.emacs.d/ ~/mobileorg/)
 
+within-directories () {
+    eval "directories=($1)"
+    for directory in $directories; do
+        pushd $directory > /dev/null 
+        eval $2
+        echo "--------------------------------"
+        popd > /dev/null
+    done
+}
+
 gpull-repos () {
-   olddir=`pwd`
-   for directory in $GIT_REPOSITORIES; do
-       cd $directory
-       echo "Pulling for $directory"
-       git pull
-       echo "--------------------------------"
-   done
-   cd $olddir
+    within-directories "$GIT_REPOSITORIES" 'echo "Pulling for $directory"; git pull'
 }
 
 gcommit-repos () {
-    olddir=`pwd`
-    for directory in $GIT_REPOSITORIES; do
-        cd $directory
-        echo "Committing for $directory"
-        git commit -a
-        echo "--------------------------------"
-    done 
-    cd $olddir
+    within-directories "$GIT_REPOSITORIES" 'echo "Committing for $directory"; git commit -a'
 }
 
 gpush-repos () {
-    olddir=`pwd`
-    for directory in $GIT_REPOSITORIES; do
-        cd $directory
-        echo "Pushing for $directory"
-        git push
-        echo "--------------------------------"
-    done 
-    cd $olddir
+    within-directories "$GIT_REPOSITORIES" 'echo "Pushing for $directory"; git push'
 }
 
 # Dirty hack to fix python sillyness for when I have to use archlinux
