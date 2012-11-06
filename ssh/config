@@ -67,4 +67,18 @@ Host pi6
   HostName pi6.resl.uwaterloo.ca
   User root
 
-
+# 195.176.182.130
+Host aiken
+  HostName aiken.inf.usi.ch 
+  User root
+  
+# 195.176.182.131 
+Host babbage
+  HostName babbage.inf.usi.ch 
+  User root
+  
+# 195.176.182.132
+Host turing
+  HostName turing.inf.usi.ch 
+  User root
+  
