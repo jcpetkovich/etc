@@ -1,0 +1,24 @@
+[general]
+accounts = main
+pythonfile = /home/jcp/src/python/offlineimap/offlineimap.py
+
+[Account main]
+localrepository = main-local
+remoterepository = gmail-remote
+status_backend = sqlite
+
+[Repository main-local]
+type = Maildir
+localfolders = ~/Maildir
+
+[Repository gmail-remote]
+type = Gmail
+remoteusereval = get_username('localhost')
+remotepasseval = get_password('localhost')
+nametrans = lambda foldername: re.sub ('^\[gmail\]', 'bak',
+                               re.sub ('sent_mail', 'sent',
+                               re.sub ('starred', 'flagged',
+                               re.sub (' ', '_', foldername.lower()))))
+folderfilter = folder_filter
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+localfolders = ~/Maildir
