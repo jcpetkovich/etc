@@ -82,3 +82,7 @@ Host turing
   HostName turing.inf.usi.ch 
   User root
   
+Host purdue
+  HostName zed.cs.purdue.edu
+  User j.petkov
+  
