@@ -1,0 +1,2 @@
+set defsearch=duckduckgo
+set strictfocus='chrome:*':laissez-faire,mail.google.com*:laissez-faire,*:moderate
