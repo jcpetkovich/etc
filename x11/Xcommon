@@ -10,6 +10,6 @@ urxvt*visualBell	 : false
 urxvt*font:             xft:Bitstream Vera Sans Mono:pixelsize=12:VL Gothic:size=7:antialias=true:hinting=true
 
 !! Clickable URLs
-urxvt*perl-ext-common:  default,matcher
-urxvt*urlLauncher:      /usr/bin/firefox
-urxvt*matcher.button:   1
+URxvt.perl-ext-common:  default,matcher
+URxvt.urlLauncher:      /usr/bin/firefox
+URxvt.matcher.button:   1
