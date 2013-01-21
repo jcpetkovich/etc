@@ -173,6 +173,14 @@ gpush-repos () {
     within-directories "$GIT_REPOSITORIES" 'echo "Pushing for $directory"; git push'
 }
 
+# Options
+setopt extendedglob
+autoload -Uz predict-on
+zle -N predict-on
+zle -N predict-off
+bindkey '^X^Z' predict-on
+bindkey '^Z' predict-off
+
 # Dirty hack to fix python sillyness for when I have to use archlinux
 which python > /dev/null || alias python='python2'
 
