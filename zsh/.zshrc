@@ -1,40 +1,11 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/jc-personal/etc/zsh/oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="gentoo"
 
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want disable red dots displayed while waiting for completion
-# DISABLE_COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse) 
 plugins=(git gitfast git-extras vi-mode extract autojump gem perl python)
 
 source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-
-# Paths
-
-# Classpath stuff
-# CLJ_DIR=$HOME/.m2/repository
-# CLOJURE=$CLJ_DIR/org/clojure/clojure/1.2.0/clojure-1.2.0.jar
-# CONTRIB=$CLJ_DIR/org/clojure/clojure-contrib/1.2.0/clojure-contrib-1.2.0.jar
-# SWANK=$CLJ_DIR/swank-clojure/swank-clojure/1.2.1/swank-clojure-1.2.1.jar
-# MYCLOJURE=$HOME/src/clojure
-# MYCLASSES=$HOME/src/clojure/classes
-# MYSRC=$HOME/src/clojure/src
-# INCANTER=$HOME/src/clojure/src/incanter/modules/incanter-app/target/incanter-app-1.0.0.jar
-
-# export CLASSPATH=$PWD:$CLOJURE:$CONTRIB:$MYCLASSES:$MYSRC:$MYCLOJURE:$SWANK:$INCANTER:.
 
 # fix "gentoo" prompt
 
