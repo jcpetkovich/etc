@@ -56,6 +56,9 @@ if [ -d ~/src/thesis/bin ] ; then
     PATH=~/src/thesis/bin:"${PATH}"
 fi
 
+
+# Variables and Exports ===============================================================
+
 # Cleanup PATH
 typeset -U PATH
 
@@ -96,6 +99,8 @@ alias ll='ls -al'
 alias ls='ls --color=auto '
 alias zsnes='aoss32 zsnes'
 alias E='sudo -e'
+
+# Functions ===============================================================
 
 # Global aliases
 alias -g SEL='| xsel -i'
@@ -144,6 +149,9 @@ gpush-repos () {
     within-directories "$GIT_REPOSITORIES" 'echo "Pushing for $directory"; git push'
 }
 
+
+# Completion Options ===============================================================
+
 # Options
 setopt extendedglob
 autoload -Uz predict-on
@@ -151,6 +159,8 @@ zle -N predict-on
 zle -N predict-off
 bindkey '^X^Z' predict-on
 bindkey '^Z' predict-off
+
+# Distro Specific Hacks ===============================================================
 
 # Dirty hack to fix python sillyness for when I have to use archlinux
 which python > /dev/null || alias python='python2'
@@ -162,6 +172,8 @@ which dmenu_path > /dev/null || alias dmenu_path='dmenu_path_c'
 alias emerge-sync='sudo emerge --sync && echo "----DONE EMERGE SYNC----" && sudo layman -S && echo "----DONE SYNC LAYMAN----" && eix-update && echo "----DONE SYNCING EIX CACHE----"'
 alias check-update-world='emerge -puDN world'
 alias update-world='sudo emerge -uDN world'
+
+# Keybindings ===============================================================
 
 # Bindings
 bindkey "^?" backward-delete-char
