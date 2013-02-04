@@ -86,3 +86,6 @@ Host purdue
   HostName zed.cs.purdue.edu
   User j.petkov
   
+Host beast
+  HostName beast.esg.uwaterloo.ca
+  User root
