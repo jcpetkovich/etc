@@ -11,5 +11,5 @@ urxvt*font:             xft:Bitstream Vera Sans Mono:pixelsize=12:VL Gothic:size
 
 !! Clickable URLs
 URxvt.perl-ext-common:  default,matcher
-URxvt.urlLauncher:      /usr/bin/firefox
+URxvt.url-launcher:      /usr/bin/firefox
 URxvt.matcher.button:   1
