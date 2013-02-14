@@ -1,3 +1,15 @@
+Extension "LaTeX formula" failed to load because a dependency was not met.
+Dependency:
+  type: executable
+  location: path
+  string: pstoedit
+
+Extension "Sketch Input" failed to load because a dependency was not met.
+Dependency:
+  type: executable
+  location: path
+  string: skconvert
+
 Extension "Dia Input" failed to load because a dependency was not met.
 Dependency:
   type: executable
@@ -12,21 +24,9 @@ Dependency:
   string: pstoedit
   description: pstoedit must be installed to run; see http://www.pstoedit.net/pstoedit
 
-Extension "Sketch Input" failed to load because a dependency was not met.
+Extension "GIMP XCF" failed to load because a dependency was not met.
 Dependency:
   type: executable
   location: path
-  string: skconvert
-
-Extension "XFIG Input" failed to load because a dependency was not met.
-Dependency:
-  type: executable
-  location: path
-  string: fig2dev
-
-Extension "LaTeX formula" failed to load because a dependency was not met.
-Dependency:
-  type: executable
-  location: path
-  string: pstoedit
+  string: gimp
 
