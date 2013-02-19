@@ -10,7 +10,17 @@ status_backend = sqlite
 [Repository main-local]
 type = Maildir
 localfolders = ~/Maildir
-
+# nametrans = lambda foldername: re.sub ( 'sent', 'Sent Mail',
+# re.sub ( '^Ta', 'TA',
+# re.sub ( 'Emails', 'emails',
+# re.sub ( 'phd', 'PhD',
+# re.sub ( 'Stuff', 'stuff',
+# re.sub ( 'Inbox', 'INBOX',
+# re.sub ( 'trash', 'Trash',
+# re.sub ( 'flagged', 'Starred',
+# re.sub ( 'drafts', 'Drafts',
+# re.sub ( 'Bak', '[Gmail]', ' '.join([word.capitalize() for word in re.sub ( '_', ' ', foldername ).split(' ')])))))))))))
+                               
 [Repository gmail-remote]
 type = Gmail
 remoteusereval = get_username('localhost')
