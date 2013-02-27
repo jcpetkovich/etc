@@ -135,7 +135,7 @@ within-directories () {
 }
 
 gpull-repos () {
-    within-directories "$GIT_REPOSITORIES" 'echo "Pulling for $directory"; git pull'
+    within-directories "$GIT_REPOSITORIES" 'echo "Pulling for $directory"; git pull --rebase'
 }
 
 gcommit-repos () {
