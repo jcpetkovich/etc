@@ -99,7 +99,6 @@ alias ll='ls -al'
 alias ls='ls --color=auto '
 alias zsnes='aoss32 zsnes'
 alias E='sudo -e'
-alias node='env NODE_NO_READLINE=1 rlwrap node'
 
 # Functions ===============================================================
 
