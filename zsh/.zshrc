@@ -45,6 +45,11 @@ if [ -d ~/bin ] ; then
     PATH=~/bin:"${PATH}"
 fi
 
+# Node.js exports
+if [ -d ~/node_modules/.bin ] ; then
+    PATH=~/node_modules/.bin:"${PATH}"
+fi
+
 # NIST software?
 if [ -d ~/src/thesis/nist ] ; then
     PATH=~/src/thesis/nist/bin:"${PATH}"
