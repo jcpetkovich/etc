@@ -45,6 +45,11 @@ if [ -d ~/bin ] ; then
     PATH=~/bin:"${PATH}"
 fi
 
+# Cabal Exports
+if [ -d ~/.cabal/bin ] ; then
+    PATH=~/.cabal/bin:"${PATH}"
+fi
+
 # Node.js exports
 if [ -d ~/node_modules/.bin ] ; then
     PATH=~/node_modules/.bin:"${PATH}"
