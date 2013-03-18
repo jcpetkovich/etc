@@ -7,7 +7,7 @@ urxvt*multichar_encoding : utf-8
 urxvt*inputMethod        : fcitx
 urxvt*scrollBar          : false
 urxvt*visualBell	 : false
-urxvt*font:             xft:Bitstream Vera Sans Mono:pixelsize=12:VL Gothic:size=7:antialias=true:hinting=true
+urxvt*font:             xft:DejaVu Sans Mono:pixelsize=12:VL Gothic:size=7:antialias=true:hinting=true
 
 !! Clickable URLs
 URxvt.perl-ext-common:  default,matcher

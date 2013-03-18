@@ -656,7 +656,7 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/jcp/jc-public/projects/eval-lab/documentation/pull_fsms/" />
+       path="/home/jcp/jc-public/projects/datamill-presentation/slides/" />
     <group
        id="import"
        enable_preview="1"
@@ -707,27 +707,27 @@
        on-blur="0.50"
        animate-time="100" />
     <group
-       h="198"
-       w="338"
-       y="0"
-       x="0"
+       id="livepatheffect"
+       panel_size="1"
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
        state="2"
-       panel_wrap="0"
-       panel_mode="1"
-       panel_ratio="100"
-       panel_size="1"
-       id="livepatheffect" />
-    <group
-       id="documentmetadata"
-       panel_size="1"
-       panel_ratio="100"
-       panel_mode="1"
-       panel_wrap="0"
        x="0"
        y="0"
-       w="343"
+       w="338"
+       h="198" />
+    <group
+       state="2"
        h="483"
-       state="2" />
+       w="343"
+       y="0"
+       x="0"
+       panel_wrap="0"
+       panel_mode="1"
+       panel_ratio="100"
+       panel_size="1"
+       id="documentmetadata" />
   </group>
   <group
      id="printing">
