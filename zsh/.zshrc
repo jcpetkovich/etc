@@ -150,7 +150,7 @@ gpull-repos () {
 
 gcommit-repos () {
     emacs --batch \
-          -l ~/.emacs.d/configs/org-mode-config.el \
+          -l ~/.emacs.d/configs/setup-org-mode.el \
           -f org-mobile-push
     within-directories "$GIT_REPOSITORIES" 'echo "Committing for $directory"; git commit -a'
 }
