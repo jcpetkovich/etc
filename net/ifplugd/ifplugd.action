@@ -23,8 +23,8 @@ case "$2" in
 	then
 	    ARGS="-u net/$1"
 	else
-        logger -t ifplugd.action "Going to stop wlan0, eth0 is now up."
-        /etc/init.d/net.wlan0 --quiet stop
+        logger -t ifplugd.action "Going to stop wlp3s0, enp0s25 is now up."
+        /etc/init.d/net.wlp3s0 --quiet stop
 	    ARGS="--quiet start"
 	fi
 	;;
@@ -34,8 +34,8 @@ case "$2" in
 	    ARGS="-d net/$1"
 	else
 	    ARGS="--quiet stop"
-        logger -t ifplugd.action "Going to start wlan0, eth0 is now down."
-        /etc/init.d/net.wlan0 --quiet start
+        logger -t ifplugd.action "Going to start wlp3s0, enp0s25 is now down."
+        /etc/init.d/net.wlp3s0 --quiet start
 	fi
 	;;
     *)

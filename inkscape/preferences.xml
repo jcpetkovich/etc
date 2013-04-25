@@ -553,8 +553,8 @@
        panel_wrap="0"
        x="0"
        y="0"
-       w="347"
-       h="420"
+       w="349"
+       h="421"
        state="2" />
     <group
        id="filtereffects" />
@@ -578,7 +578,8 @@
        y="0"
        w="349"
        h="393"
-       state="2" />
+       state="2"
+       align-to="1" />
     <group
        id="xml" />
     <group
@@ -602,8 +603,8 @@
        panel_wrap="0"
        x="1516"
        y="0"
-       w="401"
-       h="648" />
+       w="407"
+       h="651" />
     <group
        id="preferences"
        state="1"
@@ -642,7 +643,7 @@
     </group>
     <group
        id="save_as"
-       default="org.inkscape.output.svg.inkscape"
+       default="org.inkscape.output.pdf.cairorenderer"
        append_extension="1"
        enable_preview="1"
        path="/home/jcp/jc-public/projects/datamill-presentation/img"
@@ -656,7 +657,7 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/jcp/" />
+       path="/home/jcp/jc-public/projects/datamill-presentation/img/" />
     <group
        id="import"
        enable_preview="1"
@@ -707,27 +708,27 @@
        on-blur="0.50"
        animate-time="100" />
     <group
-       id="livepatheffect"
-       panel_size="1"
-       panel_ratio="100"
-       panel_mode="1"
-       panel_wrap="0"
-       state="2"
-       x="0"
-       y="0"
+       h="198"
        w="338"
-       h="198" />
-    <group
-       state="2"
-       h="483"
-       w="343"
        y="0"
        x="0"
+       state="2"
        panel_wrap="0"
        panel_mode="1"
        panel_ratio="100"
        panel_size="1"
-       id="documentmetadata" />
+       id="livepatheffect" />
+    <group
+       id="documentmetadata"
+       panel_size="1"
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
+       x="0"
+       y="0"
+       w="343"
+       h="483"
+       state="2" />
   </group>
   <group
      id="printing">
@@ -1012,10 +1013,10 @@
      org.inkscape.output.pdf.cairorenderer.areaDrawing="0" />
   <group
      id="desktop"
-     style="fill-opacity:1;font-size:10px;stroke-width:1;stroke-miterlimit:0;stroke-dasharray:none;stroke:#000000;stroke-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;-inkscape-font-specification:Arial;font-family:Arial;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:middle;text-align:center;writing-mode:lr;line-height:125%;fill:#5f7478;stroke-dashoffset:0;opacity:1">
+     style="fill-opacity:1;font-size:30px;stroke-width:1;stroke-miterlimit:0;stroke-dasharray:none;stroke:#000000;stroke-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;-inkscape-font-specification:Arial;font-family:Arial;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:middle;text-align:center;writing-mode:lr;line-height:125%;fill:#5f7478;stroke-dashoffset:0;opacity:1">
     <group
-       width="958"
-       height="1054"
+       width="1918"
+       height="1174"
        x="0"
        y="24"
        fullscreen="0"
