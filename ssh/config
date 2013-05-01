@@ -89,3 +89,7 @@ Host purdue
 Host beast
   HostName beast.esg.uwaterloo.ca
   User root
+
+Host pluto
+  HostName pluto.cis.upenn.edu
+  User root
