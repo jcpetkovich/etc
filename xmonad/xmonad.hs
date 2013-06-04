@@ -14,6 +14,9 @@ import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Layout.NoBorders (noBorders)
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeys, additionalKeysP)
+import XMonad.Layout.SubLayouts
+import XMonad.Layout.WindowNavigation
+import XMonad.Layout.BoringWindows
 
 import qualified Data.Map as M
 import Control.Arrow ((&&&))
@@ -37,11 +40,14 @@ mergeKeys c k = c `additionalKeysP` k c
 jckeys c = [ ("M-<Return>", spawn $ terminal c)   -- launch terminal
            , ("M-v", windows W.swapMaster)        -- swap current and master
            , ("M-o", spawn dmenuCommand)          -- launch dmenu
-           , ("M-n", windows W.focusDown)         -- launch dmenu
-           , ("M-p", windows W.focusUp)           -- launch dmenu
-           , ("M-S-n", windows W.swapDown)         -- launch dmenu
-           , ("M-S-p", windows W.swapUp)           -- launch dmenu
-           -- , ("M-p", spawn dmenuCommand)          -- launch dmenu
+           -- , ("M-n", windows W.focusDown)         -- move focus down
+           -- , ("M-p", windows W.focusUp)           -- move focus up
+           , ("M-n", focusDown)         -- move focus down
+           , ("M-p", focusUp)           -- move focus up
+           , ("M-j", focusDown)         -- move focus down
+           , ("M-k", focusUp)           -- move focus up
+           , ("M-S-n", windows W.swapDown)        -- swap window down
+           , ("M-S-p", windows W.swapUp)          -- swap window up
            , ("M-b", sendMessage ToggleStruts)    -- Toggle Struts
            , ("M-f", spawn "firefox")             -- launch firefox
            , ("M-e", spawn emacsCommand)          -- launch emacs
@@ -54,25 +60,36 @@ jckeys c = [ ("M-<Return>", spawn $ terminal c)   -- launch terminal
            , ("M--", spawn "mpc volume -5")       -- volume - 5
            , ("M-=", spawn "mpc volume +5")       -- volume + 5
            , ("M-S-z", io (exitWith ExitSuccess)) -- exit xmonad
+           , ("C-M-h", sendMessage $ pullGroup L)
+           , ("C-M-l", sendMessage $ pullGroup R)
+           , ("C-M-k", sendMessage $ pullGroup U)
+           , ("C-M-j", sendMessage $ pullGroup D)
+             
+           , ("C-M-m", withFocused (sendMessage . MergeAll))
+           , ("C-M-u", withFocused (sendMessage . UnMerge))
+             
+           , ("C-M-.", onGroup W.focusUp')
+           , ("C-M-,", onGroup W.focusDown')
            ]
 
 
 ------------------------------------------------------------------------
 -- Layout Hook:
 --
-jcLayoutHook = tiled ||| Mirror tiled ||| noBorders Full
-  where
-     -- default tiling algorithm partitions the screen into two panes
-     tiled   = Tall nmaster delta ratio
+jcLayoutHook = windowNavigation $ subTabbed $ boringWindows $
+               tiled ||| Mirror tiled ||| noBorders Full
+    where
+      -- default tiling algorithm partitions the screen into two panes
+      tiled   = Tall nmaster delta ratio
  
-     -- The default number of windows in the master pane
-     nmaster = 1
+      -- The default number of windows in the master pane
+      nmaster = 1
  
-     -- Default proportion of screen occupied by master pane
-     ratio   = 1/2
+      -- Default proportion of screen occupied by master pane
+      ratio   = 1/2
  
-     -- Percent of screen to increment by when resizing panes
-     delta   = 3/100
+      -- Percent of screen to increment by when resizing panes
+      delta   = 3/100
 
 ------------------------------------------------------------------------
 -- Main:
@@ -168,7 +185,7 @@ inactiveWorkspace :: String -> String
 inactiveWorkspace = wrap bracketPad bracketPad . iconWrap
 
 iconLayout :: String -> String
-iconLayout = iconWrap . ("layout-" ++) . map ((\c -> if c == ' ' then '-' else c) . toLower)
+iconLayout = iconWrap . ("layout-" ++) . map ((\c -> if c == ' ' then '-' else c) . toLower) . unwords . tail . words 
 
 iconScreen :: Maybe ScreenId -> String
 iconScreen Nothing = "^p(+4)"
