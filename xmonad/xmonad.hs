@@ -1,19 +1,22 @@
+{-# LANGUAGE NoMonomorphismRestriction #-}
+
 ------------------------------------------------------------------------
 -- JC's Config File:
 --
 
 import XMonad
-import System.Exit (ExitCode (ExitSuccess), exitWith)
+import System.Exit (exitSuccess)
 import System.IO (hPutStrLn)
 import XMonad.Actions.UpdatePointer (PointerPosition (Relative), updatePointer)
+import XMonad.Actions.GridSelect
 import XMonad.Util.Run(spawnPipe)
-import XMonad.Hooks.DynamicLog (PP(..), defaultPP, dynamicLogWithPP, dzenPP, ppOutput, ppCurrent, wrap, ppTitle, ppLayout, ppHidden)
+import XMonad.Hooks.DynamicLog (PP(..), defaultPP, dynamicLogWithPP, ppOutput, ppCurrent, wrap, ppTitle, ppLayout, ppHidden)
 import XMonad.Hooks.ManageDocks (ToggleStruts (ToggleStruts), avoidStruts)
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Layout.NoBorders (noBorders)
 import qualified XMonad.StackSet as W
-import XMonad.Util.EZConfig (additionalKeys, additionalKeysP)
+import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Layout.SubLayouts
 import XMonad.Layout.WindowNavigation
 import XMonad.Layout.BoringWindows
@@ -25,29 +28,41 @@ import Data.Char (toLower)
 ------------------------------------------------------------------------
 -- Commands
 --
+
+dmenuCommand :: String
 dmenuCommand = "dmenu_run -nb '#242424' -nf '#D8BFD8'"
 
+dzenCommand :: IO String
 dzenCommand = readFile "etc/dzen/dzencommand"
 
+emacsCommand :: String
 emacsCommand = "emacsclient -c || (emacs --daemon && emacsclient -c)"
 
+starcraft :: String
 starcraft = "wine ~/.wine/drive_c/Program\\ Files/StarCraft/StarCraft.exe"
+
+jcGSConfig :: HasColorizer a => GSConfig a
+jcGSConfig = defaultGSConfig {gs_cellheight = 50, gs_cellwidth = 400 }
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
 --
+mergeKeys :: XConfig l -> (XConfig l -> [(String, X ())]) -> XConfig l
 mergeKeys c k = c `additionalKeysP` k c
+
+jckeys :: XConfig l -> [(String, X ())]
 jckeys c = [ ("M-<Return>", spawn $ terminal c)   -- launch terminal
            , ("M-v", windows W.swapMaster)        -- swap current and master
            , ("M-o", spawn dmenuCommand)          -- launch dmenu
-           -- , ("M-n", windows W.focusDown)         -- move focus down
-           -- , ("M-p", windows W.focusUp)           -- move focus up
-           , ("M-n", focusDown)         -- move focus down
-           , ("M-p", focusUp)           -- move focus up
-           , ("M-j", focusDown)         -- move focus down
-           , ("M-k", focusUp)           -- move focus up
+        -- , ("M-n", windows W.focusDown)         -- move focus down
+        -- , ("M-p", windows W.focusUp)           -- move focus up
+           , ("M-n", focusDown)                   -- move focus down
+           , ("M-p", focusUp)                     -- move focus up
+           , ("M-j", focusDown)                   -- move focus down
+           , ("M-k", focusUp)                     -- move focus up
            , ("M-S-n", windows W.swapDown)        -- swap window down
            , ("M-S-p", windows W.swapUp)          -- swap window up
+           , ("M-g", goToSelected jcGSConfig)
            , ("M-b", sendMessage ToggleStruts)    -- Toggle Struts
            , ("M-f", spawn "firefox")             -- launch firefox
            , ("M-e", spawn emacsCommand)          -- launch emacs
@@ -59,14 +74,15 @@ jckeys c = [ ("M-<Return>", spawn $ terminal c)   -- launch terminal
            , ("M-0", spawn "mpc next")            -- next song
            , ("M--", spawn "mpc volume -5")       -- volume - 5
            , ("M-=", spawn "mpc volume +5")       -- volume + 5
-           , ("M-S-z", io (exitWith ExitSuccess)) -- exit xmonad
+           , ("M-S-z", io exitSuccess) -- exit xmonad
            , ("C-M-h", sendMessage $ pullGroup L)
            , ("C-M-l", sendMessage $ pullGroup R)
            , ("C-M-k", sendMessage $ pullGroup U)
            , ("C-M-j", sendMessage $ pullGroup D)
              
            , ("C-M-m", withFocused (sendMessage . MergeAll))
-           , ("C-M-u", withFocused (sendMessage . UnMerge))
+           , ("C-M-u", withFocused (sendMessage . UnMergeAll))
+           , ("C-M-p", withFocused (sendMessage . UnMerge))
              
            , ("C-M-.", onGroup W.focusUp')
            , ("C-M-,", onGroup W.focusDown')
@@ -94,6 +110,7 @@ jcLayoutHook = windowNavigation $ subTabbed $ boringWindows $
 ------------------------------------------------------------------------
 -- Main:
 --
+main :: IO ()
 main = do
   xmproc <- spawnPipe =<< dzenCommand
   xmonad $ defaultConfig
@@ -191,4 +208,5 @@ iconScreen :: Maybe ScreenId -> String
 iconScreen Nothing = "^p(+4)"
 iconScreen (Just (S s)) = iconWrap $ ("screen-" ++) . show $ s + 1
 
+(<<) :: Monad m => m b -> m a -> m b
 (<<) = flip (>>)
