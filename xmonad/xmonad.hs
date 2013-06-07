@@ -20,6 +20,8 @@ import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Layout.SubLayouts
 import XMonad.Layout.WindowNavigation
 import XMonad.Layout.BoringWindows
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.MultiToggle.Instances
 
 import qualified Data.Map as M
 import Control.Arrow ((&&&))
@@ -74,6 +76,7 @@ jckeys c = [ ("M-<Return>", spawn $ terminal c)   -- launch terminal
            , ("M-0", spawn "mpc next")            -- next song
            , ("M--", spawn "mpc volume -5")       -- volume - 5
            , ("M-=", spawn "mpc volume +5")       -- volume + 5
+           , ("C-M-f", sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts )       -- Fullscreen
            , ("M-S-z", io exitSuccess) -- exit xmonad
            , ("C-M-h", sendMessage $ pullGroup L)
            , ("C-M-l", sendMessage $ pullGroup R)
@@ -88,11 +91,10 @@ jckeys c = [ ("M-<Return>", spawn $ terminal c)   -- launch terminal
            , ("C-M-,", onGroup W.focusDown')
            ]
 
-
 ------------------------------------------------------------------------
 -- Layout Hook:
 --
-jcLayoutHook = windowNavigation $ subTabbed $ boringWindows $
+jcLayoutHook = windowNavigation $ subTabbed $ boringWindows $ mkToggle (NBFULL ?? EOT) $
                tiled ||| Mirror tiled ||| noBorders Full
     where
       -- default tiling algorithm partitions the screen into two panes
