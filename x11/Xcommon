@@ -10,6 +10,8 @@ urxvt*visualBell	 : false
 urxvt*font:             xft:DejaVu Sans Mono:pixelsize=12:VL Gothic:size=7:antialias=true:hinting=true
 
 !! Clickable URLs
-URxvt.perl-ext-common:  default,matcher
+URxvt.perl-ext-common:  default,matcher,keyboard-select
 URxvt.url-launcher:      /usr/bin/firefox
 URxvt.matcher.button:   1
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
