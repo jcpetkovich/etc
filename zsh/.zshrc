@@ -51,8 +51,9 @@ if [ -d ~/.cabal/bin ] ; then
 fi
 
 # Node.js exports
-if [ -d ~/node_modules/.bin ] ; then
-    PATH=~/node_modules/.bin:"${PATH}"
+if [ -d ~/.local/bin ] ; then
+    PATH=~/.local/bin:"${PATH}"
+    MANPATH=~/.local/share/man:"${MANPATH}"
 fi
 
 # NIST software?
