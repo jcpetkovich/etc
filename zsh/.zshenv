@@ -51,3 +51,10 @@ fi
 if [ -d ~/src/thesis/bin ] ; then
     PATH=~/src/thesis/bin:"${PATH}"
 fi
+
+# Ruby path
+if [ -d ~/.gem/ruby ] ; then
+    for d in $(ls -d ~/.gem/ruby/*/); do
+        PATH=${d}bin:"${PATH}"
+    done
+fi
