@@ -93,3 +93,7 @@ Host beast
 Host pluto
   HostName pluto.cis.upenn.edu
   User root
+
+Host workhorse
+  HostName sf-pc17.uwaterloo.ca
+  User root
