@@ -16,7 +16,6 @@ if [ -d ~/src/perl ] ; then
 fi
 export PERL_MB_OPT="--install_base $HOME/perl5";
 export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
-export PATH="$HOME/perl5/bin:$PATH"
 
 if [ -d ~/perl5 ] ; then
     export MANPATH=~/perl5/man:"$MANPATH"
@@ -26,35 +25,45 @@ if [ -d ~/jc-public/projects/eval-lab/install ] ; then
     export PERL5LIB="$PERL5LIB:$HOME/jc-public/projects/eval-lab/install"
 fi
 
+
+# Path Exports
+
+typeset -U path
+
 if [ -d ~/bin ] ; then
-    PATH=~/bin:"${PATH}"
+    path=(~/bin $path)
 fi
+
+if [ -d ~/perl5/bin ]; then
+    path=(~/perl5/bin $path)
+fi 
 
 # Cabal Exports
 if [ -d ~/.cabal/bin ] ; then
-    export PATH=~/.cabal/bin:"${PATH}"
+    path=(~/.cabal/bin $path)
 fi
 
 # Node.js exports
 if [ -d ~/.local/bin ] ; then
-    export PATH=~/.local/bin:"${PATH}"
+    path=(~/.local/bin $path)
     export MANPATH=~/.local/share/man:"${MANPATH}"
 fi
 
 # NIST software?
 if [ -d ~/src/thesis/nist ] ; then
-    export PATH=~/src/thesis/nist/bin:"${PATH}"
+    path=(~/src/thesis/nist/bin $path)
     export MANPATH=~/src/thesis/nist/man:"${MANPATH}"
 fi
 
 # Thesis project?
 if [ -d ~/src/thesis/bin ] ; then
-    export PATH=~/src/thesis/bin:"${PATH}"
+    path=(~/src/thesis/bin $path)
 fi
 
 # Ruby path
 if [ -d ~/.gem/ruby ] ; then
     for d in $(ls -d ~/.gem/ruby/*/); do
-        export PATH=${d}bin:"${PATH}"
+        path=(${d}bin $path)
     done
 fi
+
