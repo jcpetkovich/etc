@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/jc-personal/etc/zsh/oh-my-zsh
+ZSH=$HOME/etc/zsh/oh-my-zsh
 
 ZSH_THEME="gentoo"
 
@@ -22,7 +22,7 @@ typeset -U PATH
 export VISUAL="`which e`"
 export EDITOR=$VISUAL
 export SUDO_EDITOR=$VISUAL
-export LANG=en_US.UTF-8         # buggs out some stuff but fixes more
+export LANG=en_US.UTF-8         # bugs out some stuff but fixes more
 export RSENSE_HOME=$HOME/jc-public/site-lisp/rsense-0.3
 
 # eval `dircolors`
