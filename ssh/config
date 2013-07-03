@@ -96,4 +96,4 @@ Host pluto
 
 Host workhorse
   HostName sf-pc17.uwaterloo.ca
-  User root
+  User jcp
