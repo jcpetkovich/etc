@@ -1,7 +1,7 @@
 # Language exports ===============================================================
 
 # Python exports
-export PYTHONPATH=/home/jcp/src/thesis/src:~/src/python
+export PYTHONPATH=~/src/thesis/src:~/src/python
 
 # Perl exports
 if [ -d ~/perl5/lib/perl5/i686-linux-thread-multi ] ; then
@@ -32,29 +32,29 @@ fi
 
 # Cabal Exports
 if [ -d ~/.cabal/bin ] ; then
-    PATH=~/.cabal/bin:"${PATH}"
+    export PATH=~/.cabal/bin:"${PATH}"
 fi
 
 # Node.js exports
 if [ -d ~/.local/bin ] ; then
-    PATH=~/.local/bin:"${PATH}"
-    MANPATH=~/.local/share/man:"${MANPATH}"
+    export PATH=~/.local/bin:"${PATH}"
+    export MANPATH=~/.local/share/man:"${MANPATH}"
 fi
 
 # NIST software?
 if [ -d ~/src/thesis/nist ] ; then
-    PATH=~/src/thesis/nist/bin:"${PATH}"
-    MANPATH=~/src/thesis/nist/man:"${MANPATH}"
+    export PATH=~/src/thesis/nist/bin:"${PATH}"
+    export MANPATH=~/src/thesis/nist/man:"${MANPATH}"
 fi
 
 # Thesis project?
 if [ -d ~/src/thesis/bin ] ; then
-    PATH=~/src/thesis/bin:"${PATH}"
+    export PATH=~/src/thesis/bin:"${PATH}"
 fi
 
 # Ruby path
 if [ -d ~/.gem/ruby ] ; then
     for d in $(ls -d ~/.gem/ruby/*/); do
-        PATH=${d}bin:"${PATH}"
+        export PATH=${d}bin:"${PATH}"
     done
 fi
