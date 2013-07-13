@@ -76,19 +76,19 @@ jckeys c = [ ("M-<Return>", spawn $ terminal c)   -- launch terminal
            , ("M-0", spawn "mpc next")            -- next song
            , ("M--", spawn "mpc volume -5")       -- volume - 5
            , ("M-=", spawn "mpc volume +5")       -- volume + 5
-           , ("C-M-f", sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts )       -- Fullscreen
            , ("M-S-z", io exitSuccess) -- exit xmonad
-           , ("C-M-h", sendMessage $ pullGroup L)
-           , ("C-M-l", sendMessage $ pullGroup R)
-           , ("C-M-k", sendMessage $ pullGroup U)
-           , ("C-M-j", sendMessage $ pullGroup D)
+           , ("M1-M-f", sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts )       -- Fullscreen
+           , ("M1-M-h", sendMessage $ pullGroup L)
+           , ("M1-M-l", sendMessage $ pullGroup R)
+           , ("M1-M-k", sendMessage $ pullGroup U)
+           , ("M1-M-j", sendMessage $ pullGroup D)
              
-           , ("C-M-m", withFocused (sendMessage . MergeAll))
-           , ("C-M-u", withFocused (sendMessage . UnMergeAll))
-           , ("C-M-p", withFocused (sendMessage . UnMerge))
+           , ("M1-M-m", withFocused (sendMessage . MergeAll))
+           , ("M1-M-u", withFocused (sendMessage . UnMergeAll))
+           , ("M1-M-p", withFocused (sendMessage . UnMerge))
              
-           , ("C-M-.", onGroup W.focusUp')
-           , ("C-M-,", onGroup W.focusDown')
+           , ("M1-M-.", onGroup W.focusUp')
+           , ("M1-M-,", onGroup W.focusDown')
            ]
 
 ------------------------------------------------------------------------

@@ -1,9 +1,15 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/etc/zsh/oh-my-zsh
 
+# Path to custom or patched plugins
+ZSH_CUSTOM=$HOME/etc/zsh/custom_plugins
+
 ZSH_THEME="gentoo"
 
-plugins=(git gitfast git-extras vi-mode extract autojump gem perl python)
+# No auto updates please, I have my own fork
+DISABLE_AUTO_UPDATE="true"
+
+plugins=(git gitfast git-extras vi-mode extract autojump gem perl python node)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -47,7 +53,9 @@ alias ls='ls --color=auto'
 alias clr='clear'
 alias grep='grep --colour=auto'
 alias mocp='mocp -T transparent-background'
-alias mscreen='screen -x -R -S main'
+# alias mscreen='screen -x -R -S main'
+alias mscreen='echo "Try mmux instead"'
+alias mmux='tmux attach -dt mmux || tmux -2 new-session -s mmux'
 alias slrn="slrn -n"
 alias man='LC_ALL=C LANG=C man'
 alias f=finger
