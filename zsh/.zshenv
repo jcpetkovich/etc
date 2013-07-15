@@ -67,3 +67,7 @@ if [ -d ~/.gem/ruby ] ; then
     done
 fi
 
+# tmuxifier
+if [ -d ~/etc/tmux/tmuxifier/bin ]; then
+    path=(~/etc/tmux/tmuxifier/bin $path)
+fi
