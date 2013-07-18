@@ -4,7 +4,7 @@ session_root "~/jc-public/projects/eval-lab/master"
 
 # Create session with specified name if it does not already exist. If no
 # argument is given, session name will be based on layout file name.
-if initialize_session "datamill-website"; then
+if initialize_session "dm-web"; then
 
     load_window "emacs-managepy"
 

@@ -4,7 +4,7 @@ session_root "~/jc-public/projects/eval-lab/new-new-worker"
 
 # Create session with specified name if it does not already exist. If no
 # argument is given, session name will be based on layout file name.
-if initialize_session "datamill-worker"; then
+if initialize_session "dm-wrkr"; then
 
     load_window "emacs-managepy"
 

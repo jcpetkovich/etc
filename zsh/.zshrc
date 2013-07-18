@@ -1,3 +1,9 @@
+
+# If we are not a login shell, then we need to source this manually
+if [[ ! -o LOGIN ]]; then
+    source ~/.zpath 
+fi 
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/etc/zsh/oh-my-zsh
 
