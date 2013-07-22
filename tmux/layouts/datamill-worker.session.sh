@@ -1,6 +1,6 @@
 # Set a custom session root path. Default is `$HOME`.
 # Must be called before `initialize_session`.
-session_root "~/jc-public/projects/eval-lab/new-new-worker"
+session_root "~/jc-public/projects/eval-lab/worker"
 
 # Create session with specified name if it does not already exist. If no
 # argument is given, session name will be based on layout file name.
