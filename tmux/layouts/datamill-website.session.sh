@@ -14,6 +14,9 @@ if initialize_session "dm-web"; then
     new_window "dbshell"
     run_cmd "./manage.py dbshell"
 
+    new_window "server"
+    run_cmd "./manage.py runserver"
+
     select_window "django-shell"
 
 fi
