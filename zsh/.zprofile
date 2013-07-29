@@ -1,2 +1,3 @@
 
+# load path
 source ~/.zpath
