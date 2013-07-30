@@ -3,6 +3,11 @@ Host mini
   HostName nat1.esg.uwaterloo.ca
   User root
 
+Host testmaster
+  HostName datamill.uwaterloo.ca
+  Port 2222
+  User root
+
 Host b7
   HostName benchmark7.resl.uwaterloo.ca
   User root
