@@ -12,6 +12,8 @@ if initialize_session "dm-wrkr"; then
     run_cmd "./manage.py test && sleep 10 && exit"
     split_v 50
     run_cmd "./manage.py shell"
+
+    new_window "shell"
     
     select_window "worker-shell"
 
