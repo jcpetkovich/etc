@@ -1,6 +1,7 @@
 [general]
 accounts = main
 pythonfile = /home/jcp/src/python/offlineimap/offlineimap.py
+ui = quiet
 
 [Account main]
 localrepository = main-local
