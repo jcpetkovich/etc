@@ -68,6 +68,7 @@ alias ls='ls --color=auto '
 alias zsnes='aoss32 zsnes'
 alias E='sudo -e'
 alias m='tmuxifier'
+alias ssh='TERM=xterm ssh'      # TERM=xterm since most things misinterpret st
 
 # Functions ===============================================================
 
