@@ -1,5 +1,5 @@
 urxvt*secondaryScroll    : true
-urxvt*termName           : rxvt
+urxvt*termName           : rxvt-unicode-256color
 urxvt*scrollTtyKeypress  : True
 urxvt*scrollTtyOutput    : False
 urxvt*saveLines          : 1024
