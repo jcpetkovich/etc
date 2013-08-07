@@ -120,7 +120,7 @@ main = do
        -----------------------------------------------------------------
        -- Some sensible defaults:
        --
-         terminal           = "urxvt"
+         terminal           = "st"
        , modMask            = mod4Mask
        , normalBorderColor  = "#dddddd"
        , focusedBorderColor = "#ff0000"
