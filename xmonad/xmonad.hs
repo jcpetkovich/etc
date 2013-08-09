@@ -120,7 +120,7 @@ main = do
        -----------------------------------------------------------------
        -- Some sensible defaults:
        --
-         terminal           = "st -e tmux"
+         terminal           = "st -e ~/bin/st_tmux_wrap.sh"
        , modMask            = mod4Mask
        , normalBorderColor  = "#dddddd"
        , focusedBorderColor = "#ff0000"
