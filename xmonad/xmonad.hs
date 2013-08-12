@@ -14,6 +14,8 @@ import XMonad.Hooks.DynamicLog (PP(..), defaultPP, dynamicLogWithPP, ppOutput, p
 import XMonad.Hooks.ManageDocks (ToggleStruts (ToggleStruts), avoidStruts)
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 import XMonad.Hooks.SetWMName (setWMName)
+import XMonad.Hooks.ServerMode
+import XMonad.Actions.Commands
 import XMonad.Layout.NoBorders (noBorders)
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeysP)
@@ -45,6 +47,12 @@ starcraft = "wine ~/.wine/drive_c/Program\\ Files/StarCraft/StarCraft.exe"
 
 jcGSConfig :: HasColorizer a => GSConfig a
 jcGSConfig = defaultGSConfig {gs_cellheight = 50, gs_cellwidth = 400 }
+
+------------------------------------------------------------------------
+-- Scripting commands
+--
+scriptingCommands :: X [(String, X ())]
+scriptingCommands = defaultCommands
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -164,6 +172,9 @@ main = do
        
        -- Rules for applications:
        , manageHook         = manageHook defaultConfig <+> myManageHook
+
+       -- Handle event hook
+       , handleEventHook = serverModeEventHook' $ scriptingCommands
        } `mergeKeys` jckeys 
 
        where
