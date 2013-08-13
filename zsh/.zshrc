@@ -30,6 +30,10 @@ fi
 # Cleanup PATH
 typeset -U PATH
 
+# Perl CPAN install locations
+export PERL_MB_OPT="--install_base $HOME/perl5";
+export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
+
 # Vars
 export VISUAL="`which e`"
 export EDITOR=$VISUAL

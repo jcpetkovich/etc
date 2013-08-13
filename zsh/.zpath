@@ -14,8 +14,6 @@ fi
 if [ -d ~/src/perl ] ; then
     export PERL5LIB="$PERL5LIB:$HOME/src/perl";
 fi
-export PERL_MB_OPT="--install_base $HOME/perl5";
-export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
 
 if [ -d ~/perl5 ] ; then
     export MANPATH=~/perl5/man:"$MANPATH"
