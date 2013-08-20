@@ -137,7 +137,7 @@ main = do
        -- Screen related keys
        --
        , keys = \c -> M.fromList [((m .|. modMask c, key), screenWorkspace sc >>= flip whenJust (windows . f))
-                                  | (key, sc) <- zip [xK_q, xK_w, xK_d] [0..]
+                                  | (key, sc) <- zip [xK_w, xK_q, xK_d] [0..]
                                  , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
                 `M.union` keys defaultConfig c 
 
