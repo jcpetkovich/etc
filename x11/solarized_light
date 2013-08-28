@@ -20,8 +20,8 @@
 #define S_base3         #002b36
 
 !! Colours
-*foreground: S_base0
-*background: S_base03
+urxvt*foreground: S_base0
+urxvt*background: S_base03
 !! Black
 *color0: S_base02
 *color8: S_base02
