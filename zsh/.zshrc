@@ -15,7 +15,7 @@ ZSH_THEME="gentoo"
 # No auto updates please, I have my own fork
 DISABLE_AUTO_UPDATE="true"
 
-plugins=(git gitfast git-extras vi-mode extract autojump gem perl python node tmuxifier)
+plugins=(git gitfast git-extras vi-mode extract gem perl python node tmuxifier)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -23,6 +23,19 @@ source $ZSH/oh-my-zsh.sh
 
 if [[ $ZSH_THEME == "gentoo" ]] ; then
     PROMPT[76]='c'
+fi
+
+# Setup fasd for aliases ==============================================================
+if which fasd > /dev/null 2>&1; then
+    eval "$(fasd --init auto)"
+else
+    cat <<EOF 
+You should install fasd: 
+
+    cd ~/etc/zsh/fasd
+    PREFIX=~/.local make install
+EOF
+    
 fi
 
 # Variables and Exports ===============================================================
@@ -66,13 +79,17 @@ alias mscreen='echo "Try mmux instead"'
 alias mmux='tmuxifier s main'
 alias slrn="slrn -n"
 alias man='LC_ALL=C LANG=C man'
-alias f=finger
 alias ll='ls -al'
 alias ls='ls --color=auto '
 alias zsnes='aoss32 zsnes'
 alias E='sudo -e'
 alias m='tmuxifier'
 alias ssh='TERM=xterm-256color ssh'      # TERM=xterm since most things misinterpret st
+
+# fasd aliases
+alias o='fasd -a -e xdg-open'
+alias v='fasd -a -e "e -t"'
+alias j='fasd_cd -d'
 
 # Functions ===============================================================
 

@@ -4,3 +4,6 @@
 [submodule "tmux/tmuxifier"]
 	path = tmux/tmuxifier
 	url = https://github.com/jimeh/tmuxifier.git
+[submodule "zsh/fasd"]
+	path = zsh/fasd
+	url = https://github.com/clvv/fasd.git
