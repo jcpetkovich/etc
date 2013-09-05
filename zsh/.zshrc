@@ -98,6 +98,14 @@ alias -g SEL='| xsel -i'
 
 # Functions
 
+ping_result() {
+    if [[ $? == 0 ]]; then
+        echo "Subject: Finished - Success" | sendmail jcpetkovich
+    else
+        echo "Subject: Finished - Failure" | sendmail jcpetkovich
+    fi
+}
+
 # Ack the text of a pdf
 ackp () {
 	pdftotext $1 - | ack $argv[2,-1]
