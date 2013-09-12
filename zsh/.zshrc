@@ -99,10 +99,12 @@ alias -g SEL='| xsel -i'
 # Functions
 
 ping_result() {
+    local message=$1
+    [[ -n $message ]] && message=" $message"
     if [[ $? == 0 ]]; then
-        echo "Subject: Finished - Success" | sendmail jcpetkovich
+        echo "Subject: Finished - Success$message" | sendmail jcpetkovich
     else
-        echo "Subject: Finished - Failure" | sendmail jcpetkovich
+        echo "Subject: Finished - Failure$message" | sendmail jcpetkovich
     fi
 }
 
