@@ -171,7 +171,7 @@ which dmenu_path > /dev/null || alias dmenu_path='dmenu_path_c'
 
 # EMERGE Aliases
 alias emerge-sync='sudo emerge --sync && echo "----DONE EMERGE SYNC----" && sudo layman -S && echo "----DONE SYNC LAYMAN----" && eix-update && echo "----DONE SYNCING EIX CACHE----"'
-alias check-update-world='emerge -puDN world'
+alias check-update-world='sudo emerge -auDN world'
 alias update-world='sudo emerge -uDN world'
 
 # Keybindings ===============================================================
