@@ -39,6 +39,7 @@ fi
 # Cabal Exports
 if [ -d ~/.cabal/bin ] ; then
     path=(~/.cabal/bin $path)
+    export MANPATH=~/.cabal/share/man:"${MANPATH}"
 fi
 
 # Node.js exports

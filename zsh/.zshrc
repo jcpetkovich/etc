@@ -91,6 +91,9 @@ alias o='fasd -a -e xdg-open'
 alias v='fasd -a -e "e -t"'
 alias j='fasd_cd -d'
 
+# Additional git aliases
+alias grp='git rev-parse --short HEAD'
+
 # Functions ===============================================================
 
 # Global aliases
