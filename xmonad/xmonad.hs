@@ -82,8 +82,8 @@ jckeys c = [ ("M-<Return>", spawn $ terminal c)   -- launch terminal
            , ("M-8", spawn "mpc toggle")          -- pause/play
            , ("M-7", spawn "mpc prev")            -- previous song
            , ("M-0", spawn "mpc next")            -- next song
-           , ("M--", spawn "mpc volume -5")       -- volume - 5
-           , ("M-=", spawn "mpc volume +5")       -- volume + 5
+           , ("M--", spawn "amixer set Master 5%- -q")       -- volume - 5
+           , ("M-=", spawn "amixer set Master 5%+ -q")       -- volume + 5
            , ("M-S-z", io exitSuccess) -- exit xmonad
            , ("M1-M-f", sendMessage (Toggle NBFULL) >> sendMessage ToggleStruts )       -- Fullscreen
            , ("M1-M-h", sendMessage $ pullGroup L)
