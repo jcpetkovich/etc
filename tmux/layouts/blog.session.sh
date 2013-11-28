@@ -18,6 +18,7 @@ if initialize_session "blog"; then
 
   # Select the default active window on session creation.
   new_window "shell"
+  run_cmd "firefox localhost:8000"
 
 fi
 
