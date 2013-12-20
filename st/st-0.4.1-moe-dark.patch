@@ -1,0 +1,65 @@
+--- config.h	2013-12-20 07:11:07.000022054 -0500
++++ config.h.moe-dark	2013-12-20 07:46:08.940046910 -0500
+@@ -28,30 +28,25 @@
+ 
+ /* Terminal colors (16 first used in escape sequence) */
+ static const char *colorname[] = {
+-	/* 8 normal colors */
+-	"black",
+-	"red3",
+-	"green3",
+-	"yellow3",
+-	"blue2",
+-	"magenta3",
+-	"cyan3",
+-	"gray90",
+-
+-	/* 8 bright colors */
+-	"gray50",
+-	"red",
+-	"green",
+-	"yellow",
+-	"#5c5cff",
+-	"magenta",
+-	"cyan",
+-	"white",
+-
+-	[255] = 0,
+-
+-	/* more colors can be added after 255 to use with DefaultXX */
+-	"#cccccc",
++        /* 8 normal colors */
++        "#3a3a3a",  /*  0: black  */
++        "#ef2929",  /*  1: red */
++        "#5faf00",  /*  2: green */
++        "#ffaf5f",  /*  3: yellow */
++        "#729fcf",  /*  4: blue */
++        "#ff4ea3",  /*  5: magenta */
++        "#8cc4ff",  /*  6: cyan */
++        "#ffffd7",  /*  7: white */
++
++        /* 8 bright colors */
++        "#303030",  /*  8: brblack */
++        "#ff5d17",  /*  9: brred */
++        "#4e4e4e",  /* 10: brgreen  */
++        "#6c6c6c",  /* 11: bryellow  */
++        "#c6c6c6",  /* 12: brblue  */
++        "#d18aff",  /* 13: brmagenta  */
++        "#a8a8a8",  /* 14: brcyan  */
++        "#ffffff",  /* 15: brwhite  */
+ };
+ 
+ 
+@@ -59,9 +54,9 @@
+  * Default colors (colorname index)
+  * foreground, background, cursor
+  */
+-static unsigned int defaultfg = 7;
+-static unsigned int defaultbg = 0;
+-static unsigned int defaultcs = 256;
++static unsigned int defaultfg = 12;
++static unsigned int defaultbg = 8;
++static unsigned int defaultcs = 14;
+ 
+ /*
+  * Colors used, when the specific fg == defaultfg. So in reverse mode this
