@@ -11,25 +11,13 @@ status_backend = sqlite
 [Repository main-local]
 type = Maildir
 localfolders = ~/Maildir
-# nametrans = lambda foldername: re.sub ( 'sent', 'Sent Mail',
-# re.sub ( '^Ta', 'TA',
-# re.sub ( 'Emails', 'emails',
-# re.sub ( 'phd', 'PhD',
-# re.sub ( 'Stuff', 'stuff',
-# re.sub ( 'Inbox', 'INBOX',
-# re.sub ( 'trash', 'Trash',
-# re.sub ( 'flagged', 'Starred',
-# re.sub ( 'drafts', 'Drafts',
-# re.sub ( 'Bak', '[Gmail]', ' '.join([word.capitalize() for word in re.sub ( '_', ' ', foldername ).split(' ')])))))))))))
+nametrans = reverse_name_trans
                                
 [Repository gmail-remote]
 type = Gmail
 remoteusereval = get_username('localhost')
 remotepasseval = get_password('localhost')
-nametrans = lambda foldername: re.sub ('^\[gmail\]', 'bak',
-                               re.sub ('sent_mail', 'sent',
-                               re.sub ('starred', 'flagged',
-                               re.sub (' ', '_', foldername.lower()))))
+nametrans = name_trans
 folderfilter = folder_filter
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 localfolders = ~/Maildir
