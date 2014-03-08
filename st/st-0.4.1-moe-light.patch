@@ -1,0 +1,61 @@
+--- config.h	2013-05-28 21:39:03.943250563 +0200
++++ config.h.solarized-light	2013-06-01 03:02:29.958671057 +0200
+@@ -42,29 +42,24 @@ static unsigned int tabspaces = 8;
+ /* Terminal colors (16 first used in escape sequence) */
+ static const char *colorname[] = {
+ 	/* 8 normal colors */
+-	"black",
+-	"red3",
+-	"green3",
+-	"yellow3",
+-	"blue2",
+-	"magenta3",
+-	"cyan3",
+-	"gray90",
++	"#eeeeee",  /*  0: black  */ 
++	"#ff4b4b",  /*  1: red */ 
++	"#00af00",  /*  2: green */ 
++	"#ff8700",  /*  3: yellow */ 
++	"#5fafd7",  /*  4: blue */ 
++	"#ff4ea3",  /*  5: magenta */ 
++	"#87d7af",  /*  6: cyan */ 
++	"#3a3a3a",  /*  7: white */ 
+ 
+ 	/* 8 bright colors */
+-	"gray50",
+-	"red",
+-	"green",
+-	"yellow",
+-	"#5c5cff",
+-	"magenta",
+-	"cyan",
+-	"white",
+-
+-	[255] = 0,
+-
+-	/* more colors can be added after 255 to use with DefaultXX */
+-	"#cccccc",
++	"#fdfde7",  /*  8: brblack */ 
++	"#cc0000",  /*  9: brred */ 
++	"#c6c6c6",  /* 10: brgreen  */  
++	"#b2b2b2",  /* 11: bryellow  */ 
++	"#5f5f5f",  /* 12: brblue  */   
++	"#d18aff",  /* 13: brmagenta  */ 
++	"#8a8a8a",  /* 14: brcyan  */  
++	"#3a3a3a",  /* 15: brwhite  */ 
+ };
+ 
+ 
+@@ -72,9 +67,9 @@ static const char *colorname[] = {
+  * Default colors (colorname index)
+  * foreground, background, cursor
+  */
+-static unsigned int defaultfg = 7;
+-static unsigned int defaultbg = 0;
+-static unsigned int defaultcs = 256;
++static unsigned int defaultfg = 12;
++static unsigned int defaultbg = 8;
++static unsigned int defaultcs = 14;
+ 
+ /*
+  * Colors used, when the specific fg == defaultfg. So in reverse mode this
