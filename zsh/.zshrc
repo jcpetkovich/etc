@@ -101,6 +101,7 @@ alias j='fasd_cd -d'
 
 # Additional git aliases
 alias grp='git rev-parse --short HEAD'
+alias glp='glgga'
 
 # Functions ===============================================================
 
@@ -133,6 +134,16 @@ streamdvd () {
 # Ultra simple countdown timer functionality
 countdown () {
 	utimer -c $@ && aplay /usr/share/sounds/purple/alert.wav
+}
+
+# This is stupid
+msql() {
+    if [[ $1 == "--csv" ]]; then
+        shift
+        ssh mini "cd /var/www/localhost/wsgi/eval-lab/master; echo \" COPY ( $@ ) TO STDOUT  WITH CSV HEADER \" | ./manage.py dbshell "
+    else
+        ssh mini "cd /var/www/localhost/wsgi/eval-lab/master; echo \" $@ \" | ./manage.py dbshell "
+    fi
 }
 
 GIT_REPOSITORIES=(~/jc-public/ ~/jc-personal/ ~/etc/ ~/.emacs.d/ ~/mobileorg/)

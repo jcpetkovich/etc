@@ -24,6 +24,8 @@ import XMonad.Layout.WindowNavigation
 import XMonad.Layout.BoringWindows
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
+import XMonad.Prompt (defaultXPConfig)
+import XMonad.Prompt.Shell (shellPrompt)
 
 import qualified Data.Map as M
 import Control.Arrow ((&&&))
@@ -63,7 +65,7 @@ mergeKeys c k = c `additionalKeysP` k c
 jckeys :: XConfig l -> [(String, X ())]
 jckeys c = [ ("M-<Return>", spawn $ terminal c)   -- launch terminal
            , ("M-v", windows W.swapMaster)        -- swap current and master
-           , ("M-o", spawn dmenuCommand)          -- launch dmenu
+           , ("M-o", shellPrompt defaultXPConfig)          -- launch dmenu
         -- , ("M-n", windows W.focusDown)         -- move focus down
         -- , ("M-p", windows W.focusUp)           -- move focus up
            , ("M-n", focusDown)                   -- move focus down
