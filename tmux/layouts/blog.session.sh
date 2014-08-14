@@ -12,9 +12,9 @@ if initialize_session "blog"; then
 
   # Load a defined window layout.
   new_window "watch"
-  run_cmd "ghc -fforce-recomp --make site.hs"
-  run_cmd "./site clean"
-  run_cmd "./site watch"
+  run_cmd "cabal build"
+  run_cmd "cabal run clean"
+  run_cmd "cabal run watch"
 
   # Select the default active window on session creation.
   new_window "shell"
