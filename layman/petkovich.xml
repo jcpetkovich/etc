@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories>
+  <repo quality="experimental" status="unofficial">
+    <name>petkovich</name>
+    <description>Jon Eyolfson's personal overlay.</description>
+    <homepage>https://github.com/jcpetkovich/overlay-petkovich</homepage>
+    <owner>
+      <email>jcpetkovich@gmail.com</email>
+      <name>Jean-Christophe Petkovich</name>
+    </owner>
+    <source type="git">git://github.com/jcpetkovich/overlay-petkovich.git</source>
+    <source type="git">http://github.com/jcpetkovich/overlay-petkovich.git</source>
+    <feed>http://github.com/feeds/jcpetkovich/commits/overlay-petkovich/master</feed>
+  </repo>
+</repositories>
