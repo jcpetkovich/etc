@@ -59,6 +59,7 @@ export SUDO_EDITOR=$VISUAL
 export LANG=en_US.UTF-8         # bugs out some stuff but fixes more
 export RSENSE_HOME=$HOME/jc-public/site-lisp/rsense-0.3
 export TMUXIFIER_LAYOUT_PATH=~/etc/tmux/layouts
+export REQ_DIR=~/etc/plumbing/req
 
 # remove zsh vim ESC delay 
 export KEYTIMEOUT=1
