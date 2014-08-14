@@ -70,3 +70,8 @@ fi
 if [ -d ~/etc/tmux/tmuxifier/bin ]; then
     path=(~/etc/tmux/tmuxifier/bin $path)
 fi
+
+# req
+if [ -d ~/etc/plumbing/req/bin ]; then
+    path=(~/etc/plumbing/req $path)
+fi
