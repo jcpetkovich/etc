@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Script to launch emacs.
+
+# Check if we are opening the emacs client in a terminal, then set
+# xterm-256color as TERM since that seems to reproduce colourschemes
+# better than the alternatives.
+for arg in $@; do
+    if [[ $arg == "-t" ]]; then
+        TERM=xterm-256color
+    fi
+done
+
+# `e [option] file...` : open a file with an emacsclient, starting
+#                        emacs if it hasn't been already
+emacsclient -c $@ || (emacs --daemon && emacsclient -c $@)
+
