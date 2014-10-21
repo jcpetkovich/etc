@@ -1,0 +1,7 @@
+[color]
+	ui = true
+[user]
+	email = jcpetkovich@gmail.com
+	name = Jean-Christophe Petkovich
+[push]
+	default = simple

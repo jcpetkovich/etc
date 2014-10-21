@@ -1,5 +1,0 @@
-# replace "ac_adapter" below with the event generated on your laptop
-# For example, ac_adapter.* will match ac_adapter AC 00000080 00000000
-event=ac_adapter.*
-action=/etc/acpi/actions/pmg_switch_runlevel.sh %e
-
