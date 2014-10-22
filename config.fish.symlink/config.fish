@@ -175,4 +175,5 @@ alias ssh='TERM=xterm-256color ssh'      # TERM=xterm since most things misinter
 
 # Additional git aliases
 alias grp='git rev-parse --short HEAD'
-alias glp='glgga'
+alias glp='git log --graph --decorate --all'
+alias gst='git status'
