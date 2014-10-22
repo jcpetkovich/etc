@@ -137,7 +137,7 @@ set -xU PERL_MB_OPT "--install_base $HOME/perl5";
 set -xU PERL_MM_OPT "INSTALL_BASE=$HOME/perl5";
 
 # Vars
-set -xU VISUAL "`which e`"
+set -xU VISUAL (which e)
 set -xU EDITOR $VISUAL
 set -xU SUDO_EDITOR $VISUAL
 set -xU LANG en_US.UTF-8         # bugs out some stuff but fixes more
