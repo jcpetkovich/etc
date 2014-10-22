@@ -177,3 +177,13 @@ alias ssh='TERM=xterm-256color ssh'      # TERM=xterm since most things misinter
 alias grp='git rev-parse --short HEAD'
 alias glp='git log --graph --decorate --all'
 alias gst='git status'
+
+
+function fish_user_key_bindings
+        # fish_vi_key_bindings
+        # bind -m insert \cc 'commandline ""'
+        # bind -M insert \cc 'commandline ""'
+        # bind -M visual -m insert \cc 'commandline ""'
+        bind \ep history-search-backward
+        bind \en history-search-backward
+end
