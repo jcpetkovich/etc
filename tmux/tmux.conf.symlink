@@ -44,33 +44,35 @@ set -g history-limit 10000
 
 # ==================== Set Theme ====================
 
-# default statusbar colors
-set -g status-bg black
-set -g status-fg yellow
-set -g status-attr default
+source /usr/share/powerline/tmux/powerline.conf
 
-# default window title colors
-setw -g window-status-fg yellow
-setw -g window-status-bg default
+# # default statusbar colors
+# set -g status-bg black
+# set -g status-fg yellow
+# set -g status-attr default
 
-# active window title colors
-setw -g window-status-current-fg blue
-setw -g window-status-current-bg default
-setw -g window-status-current-attr dim
+# # default window title colors
+# setw -g window-status-fg yellow
+# setw -g window-status-bg default
 
-# pane border
-set -g pane-border-fg black
-set -g pane-border-bg default
-set -g pane-active-border-fg yellow
-set -g pane-active-border-bg default
+# # active window title colors
+# setw -g window-status-current-fg blue
+# setw -g window-status-current-bg default
+# setw -g window-status-current-attr dim
 
-# command line/message text
-set -g message-bg black
-set -g message-fg yellow
+# # pane border
+# set -g pane-border-fg black
+# set -g pane-border-bg default
+# set -g pane-active-border-fg yellow
+# set -g pane-active-border-bg default
 
-# pane number display
-set -g display-panes-active-colour yellow
-set -g display-panes-colour brightblue
+# # command line/message text
+# set -g message-bg black
+# set -g message-fg yellow
 
-# clock
-setw -g clock-mode-colour yellow
+# # pane number display
+# set -g display-panes-active-colour yellow
+# set -g display-panes-colour brightblue
+
+# # clock
+# setw -g clock-mode-colour yellow
