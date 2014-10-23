@@ -2,7 +2,7 @@
 # Do NOT edit it directly, your changes will be overwritten.
 SET_EXPORT ANT_HOME:/usr/share/ant
 SET_EXPORT CONFIG_PROTECT:/usr/share/gnupg/qualified\x2etxt
-SET_EXPORT CONFIG_PROTECT_MASK:/etc/gentoo\x2drelease\x20/etc/sandbox\x2ed\x20/etc/fonts/fonts\x2econf\x20/etc/terminfo\x20/etc/ca\x2dcertificates\x2econf\x20/etc/texmf/web2c\x20/etc/texmf/language\x2edat\x2ed\x20/etc/texmf/language\x2edef\x2ed\x20/etc/texmf/updmap\x2ed\x20/etc/revdep\x2drebuild
+SET_EXPORT CONFIG_PROTECT_MASK:/etc/gentoo\x2drelease\x20/etc/sandbox\x2ed\x20/etc/fonts/fonts\x2econf\x20/etc/gconf\x20/etc/terminfo\x20/etc/ca\x2dcertificates\x2econf\x20/etc/texmf/web2c\x20/etc/texmf/language\x2edat\x2ed\x20/etc/texmf/language\x2edef\x2ed\x20/etc/texmf/updmap\x2ed\x20/etc/revdep\x2drebuild
 SET_EXPORT EDITOR:/home/jcp/bin/e
 SET_EXPORT GCC_SPECS:
 SET_EXPORT GOBIN:/home/jcp/\x2ego/bin
