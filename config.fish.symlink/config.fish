@@ -8,9 +8,14 @@ function fish_env_update
                 # remove surrounding quotes if existing
                 set value (echo $value | sed -E "s/^\"(.*)\"\$/\1/")
                 if test $var = "PATH"
+                        set value (echo $value | sed -E "s/:/ /g")
                         # use eval because we need to expand the value
                         echo "set -xU fish_user_paths $value"
                         eval set -xU fish_user_paths $value
+                        continue
+                else if test $var = "MANPATH"
+                        echo "set -xU MANPATH $value"
+                        eval "set -xU MANPATH $value"
                         continue
                 end
                 # evaluate variables. we can use eval because we most likely just used "$var"
@@ -43,7 +48,7 @@ if test -d ~/src/perl
 end
 
 if test -d ~/perl5
-    set -xU MANPATH ~/perl5/man "$MANPATH"
+    set -xU MANPATH ~/perl5/man:"$MANPATH"
 end
 
 if test -d ~/jc-public/projects/eval-lab/install
@@ -64,19 +69,19 @@ end
 # Cabal Exports
 if test -d ~/.cabal/bin
     set -xU fish_user_paths ~/.cabal/bin $fish_user_paths
-    set -xU MANPATH ~/.cabal/share/man "$MANPATH"
+    set -xU MANPATH ~/.cabal/share/man:"$MANPATH"
 end
 
 # local software exports
 if test -d ~/.local/bin
     set -xU fish_user_paths ~/.local/bin $fish_user_paths
-    set -xU MANPATH ~/.local/share/man "$MANPATH"
+    set -xU MANPATH ~/.local/share/man:"$MANPATH"
 end
 
 # NIST software?
 if test -d ~/src/thesis/nist
     set -xU fish_user_paths ~/src/thesis/nist/bin $fish_user_paths
-    set -xU MANPATH ~/src/thesis/nist/man "$MANPATH"
+    set -xU MANPATH ~/src/thesis/nist/man:"$MANPATH"
 end
 
 # Thesis project?
@@ -113,6 +118,9 @@ if test -d ~/.go
     set -xU fish_user_paths ~/.go/bin $fish_user_paths
 end
 
+# Finish setting up MANPATH
+
+set -xU MANPATH ":"$MANPATH
 
 # Setup fasd
 if which fasd > /dev/null 2>&1
