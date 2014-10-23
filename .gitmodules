@@ -10,3 +10,4 @@
 [submodule "plumbing/req"]
 	path = plumbing/req
 	url = git@github.com:jcpetkovich/req.git
+        ignore = dirty
