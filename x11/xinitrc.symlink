@@ -1,29 +1,21 @@
 #!/bin/bash
 
-# Select background and screen layout
-# ~/.screenlayout/default-layout.sh
+# Select background
 nitrogen --restore
 
-# Set pointer theme
+# set pointer theme
 xsetroot -cursor_name left_ptr
 
-# Setup keyboard
+# setup keyboard
 xset r rate 250 &
 colemak3
 
-# Status bar
-# /home/jcp/src/zsh/status.sh | dzen2 -bg 'Black' -fn '-bitstream-bitstream vera sans mono-medium-*-*-*-11-*-*-0-*-*-iso10646-*' -ta r -p -h 24 -w 1022 -x 840 -xs 2 &
-
-# Trayer
-# trayer --edge top --align right --SetDockType true --expand true --transparent true --tint 0x000000 --alpha 0 --widthtype pixel --width 58 --height 24 &
-
-# Setup keychain
-source /etc/X11/xinit/xinitrc.d/80-dbus
+# setup keychain
+source /etc/x11/xinit/xinitrc.d/80-dbus
 export `gnome-keyring-daemon -s`
 
-# Share x11 info
+# share x11 info
 export_x_info
 
-# start xmonad
-# exec ck-launch-session xmonad
+# start dwm
 exec ck-launch-session dwm
