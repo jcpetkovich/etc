@@ -50,11 +50,11 @@ function update-world() {
 
 while getopts ":h" opt; do
     case $opt in
-        h ) echo "$HELP";
+        h ) echo "$HELP"
             exit 0;;
-        s ) emerge-sync;
+        s ) emerge-sync
             exit 0;;
-        u ) update-world;
+        u ) update-world
             exit 0;;
     esac
 done

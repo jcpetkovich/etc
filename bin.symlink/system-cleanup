@@ -68,23 +68,23 @@ function clean-perl(){
 
 while getopts ":h" opt; do
     case $opt in
-        h ) echo "$HELP";
+        h ) echo "$HELP"
             exit 0;;
-        l ) clean-python;
-            clean-perl;
-            clean-haskell;
+        l ) clean-python
+            clean-perl
+            clean-haskell
             exit 0;;
-        H ) clean-haskell;
+        H ) clean-haskell
             exit 0;;
-        p ) clean-perl;
+        p ) clean-perl
             exit 0;;
-        P ) clean-python;
+        P ) clean-python
             exit 0;;
-        a ) cleanup;
-            clean-python;
-            clean-perl;
-            clean-haskell;
-            success "Updated everything, system clean :D";
+        a ) cleanup
+            clean-python
+            clean-perl
+            clean-haskell
+            success "Updated everything, system clean :D"
             exit 0;;
     esac
 done
