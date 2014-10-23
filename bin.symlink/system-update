@@ -50,6 +50,12 @@ function update-world() {
     success "Updates complete"
 }
 
+function update-world-with-bdeps() {
+    info "Updating system...\n"
+    sudo emerge -auDN world --with-bdeps=y || fail "Didn't update system"
+    success "Updates complete"
+}
+
 while getopts ":h" opt; do
     case $opt in
         h ) echo "$HELP"
@@ -57,6 +63,11 @@ while getopts ":h" opt; do
         s ) emerge-sync
             exit 0;;
         u ) update-world
+            exit 0;;
+        b ) update-world-with-bdeps
+            exit 0;;
+        a ) emerge-sync
+            update-world-with-bdeps
             exit 0;;
     esac
 done

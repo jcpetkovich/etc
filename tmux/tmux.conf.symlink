@@ -43,36 +43,4 @@ set -g set-titles-string "#T"
 set -g history-limit 10000
 
 # ==================== Set Theme ====================
-
 source /usr/share/powerline/tmux/powerline.conf
-
-# # default statusbar colors
-# set -g status-bg black
-# set -g status-fg yellow
-# set -g status-attr default
-
-# # default window title colors
-# setw -g window-status-fg yellow
-# setw -g window-status-bg default
-
-# # active window title colors
-# setw -g window-status-current-fg blue
-# setw -g window-status-current-bg default
-# setw -g window-status-current-attr dim
-
-# # pane border
-# set -g pane-border-fg black
-# set -g pane-border-bg default
-# set -g pane-active-border-fg yellow
-# set -g pane-active-border-bg default
-
-# # command line/message text
-# set -g message-bg black
-# set -g message-fg yellow
-
-# # pane number display
-# set -g display-panes-active-colour yellow
-# set -g display-panes-colour brightblue
-
-# # clock
-# setw -g clock-mode-colour yellow
