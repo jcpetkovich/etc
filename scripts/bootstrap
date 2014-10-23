@@ -26,6 +26,10 @@ find_destination () {
     elif [[ ${src%%.*} == "config" ]]; then
         dst=${src##config.}
         dst="$HOME"/.config/"${dst}"
+    elif [[ ${src%%.*} == "xdg-applications" ]]; then
+        dst=${src##xdg-applications.}
+        mkdir -p ~/.local/share/applications
+        dst="$HOME"/.local/share/applications/"${dst}"
     else
         dst="$HOME"/
         dst="$HOME/.${src%%.symlink}"
