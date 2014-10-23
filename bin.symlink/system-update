@@ -10,6 +10,8 @@ for new packages.
     -h    Print this help documentation.
     -s    Sync only.
     -u    Update only.
+    -b    Update with bdeps
+    -a    Sync, Update, with bdeps
 EOF
 
 function info () {
