@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 /* static char font[] = "Source Code Pro Medium-12:style=Regular"; */
-static char font[] = "Source Code Pro:pixelsize=14:style=Regular:spacing=100:scalable=true";
+static char font[] = "Sauce Code Powerline:pixelsize=14:style=Regular:spacing=100:scalable=true";
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 
