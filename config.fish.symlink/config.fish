@@ -8,10 +8,16 @@ function fish_env_update
                 # remove surrounding quotes if existing
                 set value (echo $value | sed -E "s/^\"(.*)\"\$/\1/")
                 if test $var = "PATH"
+                        set value (echo $value | sed -E "s/^'(.*)'\$/\1/")
                         set value (echo $value | sed -E "s/:/ /g")
                         # use eval because we need to expand the value
-                        echo "set -xU fish_user_paths $value"
-                        eval set -xU fish_user_paths $value
+                        eval "set value $value"
+                        echo "Count of value: "(count $value)
+                        for val in $value
+                                echo "set -xU fish_user_paths $val"
+                                set -xU fish_user_paths $val $fish_user_paths
+                                echo "$PATH"
+                        end
                         continue
                 else if test $var = "MANPATH"
                         echo "set -xU MANPATH $value"
@@ -186,6 +192,8 @@ alias grp='git rev-parse --short HEAD'
 alias glp='git log --graph --decorate --all'
 alias gst='git status'
 
+function fish_greeting
+end
 
 function fish_user_key_bindings
         fish_vi_key_bindings
