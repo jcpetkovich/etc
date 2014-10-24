@@ -11,7 +11,7 @@ xset r rate 250 &
 colemak3
 
 # setup keychain
-source /etc/x11/xinit/xinitrc.d/80-dbus
+source /etc/X11/xinit/xinitrc.d/80-dbus
 export `gnome-keyring-daemon -s`
 
 # share x11 info
