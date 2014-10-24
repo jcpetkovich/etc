@@ -57,7 +57,7 @@ function update-world-with-bdeps() {
     success "Updates complete"
 }
 
-while getopts ":h" opt; do
+while getopts ":hsuba" opt; do
     case $opt in
         h ) echo "$HELP"
             exit 0;;
@@ -69,6 +69,9 @@ while getopts ":h" opt; do
             exit 0;;
         a ) emerge-sync
             update-world-with-bdeps
+            exit 0;;
+        ? ) echo "Invalid option -${OPTARG}..."
+            echo "$HELP"
             exit 0;;
     esac
 done

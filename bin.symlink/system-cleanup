@@ -67,7 +67,7 @@ function clean-perl(){
     clean-language-runtime "perl-cleaner --reallyall"
 }
 
-while getopts ":h" opt; do
+while getopts ":hlHpPa" opt; do
     case $opt in
         h ) echo "$HELP"
             exit 0;;
@@ -86,6 +86,9 @@ while getopts ":h" opt; do
             clean-perl
             clean-haskell
             success "Updated everything, system clean :D"
+            exit 0;;
+        ? ) echo "Invalid option -${OPTARG}..."
+            echo "$HELP"
             exit 0;;
     esac
 done
