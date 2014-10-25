@@ -50,9 +50,13 @@ function cleanup() {
 function clean-language-runtime() {
     local tool=$1
 
-    info "Starting $tool...\n"
-    sudo $tool || fail "$tool failed"
-    success "$tool completed successfully"
+    if which "${tool%% *}"; then
+        info "Starting $tool...\n"
+        sudo $tool || fail "$tool failed"
+        success "$tool completed successfully"
+    else
+        info "${tool%% *} not found, skipping..."
+    fi
 }
 
 function clean-python(){
