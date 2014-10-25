@@ -17,5 +17,8 @@ export `gnome-keyring-daemon -s`
 # share x11 info
 export_x_info
 
+# Start statusbar
+dwmstatus &
+
 # start dwm
 exec ck-launch-session dwm
