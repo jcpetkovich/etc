@@ -197,25 +197,34 @@ end
 
 function fish_user_key_bindings
         fish_vi_key_bindings
+
+        # Sane behaviour of C-c
         bind -m insert \cc 'commandline ""'
         bind -M insert \cc 'commandline ""'
         bind -M visual -m insert \cc 'commandline ""'
 
+        # Paste behaviour is wrong
+        bind p forward-char yank
+        bind P yank
+
+        # M-p and M-n for history search (like emacs commit mode)
         bind -m insert \ep history-search-backward
         bind -M insert \ep history-search-backward
         bind -M visual -m insert \ep history-search-backward
-
         bind -m insert \en history-search-forward
         bind -M insert \en history-search-forward
         bind -M visual -m insert \en history-search-forward
 
+        # C-f and C-b forward and back char
         bind -m insert \cf forward-char
         bind -M insert \cf forward-char
         bind -M visual -m insert \cf forward-char
-
         bind -m insert \cb backward-char
         bind -M insert \cb backward-char
         bind -M visual -m insert \cb backward-char
 end
 
 powerline-setup
+if not pgrep -f powerline-daemon > /dev/null
+        powerline-daemon
+end
