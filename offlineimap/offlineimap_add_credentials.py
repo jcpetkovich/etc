@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-import gtk
 import sys
 import traceback
 import gnomekeyring as gkey
@@ -12,14 +11,12 @@ class Keyring(object):
         self._server = server
         self._protocol = protocol
         try:
-            
             self._keyring = gkey.get_default_keyring_sync()
 
-        except Exception, e:
+        except Exception:
             exc_type, exc_value, exc_tb = sys.exc_info()
             traceback.print_exception(exc_type, exc_value, exc_tb)
             raise
-                
 
     def has_credentials(self):
         try:
@@ -36,12 +33,12 @@ class Keyring(object):
 
     def set_credentials(self, (user, pw)):
         attrs = {
-                "user": user,
-                "server": self._server,
-                "protocol": self._protocol,
-            }
+            "user": user,
+            "server": self._server,
+            "protocol": self._protocol,
+        }
         gkey.item_create_sync(gkey.get_default_keyring_sync(),
-                gkey.ITEM_NETWORK_PASSWORD, self._name, attrs, pw, True)
+                              gkey.ITEM_NETWORK_PASSWORD, self._name, attrs, pw, True)
 
 server = raw_input("Server: ")
 username = raw_input("Username: ")

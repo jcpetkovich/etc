@@ -1,6 +1,6 @@
 [general]
 accounts = main
-pythonfile = /home/jcp/src/python/offlineimap/offlineimap.py
+pythonfile = ~/etc/offlineimap/offlineimap.py
 ui = quiet
 
 [Account main]

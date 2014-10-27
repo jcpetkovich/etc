@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
 import gnomekeyring as gkey
-import re
 
 class Keyring(object):
     def __init__(self, name, server, protocol):
