@@ -1,0 +1,1 @@
+$pdf_previewer = 'zathura -x "emacsclient --no-wait +%{line} %{input}" %S';
