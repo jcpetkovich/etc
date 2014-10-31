@@ -159,6 +159,8 @@ set -xU RSENSE_HOME $HOME/jc-public/site-lisp/rsense-0.3
 set -xU TMUXIFIER_LAYOUT_PATH ~/etc/tmux/layouts
 set -xU REQ_DIR ~/etc/plumbing/req
 
+# Gnu Global
+set -xU GTAGSLABEL ctags
 
 set -xU GROFF_NO_SGR no
 
