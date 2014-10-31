@@ -185,7 +185,7 @@ alias ls='ls --color=auto '
 alias zsnes='aoss32 zsnes'
 alias E='sudo -e'
 alias m='tmuxifier'
-alias ssh='TERM=xterm-256color ssh'      # TERM=xterm since most things misinterpret st
+alias ssh='env TERM=xterm-256color ssh'      # TERM=xterm since most things misinterpret st
 
 # Additional git aliases
 alias grp='git rev-parse --short HEAD'
