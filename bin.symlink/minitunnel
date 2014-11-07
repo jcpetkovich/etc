@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+# This is stupid...
+
+read -r -d '' HELP <<EOF
+Usage: minitunnel [options] hostname
+
+Create a tunnel to, and ssh into a given hostname that's hooked up to
+DataMill.
+
+    Command options:
+    -h, --help, -?    Print this help documentation.
+    --kill            Kill the tunnel if it already exists.
+EOF
+
+KILL_OLD_TUNNEL=
+while :
+do
+    case $1 in
+        --help | -h | -\? )
+            echo "$HELP"
+            shift
+            return
+            ;;
+        --kill )
+            KILL_OLD_TUNNEL=true
+            shift
+            ;;
+        -- )
+            shift
+            break
+            ;;
+        -* )
+            printf >&2 'WARN: Unknown option (ignored): %s\n' "$1"
+            shift
+            ;;
+        * )
+            break
+            ;;
+    esac
+done
+
+HOSTNAME=$1
+if [[ -z $1 ]]; then
+    echo "Empty HOSTNAME,  pass a valid HOSTNAME as the first argument."
+    return
+fi
+TARGET_IP=$(msql --csv "select ip from datamill_website_worker where HOSTNAME = '${HOSTNAME}' order by last_update" | tail -n 1)
+PORT_BITS=$(printf "%0*d\n" 2 ${TARGET_IP##*.})
+
+
+if pgrep -f "ssh.*${TARGET_IP}.*mini"; then
+
+    echo "Old tunnel found..."
+    
+    if [[ $KILL_OLD_TUNNEL == "true" ]]; then
+        echo "Killing old tunnel..."
+        pkill -f "ssh.*${TARGET_IP}.*mini"
+        ssh -f -N -L 88${PORT_BITS}:${TARGET_IP}:22 mini
+    else
+        echo "Using old tunnel..."
+    fi
+
+else
+    echo "Creating tunnel..."
+    ssh -f -N -L 88${PORT_BITS}:${TARGET_IP}:22 mini
+fi
+
+ssh -p 88${PORT_BITS} root@localhost

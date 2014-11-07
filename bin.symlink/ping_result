@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+result=$?
+message=$1
+[[ -n $message ]] && message=" $message"
+if [[ $result == 0 ]]; then
+    echo "Subject: Finished - Success$message" | sendmail jcpetkovich
+else
+    echo "Subject: Finished - Failure$message" | sendmail jcpetkovich
+fi
