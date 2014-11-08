@@ -176,18 +176,17 @@ set -xU LESS_TERMCAP_us \e\[04\x3B38\x3B5\x3B146m # begin underline
 # Aliases
 alias l='ls -al'
 alias ls='ls --color=auto'
+alias sl='ls'
 alias clr='clear'
 alias grep='grep --colour=auto'
 alias mocp='mocp -T transparent-background'
 alias mscreen='echo "Try mmux instead"'
 alias mmux='tmuxifier s main'
-alias slrn="slrn -n"
-alias ll='ls -al'
-alias ls='ls --color=auto '
 alias zsnes='aoss32 zsnes'
 alias E='sudo -e'
 alias m='tmuxifier'
 alias ssh='env TERM=xterm-256color ssh'      # TERM=xterm since most things misinterpret st
+alias x='extract'
 
 # Additional git aliases
 alias grp='git rev-parse --short HEAD'
