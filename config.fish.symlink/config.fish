@@ -216,6 +216,14 @@ function fish_user_key_bindings
         bind -M insert \en history-search-forward
         bind -M visual -m insert \en history-search-forward
 
+        # C-p and C-n for history token search
+        bind -m insert \cp history-token-search-backward
+        bind -M insert \cp history-token-search-backward
+        bind -M visual -m insert \cp history-token-search-backward
+        bind -m insert \cn history-token-search-forward
+        bind -M insert \cn history-token-search-forward
+        bind -M visual -m insert \cn history-token-search-forward
+
         # C-f and C-b forward and back char
         bind -m insert \cf forward-char
         bind -M insert \cf forward-char
