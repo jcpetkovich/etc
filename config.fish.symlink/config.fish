@@ -231,6 +231,24 @@ function fish_user_key_bindings
         bind -m insert \cb backward-char
         bind -M insert \cb backward-char
         bind -M visual -m insert \cb backward-char
+
+        # Manpages
+        bind $argv -m insert \eh __fish_man_page
+        bind $argv -M insert \eh __fish_man_page
+        bind $argv -M visual -m insert \eh __fish_man_page
+
+        # List current token
+	bind $argv -m insert \el __fish_list_current_token
+	bind $argv -M insert \el __fish_list_current_token
+	bind $argv -M visual -m insert \el __fish_list_current_token
+
+        # Show current command
+        alias __show_command='set tok (commandline -pt); if test $tok[1]; echo; whatis $tok[1]; commandline -f repaint; end'
+	bind $argv -m insert \ew __show_command
+	bind $argv -M insert \ew __show_command
+	bind $argv -M visual -m insert \ew __show_command
+
+
 end
 
 powerline-setup
