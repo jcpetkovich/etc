@@ -139,11 +139,11 @@ if which fasd > /dev/null 2>&1
         end
 else
         echo "
-You should install fasd:
+        You should install fasd:
 
-    cd ~/etc/zsh/fasd
-    PREFIX=~/.local make install
-"
+        cd ~/etc/zsh/fasd
+        PREFIX=~/.local make install
+        "
 end
 
 # Perl CPAN install locations
