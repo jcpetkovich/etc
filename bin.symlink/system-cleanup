@@ -16,6 +16,9 @@ removes old ones.
     -a    Clean everything.
 EOF
 
+# Globals
+PATH=/sbin:/usr/sbin:$PATH
+
 function info () {
     echo -e '\033k'$1'\033\\'
     printf "  [ \033[00;34m..\033[0m ] $1"
