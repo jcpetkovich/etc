@@ -12,21 +12,21 @@ function fish_env_update
                         set value (echo $value | sed -E "s/:/ /g")
                         # use eval because we need to expand the value
                         eval "set value $value"
-                        echo "Count of value: "(count $value)
+                        # echo "Count of value: "(count $value)
                         for val in $value
-                                echo "set -xU fish_user_paths $val"
+                                # echo "set -xU fish_user_paths $val"
                                 set -xU fish_user_paths $val $fish_user_paths
-                                echo "$PATH"
+                                # echo "$PATH"
                         end
                         continue
                 else if test $var = "MANPATH"
-                        echo "set -xU MANPATH $value"
+                        # echo "set -xU MANPATH $value"
                         eval "set -xU MANPATH $value"
                         continue
                 end
                 # evaluate variables. we can use eval because we most likely just used "$var"
                 set value (eval echo $value)
-                echo "set -xU '$var' '$value' (via '$e')"
+                # echo "set -xU '$var' '$value' (via '$e')"
                 set -xU $var $value
         end
 end
