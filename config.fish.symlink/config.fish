@@ -54,74 +54,74 @@ if test -d ~/src/perl
 end
 
 if test -d ~/perl5
-    set -xU MANPATH ~/perl5/man:"$MANPATH"
+        set -xU MANPATH ~/perl5/man:"$MANPATH"
 end
 
 if test -d ~/jc-public/projects/eval-lab/install
-    set -xU PERL5LIB "$PERL5LIB" "$HOME/jc-public/projects/eval-lab/install"
+        set -xU PERL5LIB "$PERL5LIB" "$HOME/jc-public/projects/eval-lab/install"
 end
 
 
 # Path Exports
 
 if test -d ~/bin
-    set -xU fish_user_paths ~/bin $fish_user_paths
+        set -xU fish_user_paths ~/bin $fish_user_paths
 end
 
 if test -d ~/perl5/bin
-    set -xU fish_user_paths ~/perl5/bin $fish_user_paths
+        set -xU fish_user_paths ~/perl5/bin $fish_user_paths
 end
 
 # Cabal Exports
 if test -d ~/.cabal/bin
-    set -xU fish_user_paths ~/.cabal/bin $fish_user_paths
-    set -xU MANPATH ~/.cabal/share/man:"$MANPATH"
+        set -xU fish_user_paths ~/.cabal/bin $fish_user_paths
+        set -xU MANPATH ~/.cabal/share/man:"$MANPATH"
 end
 
 # local software exports
 if test -d ~/.local/bin
-    set -xU fish_user_paths ~/.local/bin $fish_user_paths
-    set -xU MANPATH ~/.local/share/man:"$MANPATH"
+        set -xU fish_user_paths ~/.local/bin $fish_user_paths
+        set -xU MANPATH ~/.local/share/man:"$MANPATH"
 end
 
 # NIST software?
 if test -d ~/src/thesis/nist
-    set -xU fish_user_paths ~/src/thesis/nist/bin $fish_user_paths
-    set -xU MANPATH ~/src/thesis/nist/man:"$MANPATH"
+        set -xU fish_user_paths ~/src/thesis/nist/bin $fish_user_paths
+        set -xU MANPATH ~/src/thesis/nist/man:"$MANPATH"
 end
 
 # Thesis project?
 if test -d ~/src/thesis/bin
-    set -xU fish_user_paths ~/src/thesis/bin $fish_user_paths
+        set -xU fish_user_paths ~/src/thesis/bin $fish_user_paths
 end
 
 # Ruby path
 if test -d ~/.gem/ruby
-    for d in (ls -d ~/.gem/ruby/*/)
-        set -xU fish_user_paths {$d}bin $fish_user_paths
-    end
+        for d in (ls -d ~/.gem/ruby/*/)
+                set -xU fish_user_paths {$d}bin $fish_user_paths
+        end
 end
 
 # tmuxifier
 if test -d ~/etc/tmux/tmuxifier/bin
-    set -xU fish_user_paths ~/etc/tmux/tmuxifier/bin $fish_user_paths
+        set -xU fish_user_paths ~/etc/tmux/tmuxifier/bin $fish_user_paths
 end
 
 # req
 if test -d ~/etc/plumbing/req/bin
-    set -xU fish_user_paths ~/etc/plumbing/req $fish_user_paths
+        set -xU fish_user_paths ~/etc/plumbing/req $fish_user_paths
 end
 
 # req
 if test -d ~/.cask/bin
-    set -xU fish_user_paths ~/.cask/bin $fish_user_paths
+        set -xU fish_user_paths ~/.cask/bin $fish_user_paths
 end
 
 # Go
 if test -d ~/.go
-    set -xU GOPATH ~/.go
-    set -xU GOBIN ~/.go/bin
-    set -xU fish_user_paths ~/.go/bin $fish_user_paths
+        set -xU GOPATH ~/.go
+        set -xU GOBIN ~/.go/bin
+        set -xU fish_user_paths ~/.go/bin $fish_user_paths
 end
 
 # Finish setting up MANPATH
