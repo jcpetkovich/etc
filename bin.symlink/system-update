@@ -37,7 +37,7 @@ function emerge-sync() {
     info "Syncing portage tree...\n"
     sudo emerge --sync || fail "Couldn't sync portage tree"
     success "Synced portage tree"
-    info "Syncing overlays..."
+    info "Syncing overlays...\n"
     sudo layman -S || fail "Couldn't sync overlays"
     success "Synced overlays"
     info "Syncing eix cache...\n"
