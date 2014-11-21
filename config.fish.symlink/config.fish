@@ -173,6 +173,10 @@ set -xU LESS_TERMCAP_so \e\[38\x3B5\x3B246m    # begin standout-mode - info box
 set -xU LESS_TERMCAP_ue \e\[0m           # end underline
 set -xU LESS_TERMCAP_us \e\[04\x3B38\x3B5\x3B146m # begin underline
 
+# LS_COLORS
+eval (dircolors -c)
+set -xU LS_COLORS $LS_COLORS
+
 # Aliases
 alias l='ls -al'
 alias ls='ls --color=auto'
