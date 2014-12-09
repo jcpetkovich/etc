@@ -44,13 +44,13 @@ set -xU PYTHONPATH ~/src/thesis/src ~/src/python
 # Perl exports
 if test -d ~/perl5/lib/perl5/i686-linux-thread-multi
         set -xU PERL_LOCAL_LIB_ROOT "$HOME/perl5"
-        set -xU PERL5LIB "$HOME/perl5/lib/perl5/i686-linux-thread-multi" "$HOME/perl5/lib/perl5"
+        set -xU PERL5LIB "$HOME/perl5/lib/perl5/i686-linux-thread-multi:$HOME/perl5/lib/perl5"
 else
-        set -xU PERL5LIB "$HOME/perl5/lib/perl5/x86_64-linux" "$HOME/perl5/lib/perl5"
+        set -xU PERL5LIB "$HOME/perl5/lib/perl5/x86_64-linux:$HOME/perl5/lib/perl5"
 end
 
 if test -d ~/src/perl
-        set -xU PERL5LIB="$PERL5LIB" "$HOME/src/perl"
+        set -xU PERL5LIB="$PERL5LIB:$HOME/src/perl"
 end
 
 if test -d ~/perl5
@@ -58,9 +58,12 @@ if test -d ~/perl5
 end
 
 if test -d ~/jc-public/projects/eval-lab/install
-        set -xU PERL5LIB "$PERL5LIB" "$HOME/jc-public/projects/eval-lab/install"
+        set -xU PERL5LIB "$PERL5LIB:$HOME/jc-public/projects/eval-lab/install"
 end
 
+if test -f ~/perl5/perlbrew/etc/perlbrew.fish
+        source ~/perl5/perlbrew/etc/perlbrew.fish
+end
 
 # Path Exports
 
