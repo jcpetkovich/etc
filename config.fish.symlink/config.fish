@@ -61,8 +61,12 @@ if test -d ~/jc-public/projects/eval-lab/install
         set -xU PERL5LIB "$PERL5LIB:$HOME/jc-public/projects/eval-lab/install"
 end
 
-if test -f ~/perl5/perlbrew/etc/perlbrew.fish
-        source ~/perl5/perlbrew/etc/perlbrew.fish
+if test -d ~/.plenv/bin
+        set -xU fish_user_paths ~/.plenv/bin $fish_user_paths
+end
+
+if test -d ~/.plenv/shims
+        set -xU fish_user_paths ~/.plenv/shims $fish_user_paths
 end
 
 # Path Exports
