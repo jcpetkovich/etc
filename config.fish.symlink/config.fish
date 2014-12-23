@@ -109,6 +109,14 @@ if test -d ~/.gem/ruby
         end
 end
 
+# Rbenv
+if test -d ~/.rbenv/bin
+        set -xU fish_user_paths ~/.rbenv/bin $fish_user_paths
+        if which rbenv >/dev/null
+                status --is-interactive; and . (rbenv init -|psub)
+        end
+end
+
 # tmuxifier
 if test -d ~/etc/tmux/tmuxifier/bin
         set -xU fish_user_paths ~/etc/tmux/tmuxifier/bin $fish_user_paths
