@@ -6,9 +6,9 @@ session_root "~"
 # argument is given, session name will be based on layout file name.
 if initialize_session "main"; then
 
-    new_window "music"
-    select_window "music"
-    run_cmd "ncmpcpp"
+    new_window "powertop"
+    select_window "powertop"
+    run_cmd "sudo powertop"
     
 fi
 
