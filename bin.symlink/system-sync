@@ -34,36 +34,36 @@ function fail () {
 
 function fetch-updates () {
     for repo in $USER_REPOS; do
-        pushd $repo
-        info "Syncing ${repo}..."
+        pushd $repo > /dev/null
+        info "Syncing ${repo}...\n"
         if ! git pull --rebase; then
             fail "Rebase pull failed, fix and try again"
         fi
         success "Done ${repo}"
-        popd
+        popd > /dev/null
     done
 }
 
 function push-updates () {
     for repo in $USER_REPOS; do
-        pushd $repo
-        info "Pushing ${repo}..."
+        pushd $repo > /dev/null
+        info "Pushing ${repo}...\n"
         if ! git push; then
             fail "Push failed, fix and try again"
         fi
         success "Done ${repo}"
-        popd
+        popd > /dev/null
     done
 }
 
 function status () {
     for repo in $USER_REPOS; do
-        pushd $repo
-        info "Status of ${repo}..."
+        pushd $repo > /dev/null
+        info "Status of ${repo}...\n"
         if ! git status; then
             fail "Are you sure ${repo} is a git repo?"
         fi
-        popd
+        popd > /dev/null
     done
 }
 
