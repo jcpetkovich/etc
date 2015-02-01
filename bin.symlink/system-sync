@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+
+read -r -d '' HELP <<EOF
+Usage: system-sync [options]
+
+Sync or show status of my personal repositories.
+
+    Command options:
+    -h    Print this help documentation.
+    -f    Fetch updates only
+    -p    Push updates only
+    -s    Show status
+    -a    Try to auto-sync as much as possible
+EOF
+
+function info () {
+    echo -e '\033k'$1'\033\\'
+    printf "  [ \033[00;34m..\033[0m ] $1"
+}
+
+function user () {
+    printf "\r  [ \033[0;33m?\033[0m ] $1 "
+}
+
+function success () {
+    printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+function fail () {
+    printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+    echo ''
+    exit 1
+}
+
+function fetch-updates () {
+    for repo in $USER_REPOS; do
+        pushd $repo
+        info "Syncing ${repo}..."
+        if ! git pull --rebase; then
+            fail "Rebase pull failed, fix and try again"
+        fi
+        success "Done ${repo}"
+        popd
+    done
+}
+
+function push-updates () {
+    for repo in $USER_REPOS; do
+        pushd $repo
+        info "Pushing ${repo}..."
+        if ! git push; then
+            fail "Push failed, fix and try again"
+        fi
+        success "Done ${repo}"
+        popd
+    done
+}
+
+function status () {
+    for repo in $USER_REPOS; do
+        pushd $repo
+        info "Status of ${repo}..."
+        if ! git status; then
+            fail "Are you sure ${repo} is a git repo?"
+        fi
+        popd
+    done
+}
+
+function auto-sync () {
+    fetch-updates
+    push-updates
+}
+
+if [[ -z $USER_REPOS ]]; then
+    fail "env variable USER_REPOS must be defined"
+fi
+
+while getopts ":hfpsa" opt; do
+    case $opt in
+        h ) echo "$HELP"
+            exit 0;;
+        f ) fetch-updates
+            exit 0;;
+        p ) push-updates
+            exit 0;;
+        s ) status
+            exit 0;;
+        a ) auto-sync
+            exit 0;;
+        ? ) echo "Invalid option -${OPTARG}..."
+            echo "$HELP"
+            exit 0;;
+    esac
+done
+shift $(($OPTIND - 1))
+
+auto-sync
+exit 0
