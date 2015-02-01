@@ -4,8 +4,8 @@ set -g prefix `
 bind-key ` last-window
 bind-key a send-prefix
 
-bind-key h split-window -h
-bind-key v split-window -v
+bind-key v split-window -h
+bind-key s split-window -v
 
 bind-key j select-pane -t :.+
 bind-key k select-pane -t :.-
