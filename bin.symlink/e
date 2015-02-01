@@ -5,13 +5,19 @@
 # Check if we are opening the emacs client in a terminal, then set
 # xterm-256color as TERM since that seems to reproduce colourschemes
 # better than the alternatives.
+TERM_EMACS=
 for arg in $@; do
     if [[ $arg == "-t" ]]; then
         TERM=xterm-256color
+        TERM_EMACS=true
     fi
 done
 
-# `e [option] file...` : open a file with an emacsclient, starting
-#                        emacs if it hasn't been already
-emacsclient -c $@ || (emacs --daemon && emacsclient -c $@)
 
+if [[ $TERM_EMACS == true ]]; then
+    emacsclient -c $@
+else
+    # `e [option] file...` : open a file with an emacsclient, starting
+    #                        emacs if it hasn't been already
+       emacsclient -c $@ || emacs
+fi 
