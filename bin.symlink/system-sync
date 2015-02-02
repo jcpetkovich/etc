@@ -60,7 +60,7 @@ function status () {
     for repo in $USER_REPOS; do
         pushd $repo > /dev/null
         info "Status of ${repo}...\n"
-        if ! git status; then
+        if ! git status --short --branch; then
             fail "Are you sure ${repo} is a git repo?"
         fi
         popd > /dev/null
