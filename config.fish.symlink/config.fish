@@ -31,9 +31,32 @@ function fish_env_update
         end
 end
 
+function varclear -d 'Remove duplicates from an environment variable'
+  if test (count $argv) = 1
+    set -l newvar
+    set -l dupcount 0
+
+    for v in $$argv
+      if contains -- $v $newvar
+        set dupcount (math $dupcount + 1)
+      else
+        set newvar $newvar $v
+      end
+    end
+    set $argv $newvar
+    test $dupcount -gt 0
+    and echo Removed $dupcount duplicates from $argv
+  else
+    for a in $argv
+      varclear $a
+    end
+  end
+end
+
 # Load Gentoo environment variables when we are a login shell
 if begin; status -l; and test $SHLVL -eq 1; end
 fish_env_update
+varclear fish_user_paths
 end
 
 # Language exports ===============================================================
