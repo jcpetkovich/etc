@@ -194,7 +194,7 @@ set -xU RUBYOPT
 # Vars
 set -xU VISUAL (which e)
 set -xU EDITOR $VISUAL
-set -xU SUDO_EDITOR $VISUAL
+set -xU SUDO_EDITOR "emacsclient -c"
 set -xU LANG en_US.UTF-8         # bugs out some stuff but fixes more
 set -xU RSENSE_HOME $HOME/jc-public/site-lisp/rsense-0.3
 set -xU TMUXIFIER_LAYOUT_PATH ~/etc/tmux/layouts
