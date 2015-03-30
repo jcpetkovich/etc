@@ -38,7 +38,7 @@ SET_EXPORT ROOTPATH:/opt/bin\x3a/usr/x86_64\x2dpc\x2dlinux\x2dgnu/gcc\x2dbin/4\x
 SET_EXPORT RSENSE_HOME:/home/jcp/jc\x2dpublic/site\x2dlisp/rsense\x2d0\x2e3
 SET_EXPORT RUBYOPT:\x1d
 SET_EXPORT R_HOME:/usr/lib64/R
-SET_EXPORT SUDO_EDITOR:/home/jcp/bin/e
+SET_EXPORT SUDO_EDITOR:emacsclient\x20\x2dc
 SET_EXPORT TMUXIFIER_LAYOUT_PATH:/home/jcp/etc/tmux/layouts
 SET_EXPORT USER_REPOS:/home/jcp/etc\x20/home/jcp/labs\x20/home/jcp/projects\x20/home/jcp/\x2espacemacs\x2ed\x20/home/jcp/journal
 SET_EXPORT VISUAL:/home/jcp/bin/e
