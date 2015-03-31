@@ -28,7 +28,7 @@ SET_EXPORT OPENGL_PROFILE:xorg\x2dx11
 SET_EXPORT PERL5LIB:/home/jcp/perl5/lib/perl5/x86_64\x2dlinux\x3a/home/jcp/perl5/lib/perl5
 SET_EXPORT PERL_MB_OPT:\x2d\x2dinstall_base\x20/home/jcp/perl5
 SET_EXPORT PERL_MM_OPT:INSTALL_BASE\x3d/home/jcp/perl5
-SET_EXPORT PRELINK_PATH_MASK:/usr/lib64/libfreebl3\x2eso\x3a/usr/lib64/libnssdbm3\x2eso\x3a/usr/lib64/libsoftokn3\x2eso\x3a/usr/lib32/libfreebl3\x2eso\x3a/usr/lib32/libnssdbm3\x2eso\x3a/usr/lib32/libsoftokn3\x2eso
+SET_EXPORT PRELINK_PATH_MASK:/usr/lib64/libfreebl3\x2eso\x3a/usr/lib64/libnssdbm3\x2eso\x3a/usr/lib64/libsoftokn3\x2eso\x3a/usr/lib32/libfreebl3\x2eso\x3a/usr/lib32/libnssdbm3\x2eso\x3a/usr/lib32/libsoftokn3\x2eso\x3a/opt/bin/skype
 SET_EXPORT PYTHONPATH:/home/jcp/src/thesis/src\x1e/home/jcp/src/python
 SET_EXPORT QT_GRAPHICSSYSTEM:raster
 SET_EXPORT QT_PLUGIN_PATH:/usr/lib64/kde4/plugins
