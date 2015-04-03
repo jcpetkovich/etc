@@ -35,7 +35,7 @@ function success () {
 function fail () {
     printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
     echo ''
-    exit 1
+    [[ $FORCE != true ]] && exit 1
 }
 
 function cleanup() {
@@ -74,26 +74,27 @@ function clean-perl(){
     clean-language-runtime "perl-cleaner --reallyall"
 }
 
-while getopts ":hlHpPa" opt; do
+while getopts ":hlHpPaf" opt; do
     case $opt in
         h ) echo "$HELP"
-            exit 0;;
-        l ) clean-python
-            clean-perl
-            clean-haskell
-            exit 0;;
-        H ) clean-haskell
-            exit 0;;
-        p ) clean-perl
-            exit 0;;
-        P ) clean-python
-            exit 0;;
-        a ) cleanup
-            clean-python
-            clean-perl
-            clean-haskell
-            success "Updated everything, system clean :D"
-            exit 0;;
+            ;;
+        l ) CLEAN_PYTHON=true
+            CLEAN_PERL=true
+            CLEAN_HASKELL=true
+            ;;
+        H ) CLEAN_HASKELL=true
+            ;;
+        p ) CLEAN_PERL=true
+            ;;
+        P ) CLEAN_PYTHON=true
+            ;;
+        a ) CLEAN_PYTHON=true
+            CLEAN_PERL=true
+            CLEAN_HASKELL=true
+            EVERYTHING=true
+            ;;
+        f ) FORCE=true
+            ;;
         ? ) echo "Invalid option -${OPTARG}..."
             echo "$HELP"
             exit 0;;
@@ -102,4 +103,9 @@ done
 shift $(($OPTIND - 1))
 
 cleanup
+[[ $CLEAN_PYTHON == true ]] && clean-python
+[[ $CLEAN_PERL == true ]] && clean-perl
+[[ $CLEAN_HASKELL == true ]] && clean-haskell
+[[ $EVERYTHING == true ]] && success "Updated everything, system clean :D"
+
 exit 0
