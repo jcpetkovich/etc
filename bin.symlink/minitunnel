@@ -46,24 +46,27 @@ if [[ -z $1 ]]; then
     return
 fi
 TARGET_IP=$(msql --csv "select ip from datamill_website_worker where HOSTNAME = '${HOSTNAME}' order by last_update" | tail -n 1)
-PORT_BITS=$(printf "%0*d\n" 2 ${TARGET_IP##*.})
 
+# Try truncating to a reasonable local port
+PORT_BITS=$(printf "%0*d\n" 2 ${TARGET_IP##*.})
+PORT_BITS=88${PORT_BITS}
+PORT_BITS=${PORT_BITS:(-4)}
 
 if pgrep -f "ssh.*${TARGET_IP}.*mini"; then
 
     echo "Old tunnel found..."
-    
+
     if [[ $KILL_OLD_TUNNEL == "true" ]]; then
         echo "Killing old tunnel..."
         pkill -f "ssh.*${TARGET_IP}.*mini"
-        ssh -f -N -L 88${PORT_BITS}:${TARGET_IP}:22 mini
+        ssh -f -N -L ${PORT_BITS}:${TARGET_IP}:22 mini
     else
         echo "Using old tunnel..."
     fi
 
 else
     echo "Creating tunnel..."
-    ssh -f -N -L 88${PORT_BITS}:${TARGET_IP}:22 mini
+    ssh -f -N -L ${PORT_BITS}:${TARGET_IP}:22 mini
 fi
 
-ssh -p 88${PORT_BITS} root@localhost
+ssh -p ${PORT_BITS} root@localhost
