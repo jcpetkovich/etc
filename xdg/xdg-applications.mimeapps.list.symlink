@@ -18,3 +18,4 @@ text/x-c=emacsclient.desktop
 text/x-c++=emacsclient.desktop
 text/x-patch=emacsclient.desktop
 text/x-matlab=emacsclient.desktop
+text/html=emacsclient.desktop
