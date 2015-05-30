@@ -102,3 +102,7 @@ Host pluto
 Host workhorse
   HostName sf-pc16.uwaterloo.ca
   User jcp
+
+Host ptk
+  HostName ptk.io
+  User root
