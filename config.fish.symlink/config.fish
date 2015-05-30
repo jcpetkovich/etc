@@ -159,6 +159,7 @@ end
 if test -d ~/.go
         set -xU GOPATH ~/.go
         set -xU GOBIN ~/.go/bin
+        set -xU GOMAXPROCS (cat /proc/cpuinfo | grep processor | wc -l)
         set -xU fish_user_paths ~/.go/bin $fish_user_paths
 end
 
