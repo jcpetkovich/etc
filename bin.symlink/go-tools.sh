@@ -1,6 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-go get -u  \
+sudo GOPATH=$GOPATH go get -u -v \
+     golang.org/x/tools/cmd/cover \
+     golang.org/x/tools/cmd/vet
+
+# This is stupid
+go get -u -v \
    code.google.com/p/rog-go/exp/cmd/godef  \
    github.com/PuerkitoBio/goquery  \
    github.com/goerr/goerr  \
@@ -8,8 +13,9 @@ go get -u  \
    github.com/nsf/gocode  \
    golang.org/x/tools/cmd/godoc \
    golang.org/x/tools/cmd/gorename  \
-   golang.org/x/tools/oracle
+   golang.org/x/tools/oracle \
+   github.com/tools/godep
 
-sudo go get -u \
-     golang.org/x/tools/cmd/cover  \
-     golang.org/x/tools/cmd/vet
+pushd $(go env GOPATH)/src/golang.org/x/tools > /dev/null
+go get -u -v ./...
+popd > /dev/null
