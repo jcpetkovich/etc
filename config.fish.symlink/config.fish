@@ -156,13 +156,13 @@ if test -d ~/.cask/bin
 end
 
 # Go
-if test -d ~/.go
-        set -xU GOPATH ~/.go
-        set -xU GOBIN ~/.go/bin
+if test -d ~/labs/go
+        set -xU GOPATH ~/labs/go
+        set -xU GOBIN $GOPATH/bin
         set -xU GOROOT (go env GOROOT)
         set -xU GOMAXPROCS (cat /proc/cpuinfo | grep processor | wc -l)
         set -xU fish_user_paths (go env GOROOT)/bin $fish_user_paths
-        set -xU fish_user_paths ~/.go/bin $fish_user_paths
+        set -xU fish_user_paths (go env GOBIN) $fish_user_paths
 end
 
 # Finish setting up MANPATH
