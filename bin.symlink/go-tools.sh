@@ -4,6 +4,9 @@ sudo GOPATH=$GOPATH go get -u -v \
      golang.org/x/tools/cmd/cover \
      golang.org/x/tools/cmd/vet
 
+# Fetch happens in $GOPATH with root, can mess up ownership
+sudo chown $USER:$USER -R $GOPATH
+
 # This is stupid
 go get -u -v \
    code.google.com/p/rog-go/exp/cmd/godef  \
