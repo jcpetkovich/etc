@@ -19,6 +19,8 @@ go get -u \
    golang.org/x/tools/oracle \
    github.com/tools/godep
 
-pushd $(go env GOPATH)/src/golang.org/x/tools > /dev/null
-go get -u -v ./...
-popd > /dev/null
+# Just try and get everything
+go get -u golang.org/x/tools/cmd/...
+# pushd $(go env GOPATH)/src/golang.org/x/tools > /dev/null
+# go get -u -v ./...
+# popd > /dev/null
