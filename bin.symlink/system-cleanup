@@ -77,6 +77,7 @@ function clean-perl(){
 while getopts ":hlHpPaf" opt; do
     case $opt in
         h ) echo "$HELP"
+            exit 0
             ;;
         l ) CLEAN_PYTHON=true
             CLEAN_PERL=true
