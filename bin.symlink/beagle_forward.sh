@@ -6,7 +6,7 @@ host_ip=192.168.7.1
 beagle_ip=192.168.7.2
 
 # Set up host ip
-sudo ifconfig $usb_ethernet_device $host_ip
+sudo ip address add $host_ip dev $usb_ethernet_device
 
 # Enable forwarding
 sudo sysctl net.ipv4.ip_forward=1
