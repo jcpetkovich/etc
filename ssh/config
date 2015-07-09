@@ -106,3 +106,8 @@ Host workhorse
 Host ptk
   HostName ptk.io
   User root
+
+Host compute1
+  HostName compute1.esg.uwaterloo.ca
+  User j2petkov
+  ForwardX11 yes
