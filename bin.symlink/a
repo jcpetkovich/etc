@@ -2,4 +2,4 @@
 
 export PYTHON=/usr/bin/python2
 
-atom
+atom $@
