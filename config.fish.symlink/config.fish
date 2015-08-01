@@ -202,7 +202,7 @@ set -xU LANG en_US.UTF-8         # bugs out some stuff but fixes more
 set -xU RSENSE_HOME $HOME/jc-public/site-lisp/rsense-0.3
 set -xU TMUXIFIER_LAYOUT_PATH ~/etc/tmux/layouts
 set -xU REQ_DIR ~/etc/plumbing/req
-set -xU USER_REPOS "$HOME/etc $HOME/labs $HOME/projects $HOME/.spacemacs.d $HOME/journal"
+set -xU USER_PATHS "$HOME/etc $HOME/labs $HOME/projects $HOME/.spacemacs.d $HOME/journal"
 
 # Gnu Global
 set -xU GTAGSLABEL ctags
