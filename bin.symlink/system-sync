@@ -59,9 +59,14 @@ function push-updates () {
 function status () {
     for repo in $USER_REPOS; do
         pushd $repo > /dev/null
-        info "Status of ${repo}...\n"
-        if ! git status --short --branch; then
+        if ! git status --short > /dev/null; then
             fail "Are you sure ${repo} is a git repo?"
+        else
+            local diffsize="$(git status --short)"
+            if ! [[ -z "$diffsize" ]]; then
+                info "Status of ${repo}...\n"
+                git status --short --branch
+            fi
         fi
         popd > /dev/null
     done
@@ -72,9 +77,22 @@ function auto-sync () {
     push-updates
 }
 
-if [[ -z $USER_REPOS ]]; then
+function get-repos () {
+    local user_repos=
+    for p in $USER_PATHS; do
+        user_repos="$(find $p -name ".git" -type d) $user_repos"
+    done
+
+    for p in $user_repos; do
+        echo "${p%%.git}"
+    done
+}
+
+if [[ -z $USER_PATHS ]]; then
     fail "env variable USER_REPOS must be defined"
 fi
+
+USER_REPOS="$(get-repos)"
 
 while getopts ":hfpsa" opt; do
     case $opt in
