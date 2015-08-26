@@ -20,7 +20,6 @@ while getopts ":h" opt; do
 done
 shift $(($OPTIND - 1))
 
-PERSONAL_OVERLAY=~/jc-public/projects/overlay-petkovich
 [[ ! -d $PERSONAL_OVERLAY ]] && echo "PERSONAL_OVERLAY not set" && exit 1
 
 # For slightly saner defaults
