@@ -165,6 +165,11 @@ if test -d ~/labs/go
         set -xU fish_user_paths (go env GOBIN) $fish_user_paths
 end
 
+# Gentoo
+if test -d ~/projects/overlay-petkovich
+ set -xU PERSONAL_OVERLAY ~/projects/overlay-petkovich
+end
+
 # Finish setting up MANPATH
 
 set -xU MANPATH ":"$MANPATH
