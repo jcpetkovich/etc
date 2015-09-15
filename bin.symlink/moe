@@ -16,7 +16,7 @@ xrdb -merge ~/.Xdefaults
 pushd ~/etc/st > /dev/null
 cp config.h.orig config.h
 patch -b -i $PATCH
-sudo cp config.h /etc/portage/savedconfig/x11-terms/st-0.5
+sudo cp config.h /etc/portage/savedconfig/x11-terms/st-0.6-r1
 popd > /dev/null
 
 sudo emerge -1 st
