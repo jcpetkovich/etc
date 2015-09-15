@@ -241,6 +241,7 @@ alias E='sudo -e'
 alias m='tmuxifier'
 alias ssh='env TERM=xterm-256color ssh'      # TERM=xterm since most things misinterpret st
 alias x='extract'
+alias r='R'
 
 # Additional git aliases
 alias grp='git rev-parse --short HEAD'
