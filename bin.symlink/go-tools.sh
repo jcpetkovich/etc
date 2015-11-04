@@ -9,7 +9,7 @@ sudo chown $USER:$USER -R $GOPATH
 
 # The essentials
 go get -u \
-   code.google.com/p/rog-go/exp/cmd/godef  \
+   github.com/rogpeppe/godef \
    github.com/PuerkitoBio/goquery  \
    github.com/goerr/goerr  \
    github.com/golang/lint/golint  \
