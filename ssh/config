@@ -109,5 +109,5 @@ Host ptk
 
 Host compute1
   HostName compute1.esg.uwaterloo.ca
-  User j2petkov
+  User jcp
   ForwardX11 yes
