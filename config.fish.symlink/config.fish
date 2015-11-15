@@ -243,7 +243,7 @@ alias m='tmuxifier'
 alias ssh='env TERM=xterm-256color ssh'      # TERM=xterm since most things misinterpret st
 alias x='extract'
 alias r='R'
-alias p='ipython'
+alias p='jupyter console'
 
 # Additional git aliases
 alias grp='git rev-parse --short HEAD'
