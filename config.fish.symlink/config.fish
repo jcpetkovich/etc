@@ -203,6 +203,7 @@ set -xU RUBYOPT
 set -xU VISUAL (which e)
 set -xU EDITOR $VISUAL
 set -xU SUDO_EDITOR "emacsclient -c"
+set -xU BROWSER "qutebrowser"
 set -xU LANG en_US.UTF-8         # bugs out some stuff but fixes more
 set -xU RSENSE_HOME $HOME/jc-public/site-lisp/rsense-0.3
 set -xU TMUXIFIER_LAYOUT_PATH ~/etc/tmux/layouts
@@ -242,6 +243,7 @@ alias m='tmuxifier'
 alias ssh='env TERM=xterm-256color ssh'      # TERM=xterm since most things misinterpret st
 alias x='extract'
 alias r='R'
+alias p='ipython'
 
 # Additional git aliases
 alias grp='git rev-parse --short HEAD'
