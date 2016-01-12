@@ -157,12 +157,14 @@ end
 
 # Go
 if test -d ~/labs/go
+  if which go 2>/dev/null
         set -xU GOPATH ~/labs/go
         set -xU GOBIN $GOPATH/bin
         set -xU GOROOT (go env GOROOT)
         set -xU GOMAXPROCS (cat /proc/cpuinfo | grep processor | wc -l)
         set -xU fish_user_paths (go env GOROOT)/bin $fish_user_paths
         set -xU fish_user_paths (go env GOBIN) $fish_user_paths
+  end
 end
 
 # Gentoo
