@@ -5,7 +5,6 @@ default_flags = [
 '-Wall',
 '-Wextra',
 '-Werror',
-'-Wc++98-compat',
 '-Wno-long-long',
 '-Wno-variadic-macros',
 '-fexceptions',
@@ -21,6 +20,8 @@ default_flags = [
 '/usr/lib/R/include',
 '-I',
 '/home/jcp/R/armv7a-hardfloat-linux-gnueabi-library/3.2/Rcpp/include',
+'-I',
+'/home/jcp/R/armv7a-hardfloat-linux-gnueabi-library/3.2/RcppArmadillo/include',
 '-I',
 '/usr/lib/R/library/Matrix/include',
 # This path will only work on OS X, but extra paths that don't exist are not harmful
