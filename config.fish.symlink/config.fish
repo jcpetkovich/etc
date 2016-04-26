@@ -14,20 +14,20 @@ function fish_env_update
                         eval "set value $value"
                         # echo "Count of value: "(count $value)
                         for val in $value
-                                # echo "set -xU fish_user_paths $val"
-                                set -xU fish_user_paths $val $fish_user_paths
+                                # echo "set -xg fish_user_paths $val"
+                                set -xg fish_user_paths $val $fish_user_paths
                                 # echo "$PATH"
                         end
                         continue
                 else if test $var = "MANPATH"
-                        # echo "set -xU MANPATH $value"
-                        eval "set -xU MANPATH $value"
+                        # echo "set -xg MANPATH $value"
+                        eval "set -xg MANPATH $value"
                         continue
                 end
                 # evaluate variables. we can use eval because we most likely just used "$var"
                 set value (eval echo $value)
-                # echo "set -xU '$var' '$value' (via '$e')"
-                set -xU $var $value
+                # echo "set -xg '$var' '$value' (via '$e')"
+                set -xg $var $value
         end
 end
 
@@ -62,79 +62,79 @@ end
 # Language exports ===============================================================
 
 # Python exports
-set -xU PYTHONPATH ~/src/thesis/src ~/src/python
+set -xg PYTHONPATH ~/src/thesis/src ~/src/python
 
 # Perl exports
 if test -d ~/perl5/lib/perl5/i686-linux-thread-multi
-        set -xU PERL_LOCAL_LIB_ROOT "$HOME/perl5"
-        set -xU PERL5LIB "$HOME/perl5/lib/perl5/i686-linux-thread-multi:$HOME/perl5/lib/perl5"
+        set -xg PERL_LOCAL_LIB_ROOT "$HOME/perl5"
+        set -xg PERL5LIB "$HOME/perl5/lib/perl5/i686-linux-thread-multi:$HOME/perl5/lib/perl5"
 else
-        set -xU PERL5LIB "$HOME/perl5/lib/perl5/x86_64-linux:$HOME/perl5/lib/perl5"
+        set -xg PERL5LIB "$HOME/perl5/lib/perl5/x86_64-linux:$HOME/perl5/lib/perl5"
 end
 
 if test -d ~/src/perl
-        set -xU PERL5LIB="$PERL5LIB:$HOME/src/perl"
+        set -xg PERL5LIB="$PERL5LIB:$HOME/src/perl"
 end
 
 if test -d ~/perl5
-        set -xU MANPATH ~/perl5/man:"$MANPATH"
+        set -xg MANPATH ~/perl5/man:"$MANPATH"
 end
 
 if test -d ~/jc-public/projects/eval-lab/install
-        set -xU PERL5LIB "$PERL5LIB:$HOME/jc-public/projects/eval-lab/install"
+        set -xg PERL5LIB "$PERL5LIB:$HOME/jc-public/projects/eval-lab/install"
 end
 
 if test -d ~/.plenv/bin
-        set -xU fish_user_paths ~/.plenv/bin $fish_user_paths
+        set -xg fish_user_paths ~/.plenv/bin $fish_user_paths
 end
 
 if test -d ~/.plenv/shims
-        set -xU fish_user_paths ~/.plenv/shims $fish_user_paths
+        set -xg fish_user_paths ~/.plenv/shims $fish_user_paths
 end
 
 # Path Exports
 
 if test -d ~/bin
-        set -xU fish_user_paths ~/bin $fish_user_paths
+        set -xg fish_user_paths ~/bin $fish_user_paths
 end
 
 if test -d ~/perl5/bin
-        set -xU fish_user_paths ~/perl5/bin $fish_user_paths
+        set -xg fish_user_paths ~/perl5/bin $fish_user_paths
 end
 
 # Cabal Exports
 if test -d ~/.cabal/bin
-        set -xU fish_user_paths ~/.cabal/bin $fish_user_paths
-        set -xU MANPATH ~/.cabal/share/man:"$MANPATH"
+        set -xg fish_user_paths ~/.cabal/bin $fish_user_paths
+        set -xg MANPATH ~/.cabal/share/man:"$MANPATH"
 end
 
 # local software exports
 if test -d ~/.local/bin
-        set -xU fish_user_paths ~/.local/bin $fish_user_paths
-        set -xU MANPATH ~/.local/share/man:"$MANPATH"
+        set -xg fish_user_paths ~/.local/bin $fish_user_paths
+        set -xg MANPATH ~/.local/share/man:"$MANPATH"
 end
 
 # NIST software?
 if test -d ~/src/thesis/nist
-        set -xU fish_user_paths ~/src/thesis/nist/bin $fish_user_paths
-        set -xU MANPATH ~/src/thesis/nist/man:"$MANPATH"
+        set -xg fish_user_paths ~/src/thesis/nist/bin $fish_user_paths
+        set -xg MANPATH ~/src/thesis/nist/man:"$MANPATH"
 end
 
 # Thesis project?
 if test -d ~/src/thesis/bin
-        set -xU fish_user_paths ~/src/thesis/bin $fish_user_paths
+        set -xg fish_user_paths ~/src/thesis/bin $fish_user_paths
 end
 
 # Ruby path
 if test -d ~/.gem/ruby
         for d in (ls -d ~/.gem/ruby/*/)
-                set -xU fish_user_paths {$d}bin $fish_user_paths
+                set -xg fish_user_paths {$d}bin $fish_user_paths
         end
 end
 
 # Rbenv
 if test -d ~/.rbenv/bin
-        set -xU fish_user_paths ~/.rbenv/bin $fish_user_paths
+        set -xg fish_user_paths ~/.rbenv/bin $fish_user_paths
         if which rbenv >/dev/null
                 status --is-interactive; and . (rbenv init -|psub)
         end
@@ -142,39 +142,39 @@ end
 
 # tmuxifier
 if test -d ~/etc/tmux/tmuxifier/bin
-        set -xU fish_user_paths ~/etc/tmux/tmuxifier/bin $fish_user_paths
+        set -xg fish_user_paths ~/etc/tmux/tmuxifier/bin $fish_user_paths
 end
 
 # req
 if test -d ~/etc/plumbing/req/bin
-        set -xU fish_user_paths ~/etc/plumbing/req $fish_user_paths
+        set -xg fish_user_paths ~/etc/plumbing/req $fish_user_paths
 end
 
 # req
 if test -d ~/.cask/bin
-        set -xU fish_user_paths ~/.cask/bin $fish_user_paths
+        set -xg fish_user_paths ~/.cask/bin $fish_user_paths
 end
 
 # Go
 if test -d ~/labs/go
   if which go 2>/dev/null
-        set -xU GOPATH ~/labs/go
-        set -xU GOBIN $GOPATH/bin
-        set -xU GOROOT (go env GOROOT)
-        set -xU GOMAXPROCS (cat /proc/cpuinfo | grep processor | wc -l)
-        set -xU fish_user_paths (go env GOROOT)/bin $fish_user_paths
-        set -xU fish_user_paths (go env GOBIN) $fish_user_paths
+        set -xg GOPATH ~/labs/go
+        set -xg GOBIN $GOPATH/bin
+        set -xg GOROOT (go env GOROOT)
+        set -xg GOMAXPROCS (cat /proc/cpuinfo | grep processor | wc -l)
+        set -xg fish_user_paths (go env GOROOT)/bin $fish_user_paths
+        set -xg fish_user_paths (go env GOBIN) $fish_user_paths
   end
 end
 
 # Gentoo
 if test -d ~/projects/overlay-petkovich
- set -xU PERSONAL_OVERLAY ~/projects/overlay-petkovich
+ set -xg PERSONAL_OVERLAY ~/projects/overlay-petkovich
 end
 
 # Finish setting up MANPATH
 
-set -xU MANPATH ":"$MANPATH
+set -xg MANPATH ":"$MANPATH
 
 # Setup fasd
 if which fasd > /dev/null 2>&1
@@ -195,40 +195,40 @@ else
 end
 
 # Perl CPAN install locations
-set -xU PERL_MB_OPT "--install_base $HOME/perl5";
-set -xU PERL_MM_OPT "INSTALL_BASE=$HOME/perl5";
+set -xg PERL_MB_OPT "--install_base $HOME/perl5";
+set -xg PERL_MM_OPT "INSTALL_BASE=$HOME/perl5";
 
 # Ruby
-set -xU RUBYOPT
+set -xg RUBYOPT
 
 # Vars
-set -xU VISUAL (which e)
-set -xU EDITOR $VISUAL
-set -xU SUDO_EDITOR "emacsclient -c"
-set -xU BROWSER "qutebrowser"
-set -xU LANG en_US.UTF-8         # bugs out some stuff but fixes more
-set -xU RSENSE_HOME $HOME/jc-public/site-lisp/rsense-0.3
-set -xU TMUXIFIER_LAYOUT_PATH ~/etc/tmux/layouts
-set -xU REQ_DIR ~/etc/plumbing/req
-set -xU USER_PATHS "$HOME/etc $HOME/labs $HOME/projects $HOME/.spacemacs.d $HOME/journal"
+set -xg VISUAL (which e)
+set -xg EDITOR $VISUAL
+set -xg SUDO_EDITOR "emacsclient -c"
+set -xg BROWSER "qutebrowser"
+set -xg LANG en_US.UTF-8         # bugs out some stuff but fixes more
+set -xg RSENSE_HOME $HOME/jc-public/site-lisp/rsense-0.3
+set -xg TMUXIFIER_LAYOUT_PATH ~/etc/tmux/layouts
+set -xg REQ_DIR ~/etc/plumbing/req
+set -xg USER_PATHS "$HOME/etc $HOME/labs $HOME/projects $HOME/.spacemacs.d $HOME/journal"
 
 # Gnu Global
-set -xU GTAGSLABEL ctags
+set -xg GTAGSLABEL ctags
 
-set -xU GROFF_NO_SGR no
+set -xg GROFF_NO_SGR no
 
 # Less Colors for Man Pages
-set -xU LESS_TERMCAP_mb \e\[01\x3B31m       # begin blinking
-set -xU LESS_TERMCAP_md \e\[01\x3B38\x3B5\x3B74m  # begin bold
-set -xU LESS_TERMCAP_me \e\[0m           # end mode
-set -xU LESS_TERMCAP_se \e\[0m           # end standout-mode
-set -xU LESS_TERMCAP_so \e\[38\x3B5\x3B246m    # begin standout-mode - info box
-set -xU LESS_TERMCAP_ue \e\[0m           # end underline
-set -xU LESS_TERMCAP_us \e\[04\x3B38\x3B5\x3B146m # begin underline
+set -xg LESS_TERMCAP_mb \e\[01\x3B31m       # begin blinking
+set -xg LESS_TERMCAP_md \e\[01\x3B38\x3B5\x3B74m  # begin bold
+set -xg LESS_TERMCAP_me \e\[0m           # end mode
+set -xg LESS_TERMCAP_se \e\[0m           # end standout-mode
+set -xg LESS_TERMCAP_so \e\[38\x3B5\x3B246m    # begin standout-mode - info box
+set -xg LESS_TERMCAP_ue \e\[0m           # end underline
+set -xg LESS_TERMCAP_us \e\[04\x3B38\x3B5\x3B146m # begin underline
 
 # LS_COLORS
 eval (dircolors -c)
-set -xU LS_COLORS $LS_COLORS
+set -xg LS_COLORS $LS_COLORS
 
 # Aliases
 alias l='ls -al'
@@ -253,6 +253,9 @@ alias glp='git log --graph --decorate --all'
 alias gst='git status'
 
 function fish_greeting
+end
+
+function fish_mode_prompt
 end
 
 function fish_user_key_bindings
