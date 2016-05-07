@@ -246,6 +246,9 @@ alias ssh='env TERM=xterm-256color ssh'      # TERM=xterm since most things misi
 alias x='extract'
 alias r='R'
 alias p='jupyter console'
+if which netcat > /dev/null 2>&1
+  alias nc='netcat'
+end
 
 # Additional git aliases
 alias grp='git rev-parse --short HEAD'
