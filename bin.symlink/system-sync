@@ -35,8 +35,8 @@ function fail () {
 function fetch-updates () {
     for repo in $USER_REPOS; do
         pushd $repo > /dev/null
-        info "Syncing ${repo}...\n"
-        if ! git pull --rebase; then
+        info "Fetching ${repo}...\n"
+        if ! git fetch; then
             fail "Rebase pull failed, fix and try again"
         fi
         success "Done ${repo}"
