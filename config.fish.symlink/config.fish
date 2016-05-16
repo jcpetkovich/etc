@@ -157,7 +157,7 @@ end
 
 # Go
 if test -d ~/labs/go
-  if which go 2>/dev/null
+  if which go 2>&1 > /dev/null
         set -xg GOPATH ~/labs/go
         set -xg GOBIN $GOPATH/bin
         set -xg GOROOT (go env GOROOT)

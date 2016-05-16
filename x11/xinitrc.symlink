@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -f ~/bin/xinitrc.systemspecific ]; then
+  source ~/bin/xinitrc.systemspecific
+fi
+
 # Select background
 nitrogen --restore
 

@@ -17,7 +17,9 @@ default_flags = [
 '-I',
 '/usr/lib64/R/include',
 '-I',
-'/home/jcp/R/armv7a-hardfloat-linux-gnueabi-library/3.2/Rcpp/include',
+'/home/jcp/R/armv7a-hardfloat-linux-gnueabi-library/3.3/Rcpp/include',
+'-I',
+'/home/jcp/R/armv7a-hardfloat-linux-gnueabi-library/3.3/RcppArmadillo/include',
 # This path will only work on OS X, but extra paths that don't exist are not harmful
 '-isystem',
 '/System/Library/Frameworks/Python.framework/Headers',
