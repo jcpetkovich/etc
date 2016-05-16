@@ -1,3 +1,9 @@
 #!/bin/bash
 
-curl -s wttr.in/waterloo | head -n 7
+if [[ -z $1 ]]; then
+		where=waterloo
+else
+		where="$1"
+fi
+
+curl -s wttr.in/"${where}" | head -n 7
