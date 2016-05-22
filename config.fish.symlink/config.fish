@@ -205,7 +205,13 @@ set -xg RUBYOPT
 set -xg VISUAL (which e)
 set -xg EDITOR $VISUAL
 set -xg SUDO_EDITOR "emacsclient -c"
-set -xg BROWSER "qutebrowser"
+
+if test (hostname) = "tricorder"
+  # resource constrained
+  set -xg BROWSER "qutebrowser"
+else
+  set -xg BROWSER "firefox"
+end
 set -xg LANG en_US.UTF-8         # bugs out some stuff but fixes more
 set -xg RSENSE_HOME $HOME/jc-public/site-lisp/rsense-0.3
 set -xg TMUXIFIER_LAYOUT_PATH ~/etc/tmux/layouts
