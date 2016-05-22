@@ -37,7 +37,7 @@ function fetch-updates () {
         pushd $repo > /dev/null
         info "Fetching ${repo}...\n"
         if ! git fetch; then
-            fail "Rebase pull failed, fix and try again"
+            fail "Fetch failed, check .git/config and try again."
         fi
         success "Done ${repo}"
         popd > /dev/null
