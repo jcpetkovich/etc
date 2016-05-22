@@ -167,6 +167,14 @@ if test -d ~/labs/go
   end
 end
 
+# Rust
+if test -d ~/labs/rust
+  set -xg RUST_SRC_PATH ~/labs/rust/src
+end
+if test -d ~/.cargo/bin
+  set -xg fish_user_paths ~/.cargo/bin $fish_user_paths
+end
+
 # Gentoo
 if test -d ~/projects/overlay-petkovich
  set -xg PERSONAL_OVERLAY ~/projects/overlay-petkovich
