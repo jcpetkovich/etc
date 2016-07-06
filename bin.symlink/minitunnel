@@ -26,6 +26,10 @@ do
             KILL_OLD_TUNNEL=true
             shift
             ;;
+        --through )
+            THROUGH_HOST="$2"
+            shift 2
+            ;;
         -- )
             shift
             break
@@ -45,6 +49,11 @@ if [[ -z $1 ]]; then
     echo "Empty HOSTNAME,  pass a valid HOSTNAME as the first argument."
     return
 fi
+
+if [[ -z $THROUGH_HOST ]]; then
+    THROUGH_HOST=mini
+fi
+
 TARGET_IP=$(msql --csv "select ip from datamill_website_worker where HOSTNAME = '${HOSTNAME}' order by last_update" | tail -n 1)
 
 # Try truncating to a reasonable local port
@@ -59,7 +68,7 @@ if pgrep -f "ssh.*${TARGET_IP}.*mini"; then
     if [[ $KILL_OLD_TUNNEL == "true" ]]; then
         echo "Killing old tunnel..."
         pkill -f "ssh.*${TARGET_IP}.*mini"
-        ssh -f -N -L ${PORT_BITS}:${TARGET_IP}:22 mini
+        ssh -f -N -L ${PORT_BITS}:${TARGET_IP}:22 $THROUGH_HOST
     else
         echo "Using old tunnel..."
     fi
