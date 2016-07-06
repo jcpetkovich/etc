@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 sudo GOPATH=$GOPATH go get -u \
-     golang.org/x/tools/cmd/cover \
-     golang.org/x/tools/cmd/vet
+     golang.org/x/tools/cmd/cover
 
 # Fetch happens in $GOPATH with root, can mess up ownership
 sudo chown $USER:$USER -R $GOPATH
