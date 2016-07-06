@@ -1,5 +1,5 @@
 [general]
-accounts = main
+accounts = main, work
 pythonfile = ~/etc/offlineimap/offlineimap.py
 ui = quiet
 
@@ -21,3 +21,22 @@ nametrans = name_trans
 folderfilter = folder_filter
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 localfolders = ~/Maildir
+
+[Account work]
+localrepository = work-local
+remoterepository = work-remote
+status_backend = sqlite
+
+[Repository work-local]
+type = Maildir
+localfolders = ~/.mail
+# nametrans = reverse_name_trans
+
+[Repository work-remote]
+type = Gmail
+remoteusereval = get_username('acerta')
+remotepasseval = get_password('acerta')
+# nametrans = name_trans
+folderfilter = folder_filter
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+localfolders = ~/.mail
