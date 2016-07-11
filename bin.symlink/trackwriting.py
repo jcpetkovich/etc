@@ -18,7 +18,7 @@ goal = input("goal ({unmet}/met): ")
 if not goal:
     goal = "\"unmet\""
 else:
-    goal = "\"{goal}\"".format(goal)
+    goal = "\"{}\"".format(goal)
 
 print("\nwhat project was this for?")
 project = input("project ({general}): ")
@@ -26,7 +26,7 @@ project = input("project ({general}): ")
 if not project:
     project = "\"general\""
 else:
-    project = "\"{project}\"".format(project)
+    project = "\"{}\"".format(project)
 
 print("\nany comments?")
 comments = input("comments: ")
@@ -34,7 +34,7 @@ comments = input("comments: ")
 if not comments:
     comments = "\"\""
 else:
-    comments = "\"{comments}\"".format(comments)
+    comments = "\"{}\"".format(comments)
 
 print("words: {}".format(words))
 print("goal: {}".format(goal))
