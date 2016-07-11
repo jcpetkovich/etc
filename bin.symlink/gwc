@@ -1,0 +1,3 @@
+#!/bin/bash
+
+git diff --word-diff=porcelain | grep -e '^+[^+]' | wc -m | awk '{ print ($0 / 5) }'
