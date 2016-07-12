@@ -1,6 +1,6 @@
 #!/bin/bash
 
 ADDED=$(git diff --word-diff=porcelain | grep -e '^+[^+]' | wc -m | awk '{ print ($0 / 5) }')
-REMOVED=$(git diff --word-diff=porcelain | grep -e '^-[^-]' | wc -m)
+REMOVED=$(git diff --word-diff=porcelain | grep -e '^-[^-]' | wc -m | awk '{ print ($0 / 5) }')
 
 echo " ( $ADDED - $REMOVED ) / 5 " | bc
