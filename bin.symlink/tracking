@@ -12,6 +12,15 @@ if not words:
 if words.__class__ is not int:
     words = int(words)
 
+print("how many words did you delete?")
+deleted_words = input("deleted words: ")
+
+if not deleted_words:
+    deleted_words = 0
+
+if deleted_words.__class__ is not int:
+    deleted_words = int(deleted_words)
+
 print("\ndid you meet your goal?")
 goal = input("goal ({unmet}/met): ")
 
@@ -37,6 +46,7 @@ else:
     comments = "\"{}\"".format(comments)
 
 print("words: {}".format(words))
+print("deleted_words: {}".format(deleted_words))
 print("goal: {}".format(goal))
 print("project: {}".format(project))
 print("comments: {}".format(comments))
@@ -48,8 +58,8 @@ db = sqlite3.connect(os.path.expanduser("~/journal/tracking.db"))
 
 statement = "INSERT INTO {table_name} ({column_spec}) VALUES ({table_spec})".format(
     table_name = "writing",
-    column_spec = "words, goal, project, comments",
-    table_spec = ",".join([str(words), goal, project, comments])
+    column_spec = "words, goal, project, comments, deleted_words",
+    table_spec = ",".join([str(words), goal, project, comments, str(deleted_words)])
 )
 
 db.execute(statement)
