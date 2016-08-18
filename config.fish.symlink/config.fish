@@ -230,6 +230,17 @@ set -xg TMUXIFIER_LAYOUT_PATH ~/etc/tmux/layouts
 set -xg REQ_DIR ~/etc/plumbing/req
 set -xg USER_PATHS "$HOME/etc $HOME/labs $HOME/projects $HOME/.spacemacs.d $HOME/journal"
 
+set -xg HOME_SERVER 192.168.2.15
+
+set -xg XDG_DESKTOP_DIR $HOME
+set -xg XDG_DOWNLOAD_DIR $HOME"/dwn"
+set -xg XDG_TEMPLATES_DIR $HOME
+set -xg XDG_PUBLICSHARE_DIR $HOME
+set -xg XDG_DOCUMENTS_DIR $HOME"/dcs"
+set -xg XDG_MUSIC_DIR $HOME"/media/music"
+set -xg XDG_PICTURES_DIR $HOME"/media/Photos"
+set -xg XDG_VIDEOS_DIR $HOME"/media/Movies"
+
 # Gnu Global
 set -xg GTAGSLABEL ctags
 

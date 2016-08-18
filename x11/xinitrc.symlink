@@ -19,7 +19,7 @@ source /etc/X11/xinit/xinitrc.d/80-dbus
 export `gnome-keyring-daemon -s`
 
 # share x11 info
-export_x_info
+exportXinfo
 
 # Start statusbar
 dwmstatus &
