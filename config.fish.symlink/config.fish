@@ -180,6 +180,10 @@ if test -d ~/projects/overlay-petkovich
  set -xg PERSONAL_OVERLAY ~/projects/overlay-petkovich
 end
 
+if test -d ~/mail
+  set -xg MAILDIR ~/mail
+end
+
 # Finish setting up MANPATH
 
 set -xg MANPATH ":"$MANPATH

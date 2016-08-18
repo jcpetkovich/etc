@@ -5,22 +5,23 @@ ui = quiet
 
 [Account main]
 localrepository = main-local
-remoterepository = gmail-remote
+remoterepository = main-remote
 status_backend = sqlite
 
 [Repository main-local]
 type = Maildir
-localfolders = ~/Maildir
+localfolders = ~/mail/personal
 nametrans = reverse_name_trans
                                
-[Repository gmail-remote]
+[Repository main-remote]
 type = Gmail
+ssl = yes
 remoteusereval = get_username('localhost')
 remotepasseval = get_password('localhost')
 nametrans = name_trans
 folderfilter = folder_filter
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-localfolders = ~/Maildir
+localfolders = ~/mail/personal
 
 [Account work]
 localrepository = work-local
@@ -29,14 +30,15 @@ status_backend = sqlite
 
 [Repository work-local]
 type = Maildir
-localfolders = ~/.mail
+localfolders = ~/mail/work
 # nametrans = reverse_name_trans
 
 [Repository work-remote]
 type = Gmail
+ssl = yes
 remoteusereval = get_username('acerta')
 remotepasseval = get_password('acerta')
 # nametrans = name_trans
 folderfilter = folder_filter
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-localfolders = ~/.mail
+localfolders = ~/mail/work
