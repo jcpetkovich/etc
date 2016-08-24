@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+
+read -r -d '' HELP <<EOF
+Usage: extract [-option] [file ...]
+
+Extract an archive using the appropriate utility, naive detection of
+tarbombs.
+
+    Command options:
+    -h, --help, -?    Print this help documentation.
+    -r, --remove      Remove archive.
+EOF
+
+REMOVE_ARCHIVE=0
+
+while :
+do
+    case $1 in
+        --help | -h | -\? )
+            echo "$HELP"
+            shift
+            exit 0
+            ;;
+        -r )
+            REMOVE_ARCHIVE=1
+            shift
+            ;;
+        -- )
+            shift
+            break
+            ;;
+        -* )
+            printf >&2 'WARN: Unknown option (ignored): %s\n' "$1"
+            shift
+            ;;
+        * )
+            break
+            ;;
+    esac
+done
+
+if [[ -z $1 ]]; then
+    echo "No archive specified, exiting."
+    echo ""
+    echo "$HELP"
+    exit 1
+fi
+
+function get_dir() {
+    local file_name="$( basename "$1" )"
+    echo "$( echo "$file_name" | sed "s/\.${1##*.}//g" )"
+}
+
+function tar_target_dir() {
+    # Check for tarbombs, and make a directory for them
+    local l=$(tar tf $1)
+    local tardir
+
+    if [ $(echo "$l" | wc -l) -eq $(echo "$l" | grep $(echo "$l" | head -n1) | wc -l) ] \
+       && [ $(echo "$l" | head -n1) != "./" ]; then
+        echo "."
+    else
+        tardir=$(get_dir $1)
+        echo "Tarbomb detected, using: ${tardir}/" 1>&2
+        mkdir "$tardir" && echo "$tardir"
+    fi
+}
+
+function extract() {
+  local success
+  local extract_dir
+
+  REMOVE_ARCHIVE=1
+  if [[ "$1" == "-r" ]] || [[ "$1" == "--remove" ]]; then
+    REMOVE_ARCHIVE=0
+    shift
+  fi
+
+  while (( $# > 0 )); do
+    if [[ ! -f "$1" ]]; then
+      echo "extract: '$1' is not a valid file" 1>&2
+      shift
+      continue
+    fi
+
+    success=0
+    case "$1" in
+      (*.tar.gz|*.tgz) tar xvzf "$1" -C $(tar_target_dir $1) ;;
+      (*.tar.bz2|*.tbz|*.tbz2) tar xvjf "$1" -C $(tar_target_dir $1) ;;
+      (*.tar.xz|*.txz) tar --xz --help &> /dev/null \
+        && tar --xz -xvf "$1" -C $(tar_target_dir $1) \
+        || xzcat "$1" | tar xvf - -C $(tar_target_dir $1) ;;
+      (*.tar.zma|*.tlz) tar --lzma --help &> /dev/null \
+        && tar --lzma -xvf "$1" -C $(tar_target_dir $1) \
+        || lzcat "$1" | tar xvf - -C $(tar_target_dir $1) ;;
+      (*.tar) tar xvf "$1" -C $(tar_target_dir $1) ;;
+      (*.gz) gunzip "$1" ;;
+      (*.bz2) bunzip2 "$1" ;;
+      (*.xz) unxz "$1" ;;
+      (*.lzma) unlzma "$1" ;;
+      (*.Z) uncompress "$1" ;;
+      (*.zip|*.war|*.jar|*.sublime-package) unzip "$1" -d $(get_dir $1) ;;
+      (*.rar) unrar x -ad "$1" ;;
+      (*.7z) 7za x "$1" ;;
+      (*.deb)
+        mkdir -p "$extract_dir/control"
+        mkdir -p "$extract_dir/data"
+        cd "$extract_dir"; ar vx "../${1}" > /dev/null
+        cd control; tar xzvf ../control.tar.gz
+        cd ../data; tar xzvf ../data.tar.gz
+        cd ..; rm *.tar.gz debian-binary
+        cd ..
+      ;;
+      (*)
+        echo "extract: '$1' cannot be extracted" 1>&2
+        success=1
+      ;;
+    esac
+
+    (( success = $success > 0 ? $success : $? ))
+    (( $success == 0 )) && (( $REMOVE_ARCHIVE == 0 )) && rm "$1"
+    shift
+  done
+}
+
+extract $@
