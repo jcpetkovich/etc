@@ -1,0 +1,43 @@
+# sdothum - 2016 (c) wtfpl
+
+# X11 Dynamic Menu
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ........................................................................ Files
+
+filemanagers="filelight \
+              ncdu \
+              ranger \
+              rox \
+              thunar \
+"
+
+# open directory
+while name=$(echo | history folders | dmenu 'Find Folder') || exit
+do
+  [ "$name" ] || exit
+  list=$(sudo locate -A -e -i $name)
+  [ "$list" ] || continue
+
+  file=$(echo "$list" | dmenu 'Select Folder' -no-custom) || exit
+
+  [ -d $file ] && dir=$file || dir="$(dirname $file)"
+  history folders "$dir"
+  while action=$(echo "term\n$(apps \"$filemanagers\")" | dmenu "$dir" -no-custom) || exit
+  do
+    case $action in
+      term) cd $dir
+            term "$dir" ;;
+
+      ncdu |\
+      ranger) term "$dir" $action "$dir" ;;
+
+      filelight |\
+      rox |\
+      thunar) focus $action "$dir" ;;
+    esac
+    exit
+  done
+done
+
+# vim: set ft=sh: #
