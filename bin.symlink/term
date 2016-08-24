@@ -1,0 +1,78 @@
+#!/usr/bin/env dash
+# jcpetkovich - 2016 (c) wtfpl
+[ $TRACE ] && CHILD="bin/term $@" . $PARENT
+
+# term
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ..................................................................... Terminal
+
+# Usage: term [<title>] [ FLOAT | FONTSIZE <size> | WAIT | MUX ] [[SHELL] <command>]
+#        title (and default name string)
+#        FLOAT, dwm classes for setting float and geometry
+#        WAIT, for process to complete before returning
+#        SHELL <command>, for simpler unquoted command passing
+# Note:  title may not contain spaces, use hyphen or underscore in place
+
+SHELL=/bin/fish
+TERM=st
+FONT="Sauce Code Powerline"
+
+# first parameter may be title
+if [ "$1" ] ;then
+    if echo "$1" | egrep -qv 'FLOAT|FONTSIZE|WAIT|MUX|SHELL' ;then
+        title="-t \"$1\""
+        shift
+    fi
+fi
+
+getmux() {
+    muxcmd="tmux"
+    tmux ls \
+        | awk -F: '$1 ~ /[[:digit:]]+/ {print $0}' \
+        | grep -vq attached && muxcmd="tmux at"
+}
+
+while [ "$1" ]
+do
+  case $1 in
+    FLOAT) name='-c DWMFLOAT'
+           geometry='-g 100x30+0+0'
+           shift ;;
+
+    FONTSIZE) fn="-f"
+              folo="$FONT:size=$2"
+              shift 2 ;;
+
+    WAIT) foreground=true
+          shift ;;
+
+    MUX) getmux
+         cmd="-e $muxcmd"
+         shift ;;
+
+    SHELL) shift
+           process="$@"
+           [ "$*" ] && cmd="-e $muxcmd -c '$SHELL -c \'$@\''"
+           break ;;
+
+    *) process="$@"
+       cmd="-e $@"
+       break ;;
+  esac
+done
+
+echo $TERM $title $name $geometry $cmd
+
+if ! [ -z "$fn" ]; then
+    $TERM $title $name $geometry $fn "$folo" $cmd
+else
+    $TERM $title $name $geometry $cmd
+fi
+
+# wait for process to complete
+if [ $foreground ] ;then
+  pwait "$process"
+fi
+
+# vim: set ft=sh: #
