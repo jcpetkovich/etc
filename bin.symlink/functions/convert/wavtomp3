@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+#Second step... use lame to convert into .mp3
+
+for i in *.wav
+do
+lame -q 0 -b 320 "$i" "$i.mp3"
+done
