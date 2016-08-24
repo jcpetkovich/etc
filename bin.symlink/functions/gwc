@@ -1,0 +1,19 @@
+#!/usr/bin/env dash
+
+if [ "$1" = "-v" ]; then
+    VERBOSE=true
+else
+    VERBOSE=false
+fi
+
+
+ADDED=$(git diff --word-diff=porcelain | grep -e '^+[^+]' | wc -m | awk '{ print ($0 / 5) }')
+REMOVED=$(git diff --word-diff=porcelain | grep -e '^-[^-]' | wc -m | awk '{ print ($0 / 5) }')
+
+if [ "$VERBOSE" = "true" ]; then
+    echo " $ADDED / 5 " | bc
+    rmv=$(echo " $REMOVED  / 5 " | bc)
+    echo "-$rmv"
+fi
+
+echo " ( $ADDED - $REMOVED ) / 5 " | bc
