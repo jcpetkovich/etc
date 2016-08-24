@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-utimer -c $@ && mplayer /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga

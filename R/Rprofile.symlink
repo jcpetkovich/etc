@@ -11,4 +11,4 @@ r["CRAN"] <- "http://cran.stat.sfu.ca"
 options(repos = r)
 rm(r)
 
-options(pdfviewer="zathura")
+options(pdfviewer="xdg-open")

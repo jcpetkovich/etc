@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env dash
 
 # Script to launch emacs.
 
@@ -6,16 +6,14 @@
 # xterm-256color as TERM since that seems to reproduce colourschemes
 # better than the alternatives.
 for arg in $@; do
-    if [[ $arg == "-t" ]]; then
+    if [ "$arg" = "-t" ]; then
         TERM=xterm-256color
+        NOWAIT=false
     fi
 done
 
-# If emacs isn't running already, run it
-if ! pgrep -x emacs > /dev/null; then
-    emacs
+if [ "$NOWAIT" = true ]; then
+    emacsclient -a '' -c -n $@
 else
-    # `e [option] file...` : open a file with an emacsclient, starting
-    #                        emacs if it hasn't been already
-    emacsclient -c -n $@
+    emacsclient -a '' -c $@
 fi

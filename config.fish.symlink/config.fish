@@ -95,7 +95,12 @@ end
 # Path Exports
 
 if test -d ~/bin
-        set -xg fish_user_paths ~/bin $fish_user_paths
+  pushd ~/bin > /dev/null
+  for d in (find . -type d | grep -vE '^\.$' | sed 's/^.//' | sort -r)
+    set -xg fish_user_paths ~/bin"$d" $fish_user_paths
+  end
+  popd > /dev/null
+  set -xg fish_user_paths ~/bin $fish_user_paths
 end
 
 if test -d ~/perl5/bin
@@ -228,8 +233,7 @@ set -xg LANG en_US.UTF-8         # bugs out some stuff but fixes more
 set -xg RSENSE_HOME $HOME/jc-public/site-lisp/rsense-0.3
 set -xg TMUXIFIER_LAYOUT_PATH ~/etc/tmux/layouts
 set -xg REQ_DIR ~/etc/plumbing/req
-set -xg USER_PATHS "$HOME/etc $HOME/labs $HOME/projects $HOME/.spacemacs.d $HOME/journal"
-
+set -xg USER_PATHS "$HOME/etc $HOME/labs $HOME/prj $HOME/.spacemacs.d $HOME/journal"
 set -xg HOME_SERVER 192.168.2.15
 
 set -xg XDG_DESKTOP_DIR $HOME
