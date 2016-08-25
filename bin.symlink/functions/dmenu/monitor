@@ -17,12 +17,16 @@ interface() {
   ip link show | grep '^[0-9]' | cut -d: -f2 | dmenu 'Interface' -no-custom || exit
 }
 
+export SUDO_ASKPASS="$HOME/bin/askpass"
+
+export PATH="/usr/sbin:$PATH"
+
 while monitor=$(apps "$monitors" | dmenu 'Monitor' -no-custom) || exit
 do
   case $monitor in
-    iftop)   term "$monitor" $monitor $(interface) ;;
-    iotop)   term "$monitor" SHELL $monitor ;;
-    nethogs) term "$monitor" sudo $monitor $(interface) ;;
+    iftop)   term "$monitor" sudo -A $monitor -i $(interface) ;;
+    iotop)   term "$monitor" sudo -A $monitor ;;
+    nethogs) term "$monitor" sudo -A $monitor $(interface) ;;
     *)       term "$monitor" $monitor ;;
   esac
   exit
