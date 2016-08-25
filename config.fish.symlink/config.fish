@@ -181,8 +181,8 @@ if test -d ~/.cargo/bin
 end
 
 # Gentoo
-if test -d ~/projects/overlay-petkovich
- set -xg PERSONAL_OVERLAY ~/projects/overlay-petkovich
+if test -d ~/prj/overlay-petkovich
+  set -xg PERSONAL_OVERLAY ~/prj/overlay-petkovich
 end
 
 if test -d ~/mail
