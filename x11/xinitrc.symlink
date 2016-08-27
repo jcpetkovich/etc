@@ -27,5 +27,8 @@ dwmstatus &
 # start compositing
 compton -b
 
+# start gpaste-client
+pidof gpaste-client >/dev/null || gpaste-client &
+
 # start dwm
 exec ck-launch-session dwm
