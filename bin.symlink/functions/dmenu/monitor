@@ -17,8 +17,6 @@ interface() {
   ip link show | grep '^[0-9]' | cut -d: -f2 | dmenu 'Interface' -no-custom || exit
 }
 
-export SUDO_ASKPASS="$HOME/bin/askpass"
-
 export PATH="/usr/sbin:$PATH"
 
 while monitor=$(apps "$monitors" | dmenu 'Monitor' -no-custom) || exit
