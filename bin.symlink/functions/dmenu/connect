@@ -2,12 +2,12 @@
 
 where=$(echo home out \
                | tr ' ' '\n' \
-               | sudo -u jcp rofi -dmenu -terminal st)
+               | dmenu 'Resolvconf' -no-custom)
 
-if [ $where == "home" ]; then
-		echo "nameserver $HOME_SERVER" | sudo tee /etc/resolv.conf.head > /dev/null
-		sudo wpa_cli reconfigure
+if [ $where = "home" ]; then
+		echo "nameserver $HOME_SERVER" | sudo -A tee /etc/resolv.conf.head > /dev/null
+		sudo -A wpa_cli reconfigure
 else
-		echo "" | sudo tee /etc/resolv.conf.head > /dev/null
-		sudo wpa_cli reconfigure
+		echo "" | sudo -A tee /etc/resolv.conf.head > /dev/null
+		sudo -A wpa_cli reconfigure
 fi
