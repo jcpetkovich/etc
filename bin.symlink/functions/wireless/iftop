@@ -1,0 +1,13 @@
+#!/usr/bin/env dash
+# sdothum - 2016 (c) wtfpl
+
+# Network
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ...................................................................... Monitor
+
+# monitor interface
+echo "iftop -B -i $1 \ (eth0, wlan0, ..)"
+sudo -A iftop -B -i $1
+
+# vim: set ft=sh: #

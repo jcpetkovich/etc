@@ -1,0 +1,13 @@
+#!/usr/bin/env dash
+# sdothum - 2016 (c) wtfpl
+
+# Network
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ...................................................................... Monitor
+
+# network statistics
+echo "netstat -tnp $1"
+sudo /usr/bin/netstat -tnp $1
+
+# vim: set ft=sh: #
