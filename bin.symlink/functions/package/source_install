@@ -1,0 +1,14 @@
+#!/usr/bin/env dash
+# sdothum - 2016 (c) wtfpl
+
+# Package
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ${_colors_} defined in env
+
+# ......................................................... Distribution install
+
+# return git uri
+[ -s $HOME/build/archlinux/pre_install/$1 ] && echo $($HOME/build/archlinux/pre_install/$1)
+
+# vim: set ft=sh: #

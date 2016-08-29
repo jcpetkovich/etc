@@ -17,12 +17,10 @@ interface() {
   ip link show | grep '^[0-9]' | cut -d: -f2 | dmenu 'Interface' -no-custom || exit
 }
 
-export PATH="/usr/sbin:$PATH"
-
 while monitor=$(apps "$monitors" | dmenu 'Monitor' -no-custom) || exit
 do
   case $monitor in
-    iftop)   term "$monitor" sudo -A $monitor -i $(interface) ;;
+    iftop)   term "$monitor" $monitor $(interface) ;;
     iotop)   term "$monitor" sudo -A $monitor ;;
     nethogs) term "$monitor" sudo -A $monitor $(interface) ;;
     *)       term "$monitor" $monitor ;;

@@ -265,7 +265,6 @@ eval (dircolors -c)
 set -xg LS_COLORS $LS_COLORS
 
 # Aliases
-alias l='ls -al'
 alias ls='ls --color=auto'
 alias sl='ls'
 alias clr='clear'
@@ -279,7 +278,7 @@ alias m='tmuxifier'
 alias ssh='env TERM=xterm-256color ssh'      # TERM=xterm since most things misinterpret st
 alias x='extract'
 alias r='R'
-alias p='jupyter console'
+alias py='jupyter console'
 if which netcat > /dev/null 2>&1
 	alias nc='netcat'
 end
