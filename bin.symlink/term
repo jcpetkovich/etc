@@ -20,7 +20,7 @@ FONT="Sauce Code Powerline"
 
 # first parameter may be title
 if [ "$1" ] ;then
-    if echo "$1" | egrep -qv 'FLOAT|FONTSIZE|WAIT|MUX|SHELL' ;then
+    if echo "$1" | egrep -qv 'FLOAT|FORTUNE|MAX|STACK|FONTSIZE|WAIT|MUX|SHELL' ;then
         title="-t \"$1\""
         shift
     fi
@@ -40,9 +40,24 @@ do
            geometry='-g 100x30+0+0'
            shift ;;
 
+    MAX) # name='-name max'
+         shift ;;
+
     FONTSIZE) fn="-f"
               folo="$FONT:size=$2"
               shift 2 ;;
+
+    FORTUNE) # touch /tmp/term:fortune
+             shift ;;
+
+    STACK) # stack=true
+           shift ;;
+
+    TABBED) tabbed='-pe tabbed'
+            shift ;;
+
+    TR) # tr='+tr'
+        shift ;;
 
     WAIT) foreground=true
           shift ;;
@@ -75,12 +90,10 @@ elif ! [ -z "$muxcmd" ]; then
     cmd="-e $muxcmd"
 fi
 
-# echo $TERM $title $name $geometry $cmd
-
 if ! [ -z "$fn" ]; then
-    $TERM $title $name $geometry $fn "$folo" $cmd
+    eval "$TERM $title $name $geometry $fn "$folo" $cmd"
 else
-    $TERM $title $name $geometry $cmd
+    eval "$TERM $title $name $geometry $cmd"
 fi
 
 # wait for process to complete
