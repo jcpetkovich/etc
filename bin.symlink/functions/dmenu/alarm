@@ -63,7 +63,7 @@ alarm() {
     else
       time=0 notify "$alert"
     fi
-    paplay $HOME/music/sonar-ping.wav &
+    paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga &
   done
 }
 
