@@ -1,4 +1,4 @@
-# sdothum - 2016 (c) wtfpl
+# jcpetkovich - 2016 (c) wtfpl
 
 # X11 Dynamic Menu
 # ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
@@ -8,11 +8,7 @@
 # select email contact addresses for insert into sup query
 maildir=${MAILDIR:-$HOME/Maildir}
 cache=$maildir/addressbook
-# additional contacts
-# - name <address>
-# - tag :: name <address>,..
 contacts=$maildir/contacts
-patricia=$maildir/addressbook.patricia
 
 # ................................................................... Initialize
 
@@ -24,35 +20,16 @@ patricia=$maildir/addressbook.patricia
 # - proper case "user name"
 abook() {
   time=15 notify low 'Updating dmenu addressbook cache' 'Please be patient..'
-  /usr/bin/vendor_perl/ack --no-filename --ignore-case --no-color '^(From|To|Cc|Bcc): .*@' $maildir | \
-  sed -re 's/(\xad|\x01)/ /g' \
-      -e 's/[,;] */\n/g' \
-      -e 's/["]//g' \
-      -e "s/[']//g" \
-      -e 's/<br>//' \
-      -e 's/<mailto:[^>]*>//' \
-      -e 's/\t/ /g' \
-      -e 's/  *$//' \
-      -e 's/^  *//' \
-      -e 's/  */ /g' \
-      -e 's/^To: //I' \
-      -e 's/^From: //I' \
-      -e 's/^Cc: //I' \
-      -e 's/^Bcc: //I' \
-      -e 's/< */</' \
-      -e 's/ *>/>/' | \
-  grep '^[^<].*<.*>$' | \
-  grep -v '@.*<' | \
-  grep -Eiv '(^[^a-z[]|[#])' | \
-  grep -Piv '<comments(?!@thedarnedestthing)' | \
-  grep -Eiv '((hello|info)@)' | \
-  grep -Eiv '(announce|automated|confirm|contact|help|invitations|market|news|notification|promo|reply|review|subscribe|welcome)' | \
-  grep -Eiv '(feedspot|github|via linkedin|yahoogroups)' | \
-  sed -re 's/[^< ]*[?][^< ]* //' \
-      -e 's/\b(\w*)\b/\L\u\1/g' \
-      -e 's/(<.*)/\L\1/g' | \
-  sort -f | \
-  uniq -i >$cache
+
+  mu cfind --format=csv \
+      | grep -Eiv '((hello|info)@)' \
+      | grep -Eiv '(announce|automated|confirm|contact|help|invitations|market|news|notification|promo|reply|review|subscribe|welcome)' \
+      | grep -Eiv '(feedspot|github|via linkedin|yahoogroups)' \
+      | awk -F, '{if($1 == "") {$1="Unknown"} print $1 "^'"$SEP"' " $2}' \
+      | tail -n +2 \
+      | column -s^ -t \
+      | uniq -i >$cache
+
   notify low 'Update of dmenu addressbook cache' '..Complete'
 }
 
@@ -75,8 +52,8 @@ ribbon() {
 }
 
 contacts() {
-  sed "s/  *::  */^$SEP /" $contacts | column -s^ -t
-  cat $patricia $cache
+  cat $contacts | column -s^ -t
+  cat $cache
 }
 
 addresslist() {
@@ -95,6 +72,8 @@ while :
 do
   address=$(addresslist | dmenu "$(ribbon)" -no-custom) || exit
   address=${address#*$SEP }
+
+  echo $address
 
   case "$address" in
     '[ rebuild database ]') abook
@@ -115,7 +94,7 @@ do
                           [ $desc ] || desc='Contacts'
                           echo "\n$desc :: $addresses" >>$contacts
                           unset addresses
-                          gvim -f $contacts
+                          e $contacts
                         fi ;;
 
     *) [ "$addresses" ] && addresses=$addresses,$address || addresses=$address ;;
