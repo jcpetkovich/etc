@@ -12,10 +12,19 @@
 #       in the dictionary history with the apostrophe being removed
 
 # lookup selection (unless it is a non-word), else present history tape
+
+# is primary one word?
 selection=$(xsel -o) && xsel -c
 if [ "$selection" ] ;then
   echo "$selection" | grep -q ' ' && unset selection
   echo "$selection" | grep -qv '[[:alpha:]]' && unset selection
+fi
+
+# is the word the same as the previous word?
+if [ "$selection" = "$DICT_PREVIOUS" ]; then
+    selection=
+else
+    export DICT_PREVIOUS="$selection"
 fi
 
 if [ "$selection" ] ;then
