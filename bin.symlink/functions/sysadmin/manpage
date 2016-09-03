@@ -19,7 +19,7 @@ man $@
 # probably selected something. This is necessary since a lot of programs sync
 # the clipboard and the primary selection (i.e., emacs) so we can't rely on it
 # staying empty.
-[ "$(xsel -p)" = "$(xsel -b)" ] ||  xsel -o >$xsel
+is primary active && xsel -o >$xsel
 [ -s $xsel ] || rm -f $xsel
 
 # vim: set ft=sh: #
