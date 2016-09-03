@@ -14,7 +14,7 @@
 #        SHELL <command>, for simpler unquoted command passing
 # Note:  title may not contain spaces, use hyphen or underscore in place
 
-SHELL=/bin/fish
+SHELL=/bin/dash
 TERM=st
 FONT="Sauce Code Powerline"
 
