@@ -23,6 +23,13 @@ case $BROWSER in
             | dmenu 'Bookmark' -no-custom \
             | sed -r 's/.*(http.*)/\1/') ;;
 
+  firefox) uri=$(sqlite3 /home/jcp/.mozilla/firefox/*.default/places.sqlite \
+                         "select p.title, p.url from moz_bookmarks b, moz_places p where b.fk = p.id order by p.frecency DESC;" \
+                        | sed 's/[|]/  ::  /g' \
+                        | sed '1i[ history ]' \
+                        | dmenu 'Bookmark' -no-custom \
+                        | sed -r 's/.*(http.*)/\1/') ;;
+
   *) bookmarks=$HOME/.config/chromium/Default/Bookmarks
      py-chrome-bookmarks.py $bookmarks $bookmarks.html
      uri=$(cat $bookmarks.html \
