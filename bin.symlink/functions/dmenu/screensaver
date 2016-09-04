@@ -10,6 +10,10 @@
 #        dmenu Screensaver [on | 1], turn screensaver on
 #        dmenu Screensaver [off | 0], turn screensaver off
 
+# xset -dpms
+# xset s noblank
+# xset s 0 0
+
 # toggle monitor display settings
 if [ "$*" ] ;then
   toggle="$1"
