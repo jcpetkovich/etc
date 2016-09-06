@@ -1,5 +1,10 @@
 #!/usr/bin/env dash
 
+# emacs can't handle GDK_SCALE arguments due to its multiple graphics
+# toolkits
+export GDK_SCALE=1
+export GDK_DPI_SCALE=1
+
 # Script to launch emacs.
 # Check if we are opening the emacs client in a terminal, then set
 # xterm-256color as TERM since that seems to reproduce colourschemes
