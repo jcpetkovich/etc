@@ -16,7 +16,7 @@ apps='chromium \
 
 killall -TERM $apps 2>/dev/null
 
-pkill -x dwm
-# herbstclient quit
+# pkill -x dwm
+herbstclient quit
 
 # vim: set ft=sh: #
