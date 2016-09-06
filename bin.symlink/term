@@ -12,93 +12,102 @@
 #        FLOAT, dwm classes for setting float and geometry
 #        WAIT, for process to complete before returning
 #        SHELL <command>, for simpler unquoted command passing
+#        ATDIR, open the term at estimated directory
 # Note:  title may not contain spaces, use hyphen or underscore in place
 
-SHELL=/bin/fish
+SHELL=/bin/dash
 TERM=st
 FONT="Sauce Code Powerline"
 
 # first parameter may be title
 if [ "$1" ] ;then
-    if echo "$1" | egrep -qv 'FLOAT|FORTUNE|MAX|STACK|FONTSIZE|WAIT|MUX|SHELL' ;then
-        title="-t \"$1\""
-        shift
-    fi
+		if echo "$1" | egrep -qv 'FLOAT|FORTUNE|MAX|STACK|FONTSIZE|WAIT|MUX|SHELL|ATDIR' ;then
+				title="-t \"$1\""
+				shift
+		fi
 fi
 
 getmux() {
-    muxcmd="tmux"
-    tmux ls \
-        | awk -F: '$1 ~ /[[:digit:]]+/ {print $0}' \
-        | grep -vq attached && muxcmd="tmux at"
+		muxcmd="tmux"
+		tmux ls \
+				| awk -F: '$1 ~ /[[:digit:]]+/ {print $0}' \
+				| grep -vq attached && muxcmd="tmux at"
 }
 
 while [ "$1" ]
 do
-  case $1 in
-    FLOAT) name='-c DWMFLOAT'
-           geometry='-g 100x30+0+0'
-           shift ;;
+	case $1 in
+		FLOAT) name='-c DWMFLOAT'
+					 geometry='-g 100x30+0+0'
+					 shift ;;
 
-    MAX) # name='-name max'
-         shift ;;
+		MAX) # name='-name max'
+				 shift ;;
 
-    FONTSIZE) fn="-f"
-              folo="$FONT:size=$2"
-              shift 2 ;;
+		FONTSIZE) fn="-f"
+							folo="$FONT:size=$2"
+							shift 2 ;;
 
-    FORTUNE) # touch /tmp/term:fortune
-             shift ;;
+		FORTUNE) # touch /tmp/term:fortune
+						 shift ;;
 
-    STACK) # stack=true
-           shift ;;
+		STACK) # stack=true
+					 shift ;;
 
-    TABBED) tabbed='-pe tabbed'
-            shift ;;
+		TABBED) tabbed='-pe tabbed'
+						shift ;;
 
-    TR) # tr='+tr'
-        shift ;;
+		TR) # tr='+tr'
+				shift ;;
 
-    WAIT) foreground=true
-          shift ;;
+		WAIT) foreground=true
+					shift ;;
 
-    MUX) getmux
-         shift ;;
+		MUX) getmux
+				 shift ;;
 
-    SHELL) shift
-           process="$@"
-           if ! [ -z "$muxcmd" ]; then
-               [ "$*" ] && cmd="$muxcmd -c '$SHELL -c \'$@\''"
-           else
-               [ "$*" ] && cmd="$SHELL -c '$@'"
-           fi
-           break ;;
+		ATDIR) shift
+					 atdir="$(focuseddir)" ;;
 
-    *) process="$@"
-       cmd="$@"
-       break ;;
-  esac
+		SHELL) shift
+					 process="$@"
+					 if ! [ -z "$muxcmd" ]; then
+							 [ "$*" ] && cmd="$muxcmd -c '$SHELL -c \'$@\''"
+					 else
+							 [ "$*" ] && cmd="$SHELL -c '$@'"
+					 fi
+					 break ;;
+
+		*) process="$@"
+			 cmd="$@"
+			 break ;;
+	esac
 done
 
 # ugly hack for st
 if ! [ -z "$cmd" ]; then
-    tmp=$(mktemp)
-    echo "#!/usr/bin/env dash\n$cmd\nrm $tmp\n" > $tmp
-    chmod +x $tmp
-    cmd="-e $tmp"
+		tmp=$(mktemp)
+		echo "#!/usr/bin/env dash\n$cmd\nrm $tmp\n" > $tmp
+		chmod +x $tmp
+		cmd="-e $tmp"
 elif ! [ -z "$muxcmd" ]; then
-    cmd="-e $muxcmd"
+		cmd="-e $muxcmd"
+fi
+
+# if we are to execute at the current directory
+if ! [ -z "$atdir" ]; then
+		cd "$atdir"
 fi
 
 if ! [ -z "$fn" ]; then
-    eval "$TERM $title $name $geometry $fn "$folo" $cmd"
+		eval "$TERM $title $name $geometry $fn "$folo" $cmd"
 else
-    eval "$TERM $title $name $geometry $cmd"
+		eval "$TERM $title $name $geometry $cmd"
 fi
 
 # wait for process to complete
 if [ $foreground ] ;then
-  pwait "$process"
+	pwait "$process"
 fi
 
 # vim: set ft=sh: #
