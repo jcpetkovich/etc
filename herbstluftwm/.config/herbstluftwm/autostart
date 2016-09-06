@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# this is a simple config for herbstluftwm
+
+hc() {
+    herbstclient "$@"
+}
+
+hc emit_hook reload
+
+xsetroot -solid '#5A8E3A'
+
+# remove all existing keybindings
+hc keyunbind --all
+
+# keybindings
+# if you have a super key you will be much happier with Mod set to Mod4
+Mod=Mod4    # Use alt as the main modifier
+#Mod=Mod4   # Use the super key as the main modifier
+
+for i in $HOME/.config/herbstluftwm/config/*; do
+    echo ".. loading herbstluftwm config ${i##*/}"
+    . $i
+    # add dummy hc cmd for any sources that don't e.g. ENV
+    hc echo done ${i##*/}
+done
+
+# unlock, just to be sure
+hc unlock
+
+# do multi monitor setup here, e.g.:
+# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
+# or simply:
+# hc detect_monitors
+
+# find the panel
+panel=~/.config/herbstluftwm/panel.sh
+[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
+for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
+    # start it on each monitor
+    "$panel" $monitor &
+done

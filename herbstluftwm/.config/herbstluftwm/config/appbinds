@@ -1,0 +1,30 @@
+hc keybind $Mod-Return spawn term MUX ATDIR
+hc keybind $Mod-e spawn e
+hc keybind $Mod-o spawn dmenu run
+hc keybind $Mod-Control-p spawn dmenu pass
+# hc keybind $Mod-Control-m spawn dmenu monitor
+
+# hc keybind $Mod-Shift-space spawn dmenu sys
+# hc keybind $Mod-space spawn dmenu menu
+hc keybind $Mod-Control-Return spawn dmenu monitor
+hc keybind $Mod-Shift-Return spawn dmenu manpages
+hc keybind $Mod-Control-t spawn dmenu alarm
+hc keybind $Mod-Control-f spawn dmenu files
+hc keybind $Mod-Control-d spawn dmenu folders
+hc keybind $Mod-Control-a spawn dmenu abook
+hc keybind $Mod-Control-b spawn dmenu bookmarks
+hc keybind $Mod-Control-v spawn dmenu clipboard
+hc keybind $Mod-Shift-d spawn dmenu dict
+hc keybind $Mod-Shift-t spawn dmenu thesaurus
+hc keybind $Mod-Control-h spawn dmenu history
+hc keybind $Mod-Control-l spawn dmenu logs
+hc keybind $Mod-Shift-m spawn dmenu music
+hc keybind $Mod-Control-r spawn dmenu radio
+hc keybind $Mod-Control-s spawn dmenu scripts
+hc keybind $Mod-Control-c spawn dmenu configs
+# hc keybind $Mod-s spawn dmenu series
+hc keybind $Mod-Shift-s spawn dmenu seriesa
+hc keybind $Mod-Control-w spawn dmenu movies
+hc keybind $Mod-Shift-w spawn dmenu moviesa
+hc keybind $Mod-Control-u spawn dmenu screensaver
+hc keybind $Mod-Shift-v spawn dmenu shistory
