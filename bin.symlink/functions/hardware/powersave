@@ -30,6 +30,7 @@ done
 shift $(($OPTIND - 1))
 
 
+sudo powertop --auto-tune
 sudo cpupower frequency-set -g powersave 1>/dev/null
 echo $SET_BRIGHTNESS | sudo tee $BRIGHTNESS 1>/dev/null
 
