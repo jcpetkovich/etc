@@ -31,4 +31,4 @@ compton -b
 pidof gpaste-client >/dev/null || gpaste-client &
 
 # start dwm
-exec ck-launch-session dwm
+exec ck-launch-session herbstluftwm
