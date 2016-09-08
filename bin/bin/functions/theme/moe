@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Hacky script to let me switch between light and dark themed st's
+
+if [[ $1 == "light" ]]; then
+    PATCH=st-0.4.1-moe-light.patch
+else
+    PATCH=st-0.4.1-moe-dark.patch
+fi
+
+xrdb ~/etc/x11/Xcommon
+xrdb -merge ~/etc/x11/solarized_dark
+xrdb -merge ~/.Xdefaults
+
+# Rebuild st
+pushd ~/etc/st > /dev/null
+cp config.h.orig config.h
+patch -b -i $PATCH
+sudo cp config.h /etc/portage/savedconfig/x11-terms/st-0.6-r1
+popd > /dev/null
+
+sudo emerge -1 st

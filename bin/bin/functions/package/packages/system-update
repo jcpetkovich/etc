@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+read -r -d '' HELP <<EOF
+Usage: system-update [options]
+
+Update my gentoo system by syncing portage, layman and then checking
+for new packages.
+
+    Command options:
+    -h    Print this help documentation.
+    -s    Sync only.
+    -u    Update only.
+    -b    Update with bdeps
+    -a    Sync, Update, with bdeps
+EOF
+
+function info () {
+    echo -e '\033k'$1'\033\\'
+    printf "  [ \033[00;34m..\033[0m ] $1"
+}
+
+function user () {
+    printf "\r  [ \033[0;33m?\033[0m ] $1 "
+}
+
+function success () {
+    printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+function fail () {
+    printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+    echo ''
+    exit 1
+}
+
+function emerge-sync() {
+    info "Syncing portage tree...\n"
+    sudo emerge --sync || fail "Couldn't sync portage tree"
+    success "Synced portage tree"
+    info "Syncing overlays...\n"
+    sudo layman -S || fail "Couldn't sync overlays"
+    success "Synced overlays"
+    info "Syncing eix cache...\n"
+    eix-update || fail "Couldn't sync eix cache"
+    success "Synced eix cache"
+}
+
+function update-world() {
+    info "Updating system...\n"
+    sudo emerge -auDN world $@ || fail "Didn't update system"
+    success "Updates complete"
+}
+
+function update-world-with-bdeps() {
+    info "Updating system...\n"
+    sudo emerge -auDN world --with-bdeps=y || fail "Didn't update system"
+    success "Updates complete"
+}
+
+while getopts ":hsuba" opt; do
+    case $opt in
+        h ) echo "$HELP"
+            exit 0;;
+        s ) emerge-sync
+            exit 0;;
+        u ) update-world --quiet
+            exit 0;;
+        b ) update-world-with-bdeps
+            exit 0;;
+        a ) emerge-sync
+            update-world-with-bdeps
+            exit 0;;
+        ? ) echo "Invalid option -${OPTARG}..."
+            echo "$HELP"
+            exit 0;;
+    esac
+done
+shift $(($OPTIND - 1))
+
+emerge-sync
+update-world --quiet
+exit 0

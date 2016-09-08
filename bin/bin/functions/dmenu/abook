@@ -1,0 +1,104 @@
+# jcpetkovich - 2016 (c) wtfpl
+
+# X11 Dynamic Menu
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ....................................................................... E-mail
+
+# select email contact addresses for insert into sup query
+maildir=${MAILDIR:-$HOME/Maildir}
+cache=$maildir/addressbook
+contacts=$maildir/contacts
+
+# ................................................................... Initialize
+
+# build address list
+# - exclude major lists correspondence
+# - exclude news and announcement items
+# - exclude malformed addresses, unexpected characters
+# - addresses must include "user name" prefix
+# - proper case "user name"
+abook() {
+  time=15 notify low 'Updating dmenu addressbook cache' 'Please be patient..'
+
+  mu cfind --format=csv \
+      | grep -Eiv '((hello|info)@)' \
+      | grep -Eiv '(announce|automated|confirm|contact|help|invitations|market|news|notification|promo|reply|review|subscribe|welcome)' \
+      | grep -Eiv '(feedspot|github|via linkedin|yahoogroups)' \
+      | awk -F, '{if($1 == "") {$1="Unknown"} print $1 "^'"$SEP"' " $2}' \
+      | tail -n +2 \
+      | column -s^ -t \
+      | uniq -i >$cache
+
+  notify low 'Update of dmenu addressbook cache' '..Complete'
+}
+
+# command line initialization with: dmenu abook [init]
+if ! [ -s $cache ] || [ "$*" ] ;then
+  abook
+  [ "$*" ] && exit
+fi
+
+# ................................................................. Send-to list
+
+ribbon() {
+  if [ -z "$addresses" ] ;then
+    echo 'E-mail'
+  elif echo $addresses | grep -qv ',' ;then
+    echo "$addresses"
+  else
+    echo "... $(echo ${addresses##*,})"
+  fi
+}
+
+contacts() {
+  cat $contacts | column -s^ -t
+  cat $cache
+}
+
+addresslist() {
+  if [ "$addresses" ] ;then
+    contacts | sed '/^ *$/d' \
+             | sed '1i[ paste        ]\n[ clipboard    ]\n[ add contacts ]'
+  else
+    contacts | sed '/^ *$/d' \
+             | sed '1i[ rebuild database ]\n[ edit contacts    ]'
+  fi
+}
+
+# ................................................................. Address book
+ 
+while :
+do
+  address=$(addresslist | dmenu "$(ribbon)" -no-custom) || exit
+  address=${address#*$SEP }
+
+  echo $address
+
+  case "$address" in
+    '[ rebuild database ]') abook
+                            unset addresses ;;
+
+    '[ edit contacts    ]') gvim -f $contacts ;;
+
+    '[ paste        ]') gpaste-client add "$addresses"
+                        xdotool type "$addresses"
+                        break ;;
+
+    '[ clipboard    ]') gpaste-client add "$addresses"
+                        time=10 notify 'Ctrl-Alt-V' "$(echo $addresses | sed 's/ <\S*>//g')"
+                        break ;;
+
+    '[ add contacts ]') if [ "$addresses" ] ;then
+                          desc=$(echo | dmenu 'Description') || continue
+                          [ $desc ] || desc='Contacts'
+                          echo "\n$desc :: $addresses" >>$contacts
+                          unset addresses
+                          e $contacts
+                        fi ;;
+
+    *) [ "$addresses" ] && addresses=$addresses,$address || addresses=$address ;;
+  esac
+done
+
+# vim: set ft=sh: #

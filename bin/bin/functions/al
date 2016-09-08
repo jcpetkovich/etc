@@ -1,0 +1,12 @@
+#!/usr/bin/env dash
+# sdothum - 2016 (c) wtfpl
+
+# Shell
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ....................................................................... Search
+
+# fix for ack -l limitation with escaped regex
+a --nocolor "$@" | cut -d: -f1 | uniq
+
+# vim: set ft=sh: #

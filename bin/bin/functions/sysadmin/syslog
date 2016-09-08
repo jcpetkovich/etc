@@ -1,0 +1,12 @@
+#!/usr/bin/env dash
+# sdothum - 2016 (c) wtfpl
+
+# Sysadmin
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ...................................................................... Systemd
+
+# systemd journal
+[ "$*" ] && sudo journalctl -b | ack "$@" | less -MRX || sudo journalctl -b
+
+# vim: set ft=sh: #

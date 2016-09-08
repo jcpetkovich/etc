@@ -1,0 +1,13 @@
+#!/usr/bin/env dash
+
+where=$(echo home out \
+               | tr ' ' '\n' \
+               | dmenu 'Resolvconf' -no-custom)
+
+if [ $where = "home" ]; then
+		echo "nameserver $HOME_SERVER" | sudo -A tee /etc/resolv.conf.head > /dev/null
+		sudo -A wpa_cli reconfigure
+else
+		echo "" | sudo -A tee /etc/resolv.conf.head > /dev/null
+		sudo -A wpa_cli reconfigure
+fi

@@ -1,0 +1,15 @@
+#!/usr/bin/env dash
+# sdothum - 2016 (c) wtfpl
+
+# Log
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ...................................................................... Heading
+
+# mark content division
+echo
+drawline '─'
+heading '━' $@
+drawline '─'
+
+# vim: set ft=sh: #

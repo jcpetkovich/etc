@@ -1,0 +1,25 @@
+#!/usr/bin/env dash
+# sdothum - 2016 (c) wtfpl
+
+# Sysadmin
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ..................................................................... Man page
+
+xsel=/tmp/manpage:xsel
+
+# man page wrapper
+# xsel -o stack is unavailable to dmenu man, use tmp storage instead
+rm -f $xsel
+xsel -c
+man $@
+
+# we need an additional heuristic to test if the selection has changed.
+# Basically if the primary selection differs from the clipboard, then we
+# probably selected something. This is necessary since a lot of programs sync
+# the clipboard and the primary selection (i.e., emacs) so we can't rely on it
+# staying empty.
+is selection active && xsel -o >$xsel
+[ -s $xsel ] || rm -f $xsel
+
+# vim: set ft=sh: #
