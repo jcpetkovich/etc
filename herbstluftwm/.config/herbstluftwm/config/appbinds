@@ -28,3 +28,5 @@ hc keybind $Mod-Control-w spawn dmenu movies
 hc keybind $Mod-Shift-w spawn dmenu moviesa
 hc keybind $Mod-Control-u spawn dmenu screensaver
 hc keybind $Mod-Shift-v spawn dmenu shistory
+hc keybind $Mod-equal spawn volumeup
+hc keybind $Mod-minus spawn volumedown

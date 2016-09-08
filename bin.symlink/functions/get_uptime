@@ -1,2 +1,0 @@
-#!/bin/bash
-uptime | awk '{print $2,$3, $4}'

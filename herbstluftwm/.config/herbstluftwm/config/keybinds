@@ -69,7 +69,7 @@ hc keybind $Mod-p pseudotile toggle
 # I.e. if there are two windows within a frame, the grid layout is skipped.
 hc keybind $Mod-space                                                           \
             or , and . compare tags.focus.curframe_wcount = 2                   \
-                     . cycle_layout +1 vertical horizontal max vertical grid    \
+                     . cycle_layout +1 vertical horizontal max grid    \
                , cycle_layout +1
 
 # mouse

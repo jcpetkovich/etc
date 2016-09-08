@@ -1,5 +1,0 @@
-#!/usr/bin/env dash
-
-export PYTHON=/usr/bin/python2
-
-atom $@

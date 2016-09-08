@@ -1,8 +1,0 @@
-#!/bin/bash
-#
-# Dump m4a to wav (first step in conversion)
-
-for i in *.m4a
-do
-    mplayer -ao pcm "$i" -ao pcm:file="$i.wav"
-done

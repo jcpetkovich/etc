@@ -1,2 +1,0 @@
-#!/usr/bin/env dash
-amixer set Master 5%- -q

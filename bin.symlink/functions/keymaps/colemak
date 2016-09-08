@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# Basic colemak keyboard setup.
-
-setxkbmap us -variant colemak
-
-xmodmap -e 'keycode 66 = Super_L Super_L Super_L Super_L Super_L Super_L Super_L'
-
-

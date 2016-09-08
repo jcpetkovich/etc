@@ -189,6 +189,9 @@ if test -d ~/mail
 	set -xg MAILDIR ~/mail
 end
 
+if hlwm
+  set -xg fish_user_paths "~/.config/herbstluftwm/bin"
+
 # Finish setting up MANPATH
 
 set -xg MANPATH ":"$MANPATH

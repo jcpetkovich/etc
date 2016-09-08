@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-# This is stupid
-if [[ $1 == "--csv" ]]; then
-    shift
-    ssh mini "cd /var/www/localhost/wsgi/eval-lab/master; echo \" COPY ( $@ ) TO STDOUT  WITH CSV HEADER \" | ./manage.py dbshell "
-else
-    ssh mini "cd /var/www/localhost/wsgi/eval-lab/master; echo \" $@ \" | ./manage.py dbshell "
-fi
