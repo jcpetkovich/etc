@@ -1,0 +1,138 @@
+# sdothum - 2016 (c) wtfpl
+[ $TRACE ] && CHILD="restore/layout $@" . $PARENT
+
+# herbstluftwm
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ............................................................... Restore layout
+
+# Usage: restore layout [ tags | grid | horizontal | max | vertical | 1:1 | 1:2 | 3:3:3 ]
+
+
+# default master pane left or right
+master=left
+
+# initial desktop layouts
+layout() {
+  load=true
+  if is display =2560 ;then
+    case $1 in
+      1) even       '1' ;;
+      2) max        '2' ;;
+      3) even       '3' ;;
+      4) even       '4' ;;
+      5) horizontal '5' ;;
+      6) even       '6' ;;
+    esac
+  elif is display =3440 ;then
+    case $1 in
+      1) thirds     '1' ;;
+      2) max        '2' ;;
+      3) thirds     '3' ;;
+      4) thirds     '4' ;;
+      5) uneven     '5' ;;
+      6) thirds     '6' ;;
+    esac
+  else
+    herbstclient load "$1" '(clients vertical:0)'
+  fi
+}
+
+# grid, horizontal, max and vertical explode frame windows..
+grid() {
+  herbstclient load "$1" '(clients grid:0)'
+}
+
+horizontal() {
+  herbstclient load "$1" '(clients horizontal:0)'
+}
+
+max() {
+  herbstclient load "$1" '(clients max:0)'
+}
+
+vertical() {
+  herbstclient load "$1" '(clients vertical:0)'
+}
+
+split() {
+  herbstclient chain . set_layout horizontal . split explode $1 \
+                     . focus_edge left . cycle_layout 1 vertical \
+                     . shift right . cycle_layout 1 vertical
+}
+
+# otherwise, manually explode frame windows
+halves() {
+  if [ "$load" ] ;then
+    herbstclient load "$1" '(split horizontal:0.500000:0 (clients vertical:0) (clients vertical:0))'
+  else
+    restore mono
+    split 0.5
+  fi
+}
+
+onethird() {
+  if [ "$load" ] || herbstclient compare tags.focus.client_count lt 3 ;then
+    herbstclient load "$1" '(split horizontal:0.333300:0 (clients vertical:0) (clients vertical:0))'
+  else
+    restore mono
+    [ $master = left ] && split 0.3333 || split 0.6666
+  fi
+}
+
+thirds() {
+  if [ "$load" ] || herbstclient compare tags.focus.client_count lt 3 ;then
+    herbstclient load "$1" '(split horizontal:0.333300:0 (clients vertical:0) (split horizontal:0.500000:0 (clients vertical:0) (clients vertical:0)))'
+  else
+    restore mono
+    if [ $master = left ] ;then
+      # master window on left
+      herbstclient chain . set_layout horizontal . split explode 0.6666 \
+                         . focus_edge right . cycle_layout 1 vertical \
+                         . focus_edge left . split explode 0.5 \
+                         . focus_edge left . cycle_layout 1 vertical \
+                         . shift right . cycle_layout 1 vertical
+      # fudge to populate empty frame
+      herbstclient compare tags.focus.client_count = 4 && herbstclient shift left
+    else
+      # master window on right
+      herbstclient chain . set_layout horizontal . split explode 0.3333 \
+                         . focus_edge left . cycle_layout 1 vertical \
+                         . focus_edge right . split explode 0.5 \
+                         . focus_edge right . cycle_layout 1 vertical \
+                         . shift left . cycle_layout 1 vertical
+      # fudge to populate empty frame
+      herbstclient compare tags.focus.client_count = 4 && herbstclient shift right
+    fi
+  fi
+}
+
+case "$1" in
+  tags) for i in $TAGS
+        do
+          layout $i
+        done ;;
+
+  grid |\
+  horizontal |\
+  max |\
+  vertical |\
+  1:1 |\
+  1:2 |\
+  3:3:3) layout=$1
+         case $layout in
+           1:1)   layout=halves ;;
+           1:2)   layout=onethird ;;
+           3:3:3) layout=thirds ;;
+         esac
+         herbstclient lock
+         $layout $TAG
+         herbstclient unlock ;;
+
+  *) layout=$(echo "grid\nhorizontal\nmax\nvertical\n1:1\n1:2\n3:3:3" | dmenu 'Explode to Layout' -no-custom) || exit
+     restore windowed
+     restore layout $layout
+     herbstclient compare tags.focus.client_count gt 1 && ! [ $layout = max ] && focus borders ;;
+esac
+
+# vim: set ft=sh: #

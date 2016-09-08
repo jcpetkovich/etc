@@ -1,0 +1,51 @@
+# sdothum - 2016 (c) wtfpl
+[ $TRACE ] && CHILD="restore/hidden $@" . $PARENT
+
+# herbstluftwm
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ........................................................ Unhide hidden windows
+
+title=" to $(query tname $TAG)"
+
+count=$(query ttag $TAG)
+if [ $count -gt 0 ] ;then
+  # list of hidden windows
+  for i in $(query winids)
+  do
+    if herbstclient compare clients.$i.tag = "'$TAG" ;then
+      window="$(query wtitle $i):$i"
+      [ "$hidden" ] && hidden="$hidden\n$window" \
+                    || hidden="$window"
+    fi
+  done
+
+  if [ $count -gt 1 ] ;then
+    window=$(echo $hidden \
+           | sort \
+           | cut -d: -f1 \
+           | column -s\^ -t \
+           | sed '1i[ all  ]\n[ last ]' \
+           | dmenu "Raise Window$title" -no-custom) || exit
+  else
+    window=$(echo $hidden | cut -d: -f1 | column -s\^ -t | dmenu "Raise Window$title" -no-custom)
+  fi
+
+  if [ "$window" ] ;then
+    case $window in
+      '[ all  ]') exec restore windows ;;
+      '[ last ]') exec restore window ;;
+
+      *) # look out for square brackets in window title e.g. url page titles
+         # restore ^$SEP, see query wtitle
+         winid=$(echo $hidden | grep "$(echo $window | sed -re 's/([[])/\\\1/g' -e 's/([]])/\\\1/g' -e "s/ *($SEP)/^\1/")" | cut -d: -f2)
+         touch $LOCK
+         herbstclient chain . lock . use $TAG
+         focus frame
+         herbstclient chain . bring $winid . unlock
+         rm -f $LOCK ;;
+    esac
+  fi
+fi
+
+# vim: set ft=sh: #

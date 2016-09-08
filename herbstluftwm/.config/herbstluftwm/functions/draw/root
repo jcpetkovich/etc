@@ -1,0 +1,228 @@
+# sdothum - 2016 (c) wtfpl
+[ $TRACE ] && CHILD="draw/root $@" . $PARENT
+
+# herbstluftwm
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# .............................................................. Draw background
+
+# Usage: draw root [ blank [<color>] | restore | save ]
+# Usage: draw root [ select | shuffle | toggle | wallpaper ]
+#        draw root, refresh background if necessary, shuffling if set
+#        draw root blank, draw random background color
+#        draw root restore, restore background color
+#        draw root save, save background color
+#        draw root select, select default background and disable shuffling
+#        draw root shuffle, enable random background shuffling
+#        draw root toggle, toggle background blur mode
+#        draw root wallpaper, draw background
+
+arm && exit
+
+setroot=$ROOT/herbstluftwm:setroot
+shuffle=$ROOT/herbstluftwm:shuffle
+noblur=$ROOT/herbstluftwm:noblur
+theme=$ROOT/herbstluftwm:theme
+root=$HOME/.setroot
+
+# blur radius, brightness (to slightly darken and enhance transparency)
+blur=50
+brighten=-0.025
+# modulo of random number for random desktop wallpaper
+modulo=3
+# color swatch size to create
+size=180x180
+
+[ -e $setroot ] || echo '0: :0: ' >$setroot
+
+# linked file reference
+exists() {
+  if lname $1 >/dev/null ;then
+    [ -e $(lname $1) ]
+  else
+   return 1 
+  fi
+}
+
+# ..................................................................... Map blur
+
+if [ "$1" = 'toggle' ] ;then
+  [ -e $noblur ] && rm -f $noblur || touch $noblur
+fi
+
+# occupied or empty desktop, setroot record structure:
+# 1: occupied (blurred image)
+# 0: empty (raw image)
+root() {
+  if ! [ -e $noblur ] && is nonempty $(herbstclient attr monitors.$1.tag) ;then
+    echo "1: --on $1 --blur $blur --brighten $brighten --zoom $WALLPAPER"
+  else
+    echo "0: --on $1 --zoom $WALLPAPER"
+  fi
+}
+
+setblur() {
+  if ! [ -e $BLANK ] ;then
+    primary=$(root 0)
+    is multihead && secondary=$(root 1)
+  fi
+  echo "${primary}:${secondary}"
+}
+
+# ....................................................... Generate border colors
+
+# create pulsar border color gradient
+set_border() {
+  # echo $1 >$BORDER
+  conky palette $1 \
+        | grep 'color_light_1' \
+        | sed 's/<\/font>/\n/g' \
+        | sed  's/.*<font>//g' \
+        | grep '^#' | cut -d'#' -f2 \
+        | tac >$PULSAR
+  # set border to midtone
+  sed '10q;d' $PULSAR >$BORDER
+  # use tee to append file into itself
+  tac $PULSAR | tee >>$PULSAR
+  # refresh border of active window
+  herbstclient attr theme.active.color "#$(cat $BORDER)"
+}
+
+# ................................................................... Background
+
+background() {
+  ls -l $BACKGROUND | cut -d'>' -f2
+}
+
+blank() {
+  if [ "$*" ] ;then
+    color="$1"
+  else
+    color=$(randcolor)
+  fi
+  echo $color >$BACKGROUND.color
+  setroot --blank-color "#$color" 2>/dev/null
+  background=$(background)
+  if echo $background | grep -q '/dark/' ;then
+    set_border "$(conky theme light $color)"
+  elif echo $background | grep -q '/light/' ;then
+    set_border "$(conky theme dark $color)"
+  else
+    set_border "$(conky theme contrast $color)"
+  fi
+  echo $color >$BLANK
+  rm -f $theme 2>/dev/null
+  # make inactive border invisible!
+  herbstclient attr theme.normal.color "#$color"
+}
+
+color() {
+  # initialize default link
+  [ -L $BACKGROUND ] && exists $BACKGROUND || ln -sf $(find ${BACKGROUND%/default} -name '*.png' | head -1) $BACKGROUND
+}
+
+select_blank() {
+  time=5 notify low 'Root Backgrount' '<Space>  Show next\n<Enter>  Select color'
+  color
+  # to use office/feh and focus, the quoted --action must be escaped and pwait invoked..
+  /usr/bin/feh -B black --scale-down -r \
+               -A "ln -sf %f $BACKGROUND && xdotool type 'q'" \
+               --start-at $(lname $BACKGROUND) $(find ${BACKGROUND%/default}/ -name '*.png')
+  blank $(background | sed -r 's|.*/(.*).png|\1|')
+}
+
+wallpaper() {
+  # initialize default link
+  [ -L $WALLPAPER ] && exists $WALLPAPER || ln -sf $(ls -1 ${WALLPAPER%/default}/$WALL/*.png | head -1) $WALLPAPER
+  rm -f $BLANK
+  rm -f $theme 2>/dev/null
+  herbstclient attr theme.normal.color "$NORMAL"
+}
+
+# set background wallpaper
+select_wallpaper() {
+  time=5 notify low 'Desktop Wallpaper' '<Space>  Show next\n<Enter>  Select image'
+  wallpaper
+  # to use office/feh and focus, the quoted --action must be escaped and pwait invoked..
+  /usr/bin/feh -B black --scale-down -r --start-at $(lname $WALLPAPER) \
+               -A "ln -sf %f $WALLPAPER && xdotool type 'q'" \
+               ${WALLPAPER%/default}/$WALL
+}
+
+shuffle() {
+  ln -sf $(find ${WALLPAPER%/default} -name '*.png' | shuf -n1) $WALLPAPER
+  rm -f $BLANK
+  rm -f $theme 2>/dev/null
+}
+
+# ...................................................................... Setroot
+
+unblur() {
+  # (0) ignore, (1) change of state to unblurred
+  expr $1 '<' $(cut -d: -f$2 $setroot)
+}
+
+# remember current background state for autostart
+case "$1" in
+  blank)   blank $2
+           rm -f $root ;;
+
+  restore) select_blank
+           echo blank >$root ;;
+
+  save) color=$(cat $BACKGROUND.color)
+        convert -size $size xc:"#$color" ${BACKGROUND%/default}/$color.png
+        notify low 'Background Color' "$color saved" ;;
+
+  select) rm -f $shuffle 2>/dev/null
+          select_wallpaper
+          echo wallpaper >$root ;;
+
+  shuffle) touch $shuffle
+           shuffle
+           echo wallpaper >$root ;;
+
+  wallpaper) wallpaper ;;
+
+  *) [ "$(setblur)" = "$(cat $setroot)" ] && exit
+     # echo "= setblur -> $(setblur)\n= setroot -> $(cat $setroot)" >>$TRACE
+     # random background selection on un-blur change of state
+     if [ -e $shuffle ] ;then
+       if [ $(unblur ${primary%%:*} 1) ] || [ $(unblur ${secondary%%:*} 3) ] ;then
+         # increase modulo to reduce frequency of shuffle
+         one_in $modulo && shuffle
+       fi
+     fi ;;
+esac
+
+# ........................................................................ Theme
+
+setblur >$setroot
+# must bracket eval &
+[ -e $BLANK ] || eval setroot ${primary#?:} ${secondary#?:} &
+
+# apply conky theme to .conkyrc, $theme unset above if new background
+if ! [ -e $BLANK ] ;then
+  [ -e $theme ] && exit
+  background=$(query theme)
+  # load theme or generate a theme from the border colour
+  if [ -e "$background" ] ;then
+    colours=$(cat "$background")
+    [ $(echo "$colours" | wc -w) -eq 8 ] && conky theme colours $colours \
+                                         || conky theme scheme $colours
+  else
+    term 'Theme' STACK SHELL walltheme
+    pwait walltheme
+  fi
+  set_border $(conky palette $(awk '{ print $1 }' $background) \
+             | grep 'Triadic Color' \
+             | head -1 \
+             | cut -d/ -f10)
+  echo $colours >$theme
+fi
+
+# restart panels with new theme
+pkill -TERM -f 'draw panel'
+restore panel
+
+# vim: set ft=sh: #

@@ -1,0 +1,21 @@
+# sdothum - 2016 (c) wtfpl
+# [ $TRACE ] && CHILD="query/pheight $@" . $PARENT
+
+# herbstluftwm
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ................................................................. Panel height
+
+# Usage: query pheight [primary | secondary]
+
+# heights
+primary=20
+secondary=18
+
+case "$1" in
+  primary)   echo $primary ;;
+  secondary) echo $secondary ;;
+  *)         is display =3440 && echo 20 || echo 18 ;;
+esac
+
+# vim: set ft=sh: #sdothum
