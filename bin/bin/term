@@ -44,14 +44,13 @@ do
 		MAX) # name='-name max'
 				 shift ;;
 
-		FONTSIZE) fn="-f"
-							folo="$FONT:size=$2"
+		FONTSIZE) fn="-f '$FONT:size=$2'"
 							shift 2 ;;
 
 		FORTUNE) # touch /tmp/term:fortune
 						 shift ;;
 
-		STACK) # stack=true
+		STACK) stack=true
 					 shift ;;
 
 		TABBED) tabbed='-pe tabbed'
@@ -99,10 +98,10 @@ if ! [ -z "$atdir" ]; then
 		cd "$atdir"
 fi
 
-if ! [ -z "$fn" ]; then
-		eval "$TERM $title $name $geometry $fn "$folo" $cmd"
+if [ $stack ] ;then
+		eval "$TERM $title $name $geometry $fn $cmd"
 else
-		eval "$TERM $title $name $geometry $cmd"
+		eval "focus $TERM $title $name $geometry $fn $cmd"
 fi
 
 # wait for process to complete
