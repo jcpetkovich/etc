@@ -1,4 +1,4 @@
-#!/usr/bin/dash
+#!/usr/bin/env dash
 # sdothum - 2016 (c) wtfpl
 # [ $TRACE ] && CHILD="query $@" . $PARENT
 
