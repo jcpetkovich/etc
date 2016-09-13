@@ -11,6 +11,7 @@ title=$(xdotool getactivewindow getwindowname)
 paths=$(echo "$title" | tr '[](){}<>"'"'"':' ' ')
 
 for p in $paths; do
+    p=$(echo $p | sed "s|~|$HOME|")
     if [ -d "$p" ]; then
         echo $p
         exit 0
