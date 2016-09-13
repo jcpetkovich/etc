@@ -1,0 +1,15 @@
+# jcpetkovich - 2016 (c) wtfpl
+
+# export BACKGROUND=$HOME/images/colors/default
+# export BLANK=$ROOT/herbstluftwm:blank
+# export BORDER=$ROOT/herbstluftwm:border
+# export COMPTON=$ROOT/herbstluftwm:compton
+# export CONKY=$ROOT/herbstluftwm:conky
+export DYNAMIC=$ROOT/herbstluftwm:dynamic
+export FOCUS=$ROOT/herbstluftwm:focus
+# export FULLSCREEN=$ROOT/herbstluftwm:fullscreen
+export LOCK=$ROOT/herbstluftwm:lock
+export MONOCLE=$ROOT/herbstluftwm:monocle
+export PANEL=$ROOT/herbstluftwm:panel
+export PULSAR=$ROOT/herbstluftwm:pulsar
+# export WALLPAPER=$HOME/images/backgrounds/default
