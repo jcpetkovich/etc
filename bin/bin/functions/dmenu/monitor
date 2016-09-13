@@ -11,6 +11,8 @@ monitors="htop \
           mtr \
           nethogs \
           xrestop \
+          powertop \
+          i7z \
 "
 
 interface() {
@@ -23,6 +25,8 @@ do
     iftop)   term "$monitor" $monitor $(interface) ;;
     iotop)   term "$monitor" sudo -A $monitor ;;
     nethogs) term "$monitor" sudo -A $monitor $(interface) ;;
+    powertop) term "$monitor" sudo -A $monitor ;;
+    i7z) term "$monitor" sudo -A $monitor ;;
     *)       term "$monitor" $monitor ;;
   esac
   exit
