@@ -7,14 +7,9 @@
 
 alias ls='ls --color=auto'
 alias sl='ls'
-alias clr='clear'
 alias grep='grep --colour=auto'
-alias mocp='mocp -T transparent-background'
-alias mscreen='echo "Try mmux instead"'
-alias mmux='tmuxifier s main'
 alias zsnes='aoss32 zsnes'
 alias E='sudo -e'
-alias m='tmuxifier'
 alias ssh='env TERM=xterm-256color ssh'      # TERM=xterm since most things misinterpret st
 alias x='extract'
 alias r='R'
@@ -22,8 +17,3 @@ alias py='jupyter console'
 if which netcat > /dev/null 2>&1
 	alias nc='netcat'
 end
-
-# Additional git aliases
-alias grp='git rev-parse --short HEAD'
-alias glp='git log --graph --decorate --all'
-alias gst='git status'
