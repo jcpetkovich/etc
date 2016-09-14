@@ -17,9 +17,10 @@ if begin; status -l; and test $SHLVL -eq 1; end
 	# setup ENV
 	source ~/.config/fish/configs/ENV
 
-	# load keybindings
-	source ~/.config/fish/configs/keybinds
 end
+
+# load keybindings
+source ~/.config/fish/configs/keybinds
 
 # load aliases
 source ~/.config/fish/configs/alias
