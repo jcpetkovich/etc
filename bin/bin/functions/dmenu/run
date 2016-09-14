@@ -15,7 +15,7 @@ unset IFS
 # no text prompt message (unique to run vs other menu functions)
 cmd=$(cat "$cache" | history run | dmenu '' -no-custom) || exit
 history run "$cmd"
-$cmd $@ &
+focus $cmd
 
 
 # vim: set ft=sh: #
