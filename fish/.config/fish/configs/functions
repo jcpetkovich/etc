@@ -1,0 +1,59 @@
+# jcpetkovich - 2016 (c) wtfpl
+
+# Fish
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# .................................................................... functions
+
+function fish_env_update -d 'horrible hack to load bash environment variables from file.'
+				egrep "^export" /etc/profile.env | \
+				while read e
+								set var (echo $e | sed -E "s/^export ([A-Z_]+)=(.*)\$/\1/")
+								set value (echo $e | sed -E "s/^export ([A-Z_]+)=(.*)\$/\2/")
+								# remove surrounding quotes if existing
+								set value (echo $value | sed -E "s/^\"(.*)\"\$/\1/")
+								if test $var = "PATH"
+												set value (echo $value | sed -E "s/^'(.*)'\$/\1/")
+												set value (echo $value | sed -E "s/:/ /g")
+												# use eval because we need to expand the value
+												eval "set value $value"
+												# echo "Count of value: "(count $value)
+												for val in $value
+																# echo "set -xg fish_user_paths $val"
+																set -xg fish_user_paths $val $fish_user_paths
+																# echo "$PATH"
+												end
+												continue
+								else if test $var = "MANPATH"
+												# echo "set -xg MANPATH $value"
+												eval "set -xg MANPATH $value"
+												continue
+								end
+								# evaluate variables. we can use eval because we most likely just used "$var"
+								set value (eval echo $value)
+								# echo "set -xg '$var' '$value' (via '$e')"
+								set -xg $var $value
+				end
+end
+
+function varclear -d 'Remove duplicates from an environment variable'
+	if test (count $argv) = 1
+		set -l newvar
+		set -l dupcount 0
+
+		for v in $$argv
+			if contains -- $v $newvar
+				set dupcount (math $dupcount + 1)
+			else
+				set newvar $newvar $v
+			end
+		end
+		set $argv $newvar
+		test $dupcount -gt 0
+		and echo Removed $dupcount duplicates from $argv
+	else
+		for a in $argv
+			varclear $a
+		end
+	end
+end

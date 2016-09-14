@@ -1,0 +1,23 @@
+# jcpetkovich - 2016 (c) wtfpl
+
+# Fish
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ......................................................................... Fasd
+
+if which fasd > /dev/null 2>&1
+				function -e fish_preexec _run_fasd
+								fasd --proc (fasd --sanitize $argv) > "/dev/null" 2>&1
+				end
+
+				function j
+								cd (fasd -e 'printf %s' "$argv")
+				end
+else
+				echo "
+				You should install fasd:
+
+				cd ~/etc/zsh/fasd
+				PREFIX=~/.local make install
+				"
+end
