@@ -1,6 +1,6 @@
 [general]
 accounts = main, work
-pythonfile = ~/etc/offlineimap/offlineimap.py
+pythonfile = ~/.offlineimap/offlineimap.py
 ui = quiet
 
 [Account main]

@@ -5,7 +5,7 @@
 	path = tmux/tmuxifier
 	url = https://github.com/jimeh/tmuxifier.git
 [submodule "zsh/fasd"]
-	path = fasd
+	path = _fasd
 	url = https://github.com/clvv/fasd.git
 [submodule "plumbing/req"]
 	path = _plumbing/req
