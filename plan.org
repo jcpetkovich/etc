@@ -1,0 +1,111 @@
+* path openers
+- [X] browser
+- [X] e (edit)
+- [X] o (xdg-open wrapper)
+- [X] xdg-open (xdg-open for everything)
+- [X] term
+- [ ] play (media?)
+* dotfiles management
+stow
+* scripts
+- [X] abook (mu cfind)
+- [X] alarm
+- [X] bookmarks /home/jcp/.mozilla/firefox/s4ywanaf.default/places.sqlite sqlite "select url from moz_bookmarks b, moz_places p where b.fk  = p.id;"
+- [ ] browser
+- [ ] calc  (emacs?)
+- [X] clipboard  (gpaste)
+- [ ] code
+- [ ] compose (emacs)
+- [ ] configs
+- [X] dict
+- [ ] ebooks (calibre)
+- [ ] edit (use in emacs, duh)
+- [ ] files (use emacs as browser)
+- [ ] folders (this is pretty good, but use emacs as browser)
+- [ ] halt (keep it, nifty)
+- [ ] history (keep)
+- [ ] journals (merge with logs?)
+- [ ] logs (logs yo)
+- [X] manpages (sweet)
+- [ ] menu (menu menu)
+- [X] monitor (nice)
+- [ ] movies (nice)
+- [ ] music (yup)
+- [ ] pacnews (nope)
+- [X] pass (yup yup)
+- [ ] radio
+- [ ] references
+- [X] run
+- [ ] screensaver
+- [ ] scripts
+- [ ] series
+- [ ] systemd
+- [ ] thesaurus
+- [ ] zshelp
+- [ ] zshist
+- [ ] connection-fiddling
+- [ ] packages/updates
+- [ ] hardware
+* subscripts
+ - [ ] !p
+ - [ ] a
+ - [ ] al
+ - [ ] ascii
+ - [ ] console
+ - [ ] convert
+ - [ ] defunct
+ - [ ] dmenu
+ - [ ] escape
+ - [ ] extract
+ - [ ] fh
+ - [ ] get_freemem
+ - [ ] get_freeswap
+ - [ ] get_uptime
+ - [ ] gwc
+ - [ ] h
+ - [ ] hardware
+ - [ ] history
+ - [ ] hlwm
+ - [ ] if-no
+ - [ ] if-opt
+ - [ ] if-yes
+ - [ ] is
+ - [ ] k
+ - [ ] keymaps
+ - [ ] kk
+ - [ ] l
+ - [ ] lname
+ - [ ] log
+ - [ ] luminance
+ - [ ] minitunnel
+ - [ ] one_in
+ - [ ] p
+ - [ ] package
+ - [ ] pwait
+ - [ ] su
+ - [ ] sysadmin
+ - [ ] theme
+ - [ ] tracking
+ - [ ] uri
+ - [ ] usage
+ - [ ] weather
+ - [ ] zh
+ - [ ] zman
+ - [ ] network
+ - [ ] office
+ - [ ] system-update
+ - [ ] system-cleanup
+ - [ ] system-sync
+* ideas
+- [ ] use emacs ranger as file browser
+- [X] use pdftools as pdf viewer
+- [ ] udiskie for automount?
+- [ ] http://subtlepatterns.com/
+* dsl for hlwm
+- [ ] draw
+- [ ] focus
+- [ ] pin
+- [ ] query
+- [ ] restore
+- [ ] switch
+- [ ] toggle

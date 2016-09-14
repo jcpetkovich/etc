@@ -1,13 +1,13 @@
 [submodule "zsh/oh-my-zsh"]
-	path = zsh/oh-my-zsh
+	path = zsh/.oh-my-zsh
 	url = https://github.com/jcpetkovich/oh-my-zsh.git
 [submodule "tmux/tmuxifier"]
 	path = tmux/tmuxifier
 	url = https://github.com/jimeh/tmuxifier.git
 [submodule "zsh/fasd"]
-	path = zsh/fasd
+	path = fasd
 	url = https://github.com/clvv/fasd.git
 [submodule "plumbing/req"]
-	path = plumbing/req
+	path = _plumbing/req
 	url = git@github.com:jcpetkovich/req.git
         ignore = dirty
