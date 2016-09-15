@@ -35,7 +35,7 @@
 -
 -	/* more colors can be added after 255 to use with DefaultXX */
 -	"#cccccc",
-+	"#fdfde7",  /*  8: brblack */ 
++	"#eeeeee",  /*  8: brblack */ 
 +	"#cc0000",  /*  9: brred */ 
 +	"#c6c6c6",  /* 10: brgreen  */  
 +	"#b2b2b2",  /* 11: bryellow  */ 
