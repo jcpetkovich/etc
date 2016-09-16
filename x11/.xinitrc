@@ -21,14 +21,11 @@ export `gnome-keyring-daemon -s`
 # share x11 info
 exportXinfo
 
-# Start statusbar
-dwmstatus &
-
 # start compositing
 compton -b
 
 # start gpaste-client
 pidof gpaste-client >/dev/null || gpaste-client &
 
-# start dwm
+# start x
 exec ck-launch-session herbstluftwm
