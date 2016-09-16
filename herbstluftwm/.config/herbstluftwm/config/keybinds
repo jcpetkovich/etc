@@ -1,3 +1,12 @@
+# -*- mode: sh; sh-shell: dash -*-
+# jcpetkovich - 2016 (c) wtfpl
+
+# Herbstluftwm
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ..................................................................... Keybinds
+
+
 hc keybind $Mod-Shift-q spawn dmenu halt
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close

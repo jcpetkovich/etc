@@ -1,3 +1,4 @@
+# -*- mode: sh; sh-shell: dash -*-
 # jcpetkovich - 2016 (c) wtfpl
 [ $TRACE ] && CHILD="config/theme $@" . $PARENT
 

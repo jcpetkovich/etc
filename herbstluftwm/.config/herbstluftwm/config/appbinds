@@ -1,8 +1,15 @@
+# -*- mode: sh; sh-shell: dash -*-
+# jcpetkovich - 2016 (c) wtfpl
+
+# Herbstluftwm
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ..................................................................... appbinds
+
 hc keybind $Mod-Return spawn term MUX ATDIR
 hc keybind $Mod-e spawn e
 hc keybind $Mod-o spawn dmenu run
 hc keybind $Mod-Control-p spawn dmenu pass
-# hc keybind $Mod-Control-m spawn dmenu monitor
 
 # hc keybind $Mod-Shift-space spawn dmenu sys
 # hc keybind $Mod-space spawn dmenu menu
