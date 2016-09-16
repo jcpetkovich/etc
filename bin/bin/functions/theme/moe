@@ -8,12 +8,8 @@ else
     PATCH=st-0.4.1-moe-dark.patch
 fi
 
-xrdb ~/etc/x11/Xcommon
-xrdb -merge ~/etc/x11/solarized_dark
-xrdb -merge ~/.Xdefaults
-
 # Rebuild st
-pushd ~/etc/st > /dev/null
+pushd ~/etc/_st > /dev/null
 cp config.h.orig config.h
 patch -b -i $PATCH
 sudo cp config.h /etc/portage/savedconfig/x11-terms/st-0.6-r1
