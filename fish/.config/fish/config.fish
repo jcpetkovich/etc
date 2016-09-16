@@ -32,8 +32,18 @@ end
 function fish_mode_prompt
 end
 
+# drop cd completions
+function __fish_complete_previous_dir
+end
+
 # prompt
-powerline-setup
-if not pgrep -f powerline-daemon > /dev/null
-				powerline-daemon
+function fish_prompt
+  set last_status $status
+  set -l red (set_color red)
+  set -l normal (set_color normal)
+  set prompt_color $normal
+  if [ $last_status != 0 ]
+    set prompt_color $red
+  end
+  echo -n -s $prompt_color '¬ ' $normal
 end
