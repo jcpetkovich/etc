@@ -57,3 +57,21 @@ set -xg LESS_TERMCAP_us \e\[04\x3B38\x3B5\x3B146m # begin underline
 # LS_COLORS
 eval (dircolors -c)
 set -xg LS_COLORS $LS_COLORS
+
+# Herbstluftwm
+set -xg SHELL /bin/dash
+set -xg ROOT /tmp
+
+# set -xg  BACKGROUND $HOME/images/colors/default
+# set -xg  BLANK $ROOT/herbstluftwm:blank
+# set -xg  BORDER $ROOT/herbstluftwm:border
+# set -xg  COMPTON $ROOT/herbstluftwm:compton
+# set -xg  CONKY $ROOT/herbstluftwm:conky
+set -xg DYNAMIC $ROOT/herbstluftwm:dynamic
+set -xg FOCUS $ROOT/herbstluftwm:focus
+# set -xg  FULLSCREEN $ROOT/herbstluftwm:fullscreen
+set -xg LOCK $ROOT/herbstluftwm:lock
+set -xg MONOCLE $ROOT/herbstluftwm:monocle
+set -xg PANEL $ROOT/herbstluftwm:panel
+set -xg PULSAR $ROOT/herbstluftwm:pulsar
+# set -xg  WALLPAPER $HOME/images/backgrounds/default
