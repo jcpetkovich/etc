@@ -109,3 +109,5 @@
 - [ ] restore
 - [ ] switch
 - [ ] toggle
+* sh mode
+- [ ] shell header snippet adjust dots
