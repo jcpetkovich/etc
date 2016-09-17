@@ -14,7 +14,7 @@ stations=$HOME/bin/functions/dmenu/.config/radio
 delay=0.5
 
 playlist() {
-  if [ -e $radio ] ;then
+  if [ -e "$radio" ] ;then
     cat $stations | sed '1i[ toggle ]\n[ clear ]\n[ edit ]'
   else
     cat $stations | sed '1i[ edit stations ]'
@@ -27,7 +27,7 @@ stop() {
 }
 
 station() {
-  [ -e $radio ] && cat $radio || echo 'Radio'
+  [ -e "$radio" ] && cat $radio || echo 'Radio'
 }
 
 url() {

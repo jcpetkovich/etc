@@ -13,7 +13,7 @@ usage() {
 
 # unset for direct printing, set for proofing and latex debugging
 # proof=true
-[ -e $HOME/.proof ] && proof=true
+[ -e "$HOME/.proof" ] && proof=true
 [ $proof ] && proof=/tmp/pr.proof
 dotdot=/tmp/dotdot
 

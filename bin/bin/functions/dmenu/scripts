@@ -1,3 +1,4 @@
+# -*- mode: sh; sh-shell: dash -*-
 # sdothum - 2016 (c) wtfpl
 
 # X11 Dynamic Menu
@@ -23,11 +24,11 @@ file=$(echo $(find -L $HOME/bin -type f) \
 history scripts "$(echo $file | sed "s/ *$SEP/^$SEP/")"
 file=$(echo $file | sed -r "s|([^ ]*)  *$SEP  *([^ ]*)|\2/\1|")
 
-if [ -e $HOME/$file ] ;then
+if [ -e "$HOME/$file" ] ;then
   eval v $HOME/$file
-elif [ -e $HOME/build/$file ] ;then
+elif [ -e "$HOME/build/$file" ] ;then
   eval v $HOME/build/$file
-elif [ -e $HOME/.config/$file ] ;then
+elif [ -e "$HOME/.config/$file" ] ;then
   eval v $HOME/.config/$file
 fi
 

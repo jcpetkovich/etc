@@ -13,10 +13,10 @@ if [ $1. = -f. ] ;then
 else
   file=$1
 fi
-[ -e $file.original ] && exit 1
+[ -e "$file.original" ] && exit 1
 
 # save distribution original
-if [ -e $file ] ;then
+if [ -e "$file" ] ;then
   echo ".. copying $(sudo cp -pRv "$file" "$file.original")"
   exit 0
 fi

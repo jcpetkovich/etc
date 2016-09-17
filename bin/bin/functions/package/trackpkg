@@ -13,7 +13,7 @@
 #        list current versions if no <package> given
 
 conf=$HOME/.trackpkg
-[ -e $conf ] || touch $conf
+[ -e "$conf" ] || touch $conf
 which pacaur >/dev/null 2>&1 && pacaur=pacaur || pacaur=yaourt
 
 add_pkg() {

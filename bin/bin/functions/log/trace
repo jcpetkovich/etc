@@ -24,7 +24,7 @@ if [ -z "$*" ] ;then
 elif echo $1 | grep -q '^[0-9]$' ;then
   if [ $# -eq 1 ] ;then
     export tracelevel=$@
-    [ -e $HOME/.tracelevel ] && echo $@ >$HOME/.tracelevel
+    [ -e "$HOME/.tracelevel" ] && echo $@ >$HOME/.tracelevel
     trace
     exit
   fi

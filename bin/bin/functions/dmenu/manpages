@@ -22,7 +22,7 @@ rm -f $xsel
 while :
 do
   # highlighted lookup
-  if [ -e $xsel ] ;then
+  if [ -e "$xsel" ] ;then
     man=$(highlight)
     if [ $(echo "$man" | wc -w) -ne 1 ] ;then
       unset man
@@ -67,7 +67,7 @@ do
       # subsequent manpages open on same frame
       stack=STACK
       # highlighted man page entry?
-      [ -e $xsel ] && break
+      [ -e "$xsel" ] && break
     fi
     [ $singleton ] && exit
   done

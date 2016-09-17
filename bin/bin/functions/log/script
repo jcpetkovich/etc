@@ -17,7 +17,7 @@ __script() {
 }
 
 # capture automated install script output
-if [ -e $typescript ] ;then
+if [ -e "$typescript" ] ;then
   if-no 'create fresh typescript log' || __script
 fi
 
