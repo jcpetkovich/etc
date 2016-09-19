@@ -12,6 +12,13 @@
 # fill=true
 unset fill
 
+wcount=$(herbstclient attr tags.by-name.$TAG.client_count)
+fcount=$(query fcount $TAG)
+
+if [ "$fcount" -eq 1 ] && [ "$wcount" -eq 1 ]; then
+    herbstclient split horiz 0.5
+fi
+
 touch $LOCK
 herbstclient lock
 # do not overlay a window over a fullscreen window, revert to normal view first!
