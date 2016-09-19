@@ -1,5 +1,6 @@
+# -*- mode: sh; sh-shell: dash -*-
 # sdothum - 2016 (c) wtfpl
-[ $TRACE ] && CHILD="switch/tag $@" . $PARENT
+# [ $TRACE ] && CHILD="switch/tag $@" . $PARENT
 
 # herbstluftwm
 # ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
