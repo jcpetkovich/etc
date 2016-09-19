@@ -27,5 +27,7 @@ compton -b
 # start gpaste-client
 pidof gpaste-client >/dev/null || gpaste-client &
 
+# sxhkd &
+
 # start x
 exec ck-launch-session herbstluftwm

@@ -1,5 +1,110 @@
+# -*- mode: conf -*-
+
 super + Return
-      st
+      term MUX STACK
+
+super + e
+      e
 
 super + shift + r
       pkill -USR1 -x sxhkd
+
+super + o
+  dmenu run
+
+# kinda similar to windows alt-tab functionality
+mod1 + Tab
+    focus.sh next
+mod1 + shift + Tab
+    focus.sh prev
+
+# focus the closest window in a direction
+super + {h,j,k,l}
+    closest.sh {west,south,north,east}
+
+# move window in a direction
+mod1 + shift + {h,j,k,l}
+    move {--left,--down,--up,--right}
+# snap resize window in a direction
+mod4 + {w,a,s,d}
+    sizesnap  {--shrinkup,--shrinkleft,--growdown,--growright}
+
+# snap current window to an edge
+mod4 + {h,j,k,l}
+    snap {--left,--down,--up,--right}
+# snap the window to the corners and middle of screen 2
+mod1 + {g,y,u,b,n}
+    snap {--middle,--topleft,--topright,--bottomleft,--bottomright}
+
+# handy shortcuts to place window in a useful position
+mod1 + {q,w,e,r,a,s,b}
+    position {--left,--quartar,--right,--fuller,--restore,--extend,--bottom}
+# position the current window relatively on new screen
+mod1 + {z,x,c}
+    position {--screen 1,--screen 2,--screen 3}
+
+# fullscreen the current window on current screen
+super + f
+    fullscreen
+# fullscreen the current window on screen two
+mod1 + shift + f
+    fullscreen $(pfw) 2
+
+# add current window to group, useful for both workspaces and groups
+mod1 + shift + {1,2,3,4,5,6,7,8,9,0}
+    windows -a $(pfw) {1,2,3,4,5,6,7,8,9,0}
+
+# recommend settings if workflow is set to 'workspaces'
+mod1 + {1,2,3,4,5,6,7,8,9,0}
+    windows -m {1,2,3,4,5,6,7,8,9,0}
+
+# recommend settings if workflow is set to 'groups'
+mod1 + {1,2,3,4,5,6,7,8,9,0}
+    windows -T {1,2,3,4,5,6,7,8,9,0}
+# clean current window from group
+mod1 + c
+    windows -c $(pfw)
+# reset groups
+mod1 + shift + c
+    windows --reset
+
+# open layout
+# mod2 + {1,2,3,4,5,6,7,8,9,0}
+#     layouts -o {1,2,3,4,5,6,7,8,9,0}
+# save layout to plain text file
+# mod2 + shift + {1,2,3,4,5,6,7,8,9,0}
+#     layouts -s {1,2,3,4,5,6,7,8,9,0}
+
+# allow window to hover other all over windows
+mod1 + p
+    hover
+
+# here's johnny!
+mod1 + shift + q
+    winkill $(pfw)
+
+# handy script to control fyre
+# see sourcefyre.zsh to source fyre functions into your shell
+# mod4 + e
+#     power -l
+mod4 + shift + {q,e,r}
+    power -{p,e,r}
+
+# button1
+#   chwso -r "$(pfw)"
+
+# focus the window underneath the cursor with middle mouse
+button2
+    focus
+# move window underneath cursor
+mod1 + @button1
+    focus; xmmv
+# resize the window underneath the cursor
+mod1 + !button3
+    wrs -a %i %i $(pfw)
+
+# toggle mouse functionality
+mod1 + t
+    mouse --toggle
+
+# vim: set ft=sxhkdrc :
