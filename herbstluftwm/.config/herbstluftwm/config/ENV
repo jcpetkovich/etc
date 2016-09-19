@@ -1,0 +1,51 @@
+# -*- mode: sh; sh-shell: dash -*-
+# Herbstluftwm
+
+export SHELL=/bin/dash
+export STATE_ROOT=/tmp
+
+export  BACKGROUND=$HOME/images/colors/default
+export  BLANK=$STATE_ROOT/herbstluftwm:blank
+export  BORDER=$STATE_ROOT/herbstluftwm:border
+export  COMPTON=$STATE_ROOT/herbstluftwm:compton
+export  CONKY=$STATE_ROOT/herbstluftwm:conky
+export DYNAMIC=$STATE_ROOT/herbstluftwm:dynamic
+export FOCUS=$STATE_ROOT/herbstluftwm:focus
+export  FULLSCREEN=$STATE_ROOT/herbstluftwm:fullscreen
+export LOCK=$STATE_ROOT/herbstluftwm:lock
+export MONOCLE=$STATE_ROOT/herbstluftwm:monocle
+export PANEL=$STATE_ROOT/herbstluftwm:panel
+export PULSAR=$STATE_ROOT/herbstluftwm:pulsar
+export  WALLPAPER=$HOME/images/backgrounds/default
+
+if [ $(hostname) = tellan ]; then
+    export BATT_NOW="/sys/class/power_supply/BAT0/charge_now"
+    export BATT_FULL="/sys/class/power_supply/BAT0/charge_full"
+    export BATT_STATUS="/sys/class/power_supply/BAT0/status"
+fi
+
+export BLACK="#3a3a3a"
+export RED="#ef2929"
+export GREEN="#5faf00"
+export YELLOW="#ffaf5f"
+export BLUE="#729fcf"
+export MAGENTA="#ff4ea3"
+export CYAN="#8cc4ff"
+export WHITE="#ffffd7"
+
+export BEER_GLYPH=""
+export COFFEE_GLYPH=""
+export CPU_GLYPH=""
+export EMAIL_GLYPH=""
+export LINUX_GLYPH=""
+export MUSIC_GLYPH=""
+export WIFI_GLYPH=""
+export ETHER_GLYPH=""
+
+export BAT_CHARGING_GLYPH="<span font=\"Icons\"></span>"
+export BAT_FULL_GLYPH="<span font=\"Icons\"></span>"
+export BAT_70_PERCENT_GLYPH="<span font=\"Icons\"></span>"
+export BAT_30_PERCENT_GLYPH="<span font=\"Icons\"></span>"
+export BAT_EMPTY_GLYPH="<span font=\"Icons\"></span>"
+export AC_POWER_GLYPH="<span font=\"Icons\"></span>"
+export CLOCK_GLYPH="<span font=\"Icons\"></span>"
