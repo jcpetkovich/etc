@@ -7,7 +7,7 @@
 # ..................................................................... appbinds
 
 hc keybind $Mod-Return spawn term MUX ATDIR
-hc keybind $Mod-e spawn e
+hc keybind $Mod-e spawn focus e
 hc keybind $Mod-o spawn dmenu run
 hc keybind $Mod-Control-p spawn dmenu pass
 
