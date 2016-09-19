@@ -17,3 +17,4 @@ alias py='jupyter console'
 if which netcat > /dev/null 2>&1
 	alias nc='netcat'
 end
+alias hc='herbstclient'
