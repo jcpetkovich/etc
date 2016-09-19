@@ -7,7 +7,7 @@
 # ............................................................ Toggle scratchpad
 
 name='Scratchpad'
-scratchpad=$ROOT/herbstluftwm:scratchpad
+scratchpad=$STATE_ROOT/herbstluftwm:scratchpad
 # simple tabbed, tmux or byobu
 term=tmux
 

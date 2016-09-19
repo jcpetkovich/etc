@@ -20,10 +20,10 @@
 
 arm && exit
 
-setroot=$ROOT/herbstluftwm:setroot
-shuffle=$ROOT/herbstluftwm:shuffle
-noblur=$ROOT/herbstluftwm:noblur
-theme=$ROOT/herbstluftwm:theme
+setroot=$STATE_ROOT/herbstluftwm:setroot
+shuffle=$STATE_ROOT/herbstluftwm:shuffle
+noblur=$STATE_ROOT/herbstluftwm:noblur
+theme=$STATE_ROOT/herbstluftwm:theme
 root=$HOME/.setroot
 
 # blur radius, brightness (to slightly darken and enhance transparency)
