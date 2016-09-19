@@ -1,4 +1,4 @@
-#!/usr/bin/dash
+#!/usr/bin/env dash
 # sdothum - 2016 (c) wtfpl
 # [ $TRACE ] && CHILD="switch $@" . $PARENT
 
@@ -8,6 +8,8 @@
 # ............................................................ Switch operations
 
 # Usage: switch <msg>, see functions/switch
+
+. ${0%/switch}/config/ENV
 
 msg=$1
 [ $msg ] && shift || usage $0

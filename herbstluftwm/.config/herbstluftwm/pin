@@ -9,6 +9,8 @@
 
 # Usage: pin <msg>, see functions/pin
 
+. ${0%/pin}/config/ENV
+
 TAG=$(herbstclient attr monitors.focus.tag)
 
 msg=$1

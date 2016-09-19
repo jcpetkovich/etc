@@ -11,6 +11,7 @@
 
 # dmenu functions
 . $HOME/bin/dmenu
+. ${0%/focus}/config/ENV
 
 TAG=$(herbstclient attr monitors.focus.tag)
 

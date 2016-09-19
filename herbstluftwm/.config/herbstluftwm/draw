@@ -1,4 +1,4 @@
-#!/usr/bin/dash
+#!/usr/bin/env dash
 # sdothum - 2016 (c) wtfpl
 # [ $TRACE ] && CHILD="draw $@" . $PARENT
 
@@ -8,6 +8,9 @@
 # .............................................................. Draw operations
 
 # Usage: draw <msg>, see functions/draw
+
+# load theme
+. ${0%/draw}/config/ENV
 
 # um pixel pitch for primary and other monitors used
 # 34"   3440x1440
