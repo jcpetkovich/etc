@@ -1,6 +1,6 @@
 # config.fish - configure fish
 
-source ~/.config/fish/configs/functions
+source ~/.config/fish/config/functions
 
 # Load environment only once and when we are a login shell
 if begin; status -l; and test $SHLVL -eq 1; end
@@ -12,18 +12,18 @@ if begin; status -l; and test $SHLVL -eq 1; end
 	varclear fish_user_paths
 
 	# setup PATH
-	source ~/.config/fish/configs/PATH
+	source ~/.config/fish/config/PATH
 
 	# setup ENV
-	source ~/.config/fish/configs/ENV
+	source ~/.config/fish/config/ENV
 
 end
 
 # load keybindings
-source ~/.config/fish/configs/keybinds
+source ~/.config/fish/config/keybinds
 
 # load aliases
-source ~/.config/fish/configs/alias
+source ~/.config/fish/config/alias
 
 # drop greeting
 function fish_greeting
