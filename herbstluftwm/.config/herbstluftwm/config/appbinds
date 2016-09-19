@@ -37,3 +37,7 @@ hc keybind $Mod-Control-u spawn dmenu screensaver
 hc keybind $Mod-Shift-v spawn dmenu shistory
 hc keybind $Mod-equal spawn volumeup
 hc keybind $Mod-minus spawn volumedown
+hc keybind $Mod-w spawn weather --notify
+
+# status
+hc keybind $Mod-q spawn draw status
