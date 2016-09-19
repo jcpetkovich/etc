@@ -1,9 +1,34 @@
-#!/bin/bash
+#!/usr/bin/env dash
+# jcpetkovich - 2016 (c) wtfpl
 
-if [[ -z $1 ]]; then
-		where=waterloo
+# weather
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ........................................................... what's the weather
+
+STATUS_TIMEOUT=${STATUS_TIMEOUT:-2000}
+
+while :
+do
+    case "$1" in
+        --notify)
+            notify=true
+            shift
+            ;;
+        *)
+            if [ -z "$1" ]; then
+		            where=waterloo
+            else
+		            where="$1"
+            fi
+            break
+            ;;
+    esac
+done
+
+if [ "$notify" = true ]; then
+    weather=$(curl -s wttr.in/"${where}" | head -n 7)
+    notify-send -t $STATUS_TIMEOUT -u low "$(echo "$weather" | sed "s,\x1B\[[0-9;]*[a-zA-Z],,g")" && exit 0
 else
-		where="$1"
+    curl -s wttr.in/"${where}" | head -n 7
 fi
-
-curl -s wttr.in/"${where}" | head -n 7
