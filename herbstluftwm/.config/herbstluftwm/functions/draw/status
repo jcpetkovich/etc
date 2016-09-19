@@ -1,0 +1,37 @@
+# -*- mode: sh; sh-shell: dash -*-
+# jcpetkovich - 2016 (c) wtfpl
+
+# herbstluftwm
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# .................................................................. Draw Status
+
+get_battery() {
+    bnow=$(cat $BATT_NOW)
+    bfull=$(cat $BATT_FULL)
+    bstatus=$(cat $BATT_STATUS)
+
+    batt=$(( 100 * bnow / bfull ))
+
+    if [ "$bstatus" = "Charging" ]; then
+        bglyph="<span color='$YELLOW'>"$BAT_CHARGING_GLYPH"</span>"
+    elif [ "$batt" -ge 75 ]; then
+        bglyph="<span color='$BLUE'>"$BAT_FULL_GLYPH"</span>"
+    elif [ "$batt" -ge 50 ]; then
+        bglyph="<span color='$BLUE'>"$BAT_70_PERCENT_GLYPH"</span>"
+    elif [ "$batt" -ge 15 ]; then
+        bglyph="<span color='$MAGENTA'>"$BAT_30_PERCENT_GLYPH"</span>"
+    else
+        bglyph="<span color='$RED'>"$BAT_EMPTY_GLYPH"</span>"
+    fi
+
+    echo "$bglyph $batt"
+}
+
+get_time() {
+    time=$(date +%H:%M)
+    echo "$CLOCK_GLYPH $time"
+}
+
+notify_string="$(get_battery) $(get_time)"
+notify-send -u low "$notify_string" -t 2000
