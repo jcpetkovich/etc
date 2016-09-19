@@ -88,7 +88,8 @@
  - [ ] tracking
  - [ ] uri
  - [ ] usage
- - [ ] weather
+ - [X] weather
+ - [ ] weather pango colours with ansifilter
  - [ ] zh
  - [ ] zman
  - [ ] network
@@ -101,6 +102,7 @@
 - [X] use pdftools as pdf viewer
 - [ ] udiskie for automount?
 - [ ] http://subtlepatterns.com/
+- [ ] emacs-slack send region as snippet
 * dsl for hlwm
 - [ ] draw
 - [ ] focus
@@ -111,3 +113,10 @@
 - [ ] toggle
 * sh mode
 - [ ] shell header snippet adjust dots
+* requirements
+- [ ] tiling
+- [ ] scriptable
+- [ ] toggleable dynamic tiling mode
+- [ ] window stacking
+- [ ] window hiding
+- [ ] window summoning
