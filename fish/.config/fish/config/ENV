@@ -63,6 +63,9 @@ set -xg LS_COLORS $LS_COLORS
 set -xg PANEL 0
 set -xg GAP 56
 set -xg MASTER 2000
+set -xg BW 0
+set -xg ACTIVE 0xffffff
+set -xg INACTIVE 0x333333
 
 # status
 set -xg STATUS_TIMEOUT 2000
