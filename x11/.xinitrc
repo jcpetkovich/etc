@@ -21,11 +21,17 @@ export `gnome-keyring-daemon -s`
 # share x11 info
 exportXinfo
 
+# load Xresources
+xrdb -merge ~/.Xresources
+
 # start compositing
 compton -b
 
 # start gpaste-client
 pidof gpaste-client >/dev/null || gpaste-client &
+
+# music!
+mpd
 
 # sxhkd &
 
