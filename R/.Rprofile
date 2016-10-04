@@ -1,4 +1,4 @@
-options(width=250)
+options(width=120)
 
 .env <- new.env()
 .env$theme_big <- function() {
