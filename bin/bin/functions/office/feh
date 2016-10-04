@@ -1,5 +1,5 @@
 #!/usr/bin/env dash
-# sdothum - 2016 (c) wtfpl
+# jcpetkovich - 2016 (c) wtfpl
 
 # Office
 # ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
@@ -8,6 +8,6 @@
 
 # --action's most likely need to be quote escaped in calling script
 # focus
-focus /usr/bin/feh -B black --scale-down $@
+focus /usr/bin/feh -B black -Z --scale-down $@
 
 # vim: set ft=sh: #
