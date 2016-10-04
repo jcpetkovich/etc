@@ -1,0 +1,5 @@
+#!/usr/bin/env dash
+
+wid=$(lsw | grep -v $(pfw) | sed '1 p;d')
+chwso -r $wid
+wtf $wid
