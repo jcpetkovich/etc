@@ -25,15 +25,14 @@ source ~/.config/fish/config/keybinds
 # load aliases
 source ~/.config/fish/config/alias
 
+# prep fasd
+source ~/.config/fish/config/fasd
+
 # drop greeting
 function fish_greeting
 end
 
 function fish_mode_prompt
-end
-
-# drop cd completions
-function __fish_complete_previous_dir
 end
 
 # prompt
