@@ -17,6 +17,7 @@ export MONOCLE=$STATE_ROOT/herbstluftwm:monocle
 export PANEL=$STATE_ROOT/herbstluftwm:panel
 export PULSAR=$STATE_ROOT/herbstluftwm:pulsar
 export  WALLPAPER=$HOME/images/backgrounds/default
+export PANEL_FIFO=${PANEL_FIFO:-${PANEL}-fifo}
 
 if [ $(hostname) = tellan ]; then
     export BATT_NOW="/sys/class/power_supply/BAT0/charge_now"
