@@ -13,9 +13,9 @@ super + o
   dmenu run
 
 # kinda similar to windows alt-tab functionality
-mod1 + Tab
+super + Tab
     focus.sh next
-mod1 + shift + Tab
+super + shift + Tab
     focus.sh prev
 
 # focus the closest window in a direction
@@ -45,22 +45,22 @@ mod1 + {z,x,c}
 
 # fullscreen the current window on current screen
 super + f
-    fullscreen
+    fullscreen.sh $(pfw)
 # fullscreen the current window on screen two
 mod1 + shift + f
     fullscreen $(pfw) 2
 
 # add current window to group, useful for both workspaces and groups
-mod1 + shift + {1,2,3,4,5,6,7,8,9,0}
-    windows -a $(pfw) {1,2,3,4,5,6,7,8,9,0}
+# mod1 + shift + {1,2,3,4,5,6,7,8,9,0}
+#     windows -a $(pfw) {1,2,3,4,5,6,7,8,9,0}
 
 # recommend settings if workflow is set to 'workspaces'
-mod1 + {1,2,3,4,5,6,7,8,9,0}
-    windows -m {1,2,3,4,5,6,7,8,9,0}
+# mod1 + {1,2,3,4,5,6,7,8,9,0}
+#     windows -m {1,2,3,4,5,6,7,8,9,0}
 
 # recommend settings if workflow is set to 'groups'
-mod1 + {1,2,3,4,5,6,7,8,9,0}
-    windows -T {1,2,3,4,5,6,7,8,9,0}
+# mod1 + {1,2,3,4,5,6,7,8,9,0}
+#     windows -T {1,2,3,4,5,6,7,8,9,0}
 # clean current window from group
 mod1 + c
     windows -c $(pfw)
