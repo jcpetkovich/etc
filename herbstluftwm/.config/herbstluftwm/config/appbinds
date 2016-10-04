@@ -10,6 +10,7 @@ hc keybind $Mod-Return spawn term MUX ATDIR
 hc keybind $Mod-e spawn focus e
 hc keybind $Mod-o spawn dmenu run
 hc keybind $Mod-Control-p spawn dmenu pass
+hc keybind $Mod-Shift-p spawn scrot
 
 # hc keybind $Mod-Shift-space spawn dmenu sys
 # hc keybind $Mod-space spawn dmenu menu
@@ -38,6 +39,7 @@ hc keybind $Mod-Shift-v spawn dmenu shistory
 hc keybind $Mod-equal spawn volumeup
 hc keybind $Mod-minus spawn volumedown
 hc keybind $Mod-w spawn weather --notify
+hc keybind $Mod-Control-n spawn dmenu connect
 
 # status
 hc keybind $Mod-q spawn draw status
