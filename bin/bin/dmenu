@@ -23,7 +23,7 @@ leader='──────'
 fg='#FDF6E3'
 hlfg='#25C0EF'
 hlbg='#070707'
-font='Sauce Code Powerline'
+font='PragmataPro Mono'
 
 # allow subword match input (by inserting single quote symbol into input)
 unquote() {
@@ -35,7 +35,8 @@ unquote() {
 # tweak rofi padding, fontsize and lines for 3200, 1680 (secondary), 1440, 1024
 # displays
 if is display =3200 ;then
-		padding=620
+		# padding=620
+		padding=441
 		fontsize=22
 		lines=12
 fi

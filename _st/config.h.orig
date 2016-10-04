@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Sauce Code Powerline:pixelsize=24:style=Regular:spacing=100:scalable=true";
+static char font[] = "PragmataPro Mono:pixelsize=23:style=Regular:scalable=true";
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 static char *utmp = NULL;
