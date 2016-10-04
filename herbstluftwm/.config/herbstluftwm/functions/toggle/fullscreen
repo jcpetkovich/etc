@@ -1,3 +1,4 @@
+# -*- mode: sh; sh-shell: dash -*-
 # sdothum - 2016 (c) wtfpl
 [ $TRACE ] && CHILD="toggle/fullscreen $@" . $PARENT
 
@@ -9,29 +10,29 @@
 # fullscreen with conky panel
 herbstclient lock
 restore tiled
-if is display +1024 ;then
-  if is primary ;then
-    # allow transitioning monocle directly to fullscreen
-    [ -e $MONOCLE ] && toggle monocle fullscreen
-    if conky search --onlyvisible ;then
-      is fullscreen && draw monitor conky \
-                    || draw monitor conky fullscreen
-    else
-      # handle frame no conky
-      is fullscreen && draw monitor fullframe \
-                    || draw monitor fullscreen
-    fi
-  else
-    is fullscreen && draw monitor secondary \
-                  || draw monitor secondary fullscreen
-  fi
-fi
+# if type conky >/dev/null && is display +1024 ;then
+#   if is primary ;then
+#     # allow transitioning monocle directly to fullscreen
+#     [ -e $MONOCLE ] && toggle monocle fullscreen
+#     if conky search --onlyvisible ;then
+#       is fullscreen && draw monitor conky \
+#                     || draw monitor conky fullscreen
+#     else
+#       # handle frame no conky
+#       is fullscreen && draw monitor fullframe \
+#                     || draw monitor fullscreen
+#     fi
+#   else
+#     is fullscreen && draw monitor secondary \
+#                   || draw monitor secondary fullscreen
+#   fi
+# fi
 herbstclient chain . fullscreen toggle . unlock
 
 tag=$(herbstclient attr monitors.focus.tag)
 # clear any previously set monocle state (on other monitor or conky)
 is fullscreen && rm -f $MONOCLE:$tag >/dev/null \
               || rm -f $MONOCLE:conky >/dev/null
-touch_panel
+# touch_panel
 
 # vim: set ft=sh: #
