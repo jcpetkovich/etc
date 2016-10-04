@@ -30,7 +30,7 @@
 - [ ] menu (menu menu)
 - [X] monitor (nice)
 - [ ] movies (nice)
-- [ ] music (yup)
+- [X] music (yup)
 - [ ] pacnews (nope)
 - [X] pass (yup yup)
 - [ ] radio
@@ -98,11 +98,12 @@
  - [ ] system-cleanup
  - [ ] system-sync
 * ideas
-- [ ] use emacs ranger as file browser
+- [X] use emacs ranger as file browser
 - [X] use pdftools as pdf viewer
 - [ ] udiskie for automount?
 - [ ] http://subtlepatterns.com/
 - [ ] emacs-slack send region as snippet
+- [ ] st env config: https://github.com/dcat/st-xresources
 * dsl for hlwm
 - [ ] draw
 - [ ] focus
@@ -114,9 +115,25 @@
 * sh mode
 - [ ] shell header snippet adjust dots
 * requirements
-- [ ] tiling
-- [ ] scriptable
-- [ ] toggleable dynamic tiling mode
-- [ ] window stacking
-- [ ] window hiding
-- [ ] window summoning
+** bspwm
+- [X] tiling
+- [X] scriptable
+- [X] toggleable dynamic tiling mode
+- [X] window stacking
+- [X] window hiding
+- [X] window summoning
+** herbstluftwm
+- [X] tiling
+- [X] scriptable
+- [X] toggleable dynamic tiling mode
+- [X] window stacking
+- [X] window hiding
+- [X] window summoning
+** wmutils
+- [X] tiling
+- [X] scriptable
+- [X] toggleable dynamic tiling mode
+- [X] window stacking
+- [X] window hiding
+- [X] window summoning
+- [ ] window focus script that doesn't suck?
