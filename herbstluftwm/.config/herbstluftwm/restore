@@ -12,6 +12,8 @@
 # dmenu functions
 . $HOME/bin/dmenu
 
+. ${0%/restore}/config/ENV
+
 TAG=$(herbstclient attr monitors.focus.tag)
 
 # wait for hook completion (necessary for non-interactive window manipulation sequences)

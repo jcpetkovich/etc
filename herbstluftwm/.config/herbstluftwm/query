@@ -9,6 +9,8 @@
 
 # Usage: query <msg>, see functions/query
 
+. ${0%/query}/config/ENV
+
 msg=$1
 [ $msg ] && shift || usage $0
 if [ -e ${0%/query}/functions/query/$msg ] ;then
