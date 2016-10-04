@@ -17,7 +17,7 @@
 
 SHELL=/bin/dash
 TERM=st
-FONT="Sauce Code Powerline"
+FONT="PragmataPro"
 
 # first parameter may be title
 if [ "$1" ] ;then
