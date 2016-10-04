@@ -1,0 +1,22 @@
+! -*- mode: conf-xdefaults; -*-
+! /------------------------\
+! | Created by jcpetkovich |
+! | 2016                   |
+! \------------------------/
+
+#define col0      #5f5f5f
+#define col8      #8a8a8a
+#define col1			#cc0000
+#define col9			#ff4b4b
+#define col2			#5faf00
+#define col10			#00af00
+#define col3			#ff8700
+#define col11			#ffaf5f
+#define col4			#87d7af
+#define col12			#3a81c3
+#define col5			#ff4ea3
+#define col13			#d18aff
+#define col6			#66808c
+#define col14     #5fafd7
+#define col7      #ffffff
+#define col15     #fbf8ef
