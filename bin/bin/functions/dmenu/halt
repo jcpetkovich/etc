@@ -22,7 +22,7 @@ do
   case $cmd in
     lock)    slock ;;
     # lock)    xscreensaver-command -lock ;;
-    logout)  sudo pkill -x -TERM X ;;
+    logout)  pkill -x -TERM X ;;
     suspend) [ -e /sbin/systemctl ] && sudo systemctl suspend || sudo pm-suspend ;;
 
     reboot) disconnect
