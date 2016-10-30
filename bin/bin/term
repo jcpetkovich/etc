@@ -98,7 +98,7 @@ if ! [ -z "$atdir" ]; then
 		cd "$atdir"
 fi
 
-if [ $stack ] ;then
+if [ $stack ] || ! hlwm ;then
 		eval "$TERM $title $name $geometry $fn $cmd"
 else
 		eval "focus $TERM $title $name $geometry $fn $cmd"
