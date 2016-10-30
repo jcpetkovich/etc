@@ -27,7 +27,7 @@
 - [ ] journals (merge with logs?)
 - [ ] logs (logs yo)
 - [X] manpages (sweet)
-- [ ] menu (menu menu)
+- [X] menu (menu menu)
 - [X] monitor (nice)
 - [ ] movies (nice)
 - [X] music (yup)
@@ -47,7 +47,7 @@
 - [ ] packages/updates
 - [ ] hardware
 * subscripts
- - [ ] !p
+ - [X] !p
  - [ ] a
  - [ ] al
  - [ ] ascii
@@ -65,12 +65,12 @@
  - [ ] h
  - [ ] hardware
  - [ ] history
- - [ ] hlwm
- - [ ] if-no
- - [ ] if-opt
- - [ ] if-yes
+ - [X] hlwm
+ - [X] if-no
+ - [X] if-opt
+ - [X] if-yes
  - [ ] is
- - [ ] k
+ - [X] k
  - [ ] keymaps
  - [ ] kk
  - [ ] l
