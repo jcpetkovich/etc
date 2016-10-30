@@ -36,4 +36,4 @@ mpd
 # sxhkd &
 
 # start x
-exec ck-launch-session herbstluftwm
+exec ck-launch-session bspwm
