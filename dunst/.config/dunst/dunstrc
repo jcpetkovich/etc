@@ -1,6 +1,6 @@
 # -*- mode: conf -*-
 [global]
-		font = Sauce Code Powerline 24
+		font = PragmataPro Mono 24
 
 		# allow a small subset of html markup:
 		# <b>bold</b>
