@@ -11,7 +11,7 @@
 - [X] abook (mu cfind)
 - [X] alarm
 - [X] bookmarks /home/jcp/.mozilla/firefox/s4ywanaf.default/places.sqlite sqlite "select url from moz_bookmarks b, moz_places p where b.fk  = p.id;"
-- [ ] browser
+- [X] browser
 - [ ] calc  (emacs?)
 - [X] clipboard  (gpaste)
 - [ ] code
@@ -103,7 +103,7 @@
 - [ ] udiskie for automount?
 - [ ] http://subtlepatterns.com/
 - [ ] emacs-slack send region as snippet
-- [ ] st env config: https://github.com/dcat/st-xresources
+- [X] st env config: https://github.com/dcat/st-xresources
 * dsl for hlwm
 - [ ] draw
 - [ ] focus
