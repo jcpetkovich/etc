@@ -13,7 +13,9 @@
 . $HOME/bin/dmenu
 . ${0%/focus}/config/ENV
 
-TAG=$(herbstclient attr monitors.focus.tag)
+if hlwm; then
+    TAG=$(herbstclient attr monitors.focus.tag)
+fi
 
 # disable query wname conky polling rules
 focus_app() {
@@ -27,7 +29,9 @@ focus_app() {
 
 msg=$1
 [ $msg ] && shift || usage $0
-if [ -e ${0%/focus}/functions/focus/$msg ] ;then
+if ! hlwm ; then
+    $msg $@
+elif [ -e ${0%/focus}/functions/focus/$msg ] ;then
   . ${0%/focus}/functions/focus/$msg $@
 elif which $msg >/dev/null ;then
   # dynamic app window creation
