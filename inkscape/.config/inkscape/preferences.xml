@@ -133,8 +133,8 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="141.421"
-         height="242.437"
+         width="1775.54"
+         height="3043.8"
          rx="0"
          ry="0" />
       <eventcontext
@@ -329,7 +329,7 @@
        style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
        unitid="3"
        show_bbox="1"
-       unit="px" />
+       unit="mm" />
     <eventcontext
        id="text"
        usecurrent="0"
@@ -427,7 +427,7 @@
     <group
        id="measure"
        fontsize="10"
-       unit="px" />
+       unit="mm" />
   </group>
   <group
      id="palette">
@@ -569,8 +569,8 @@
        panel_wrap="0"
        x="0"
        y="0"
-       w="1142"
-       h="521"
+       w="1059"
+       h="548"
        state="2"
        panel_border="0"
        page="0"
@@ -705,8 +705,8 @@
        rotate_cumulatei="1"
        x="0"
        y="0"
-       w="1142"
-       h="947"
+       w="1059"
+       h="939"
        visible="1"
        state="2"
        placement="1" />
@@ -1092,7 +1092,7 @@
        height="1760"
        x="0"
        y="34"
-       fullscreen="0"
+       fullscreen="1"
        id="geometry"
        maximized="0" />
     <group
