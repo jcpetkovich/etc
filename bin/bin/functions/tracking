@@ -21,6 +21,15 @@ if not words_deleted:
 if words_deleted.__class__ is not int:
     words_deleted = int(words_deleted)
 
+print("how much time did you spend (hours)?")
+hours = input("time: ")
+
+if not hours:
+    hours = 0
+
+if hours.__class__ is not float:
+    hours = float(hours)
+
 print("\ndid you meet your goal?")
 goal = input("goal ({unmet}/met): ")
 
@@ -47,6 +56,7 @@ else:
 
 print("words: {}".format(words))
 print("words_deleted: {}".format(words_deleted))
+print("hours: {}".format(hours))
 print("goal: {}".format(goal))
 print("project: {}".format(project))
 print("comments: {}".format(comments))
@@ -58,8 +68,8 @@ db = sqlite3.connect(os.path.expanduser("~/journal/tracking.db"))
 
 statement = "INSERT INTO {table_name} ({column_spec}) VALUES ({table_spec})".format(
     table_name = "writing",
-    column_spec = "words, goal, project, comments, words_deleted",
-    table_spec = ",".join([str(words), goal, project, comments, str(words_deleted)])
+    column_spec = "words, goal, project, comments, words_deleted, hours",
+    table_spec = ",".join([str(words), goal, project, comments, str(words_deleted), str(hours)])
 )
 
 db.execute(statement)
