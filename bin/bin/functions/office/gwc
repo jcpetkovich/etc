@@ -11,9 +11,12 @@ ADDED=$(git diff --word-diff=porcelain | grep -e '^+[^+]' | wc -m | awk '{ print
 REMOVED=$(git diff --word-diff=porcelain | grep -e '^-[^-]' | wc -m | awk '{ print ($0 / 5) }')
 
 if [ "$VERBOSE" = "true" ]; then
+    echo "Added Words: "
     echo " $ADDED / 5 " | bc
     rmv=$(echo " $REMOVED  / 5 " | bc)
-    echo "-$rmv"
+    echo "Removed Words:"
+    echo "$rmv"
+    echo "Absolute Change:"
 fi
 
 echo " ( $ADDED - $REMOVED ) / 5 " | bc
