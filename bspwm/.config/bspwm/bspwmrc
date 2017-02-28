@@ -1,6 +1,6 @@
 #!/usr/bin/env dash
 
-sxhkd -c ~/.config/bspwm/sxhkdrc &
+sxhkd -c ~/.config/bspwm/sxhkdrc -m -1 &
 
 bspc config border_width        10
 bspc config window_gap          30
