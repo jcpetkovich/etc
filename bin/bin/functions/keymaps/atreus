@@ -1,14 +1,5 @@
 #!/usr/bin/env dash
 
-if p sxhkd ; then
-    SXHKD=true
-    SXHKDCMD=$(p sxhkd | awk '{ s = ""; for (i = 8; i <= NF; i++) s = s $i " "; print s }')
-    pkill -x sxhkd
-fi
-
 xset r rate 250
 
 setxkbmap us
-
-nohup $SXHKDCMD &
-
