@@ -165,7 +165,7 @@ super + {grave,Tab}
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} focused:'^{1-9,10}'
 
 #
 # preselect
@@ -206,3 +206,8 @@ super + {Left,Down,Up,Right}
 # resize a floating window
 super + shift + {Left,Down,Up,Right}
       wrs {-40 0,0 40,0 -40,40 0} $(pfw)
+
+# bspwm specific app binds
+super + a
+      e ~/journal/commonplace.org -n ; \
+      bspc node -t floating
