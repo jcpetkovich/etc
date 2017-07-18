@@ -21,6 +21,9 @@ default_flags = [
   '/home/jcp/R/x86_64-pc-linux-gnu-library/3.3/RcppArmadillo/include',
   '-I',
   '/home/jcp/R/x86_64-pc-linux-gnu-library/3.3/RcppEigen/include',
+# Python extensions
+  '-I',
+  '/usr/include/python3.4m',
 # This path will only work on OS X, but extra paths that don't exist are not harmful
 '-isystem',
 '/System/Library/Frameworks/Python.framework/Headers',

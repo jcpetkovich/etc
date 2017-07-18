@@ -329,7 +329,7 @@
        style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
        unitid="3"
        show_bbox="1"
-       unit="mm" />
+       unit="px" />
     <eventcontext
        id="text"
        usecurrent="0"
@@ -427,7 +427,7 @@
     <group
        id="measure"
        fontsize="10"
-       unit="mm" />
+       unit="px" />
   </group>
   <group
      id="palette">
@@ -1094,7 +1094,7 @@
        y="34"
        fullscreen="1"
        id="geometry"
-       maximized="0" />
+       maximized="1" />
     <group
        id="XYfront" />
     <group

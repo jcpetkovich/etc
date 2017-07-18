@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import zipfile
+import tempfile
+import mimetypes
+import shutil
+from music.utils import get_music, copy_music
+
+def handle_zip(file):
+    tempdir = tempfile.mkdtemp()
+    with zipfile.ZipFile(file, "r") as zf:
+        zf.extractall(tempdir)
+        musiclist = get_music(tempdir)
+        copy_music(musiclist)
+    shutil.rmtree(tempdir)
+
+
+if __name__ == '__main__':
+
+    MUSIC = os.environ.get("XDG_MUSIC_DIR")
+
+    if not MUSIC:
+        print("need to set $MUSICPATH to the root music directory.")
+        sys.exit(1)
+
+    usage = "usage: {prog} [options] zipfile [tarfile directory file.mp3]".format(prog = sys.argv[0])
+
+    if len(sys.argv) < 2:
+        print(usage)
+        sys.exit(1)
+
+    inputs = sys.argv[1:]
+
+    for input in inputs:
+        (filetype, encoding) = mimetypes.guess_type(input)
+        if filetype == "application/zip":
+            handle_zip(input)

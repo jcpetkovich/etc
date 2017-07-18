@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+import sys
+from music.utils import get_music, copy_music, safe_fatpath
+from optparse import OptionParser
+
+usage = "usage: %prog [options] indir destination"
+parser = OptionParser(description = "", usage = usage)
+parser.add_option("-v", "--verbose", dest = "verbose",
+                  action = "store_true", default = False,
+                  help = "be verbose.")
+parser.add_option("-f", "--vfat", dest = "vfat",
+                  action = "store_true", default = False,
+                  help = "destination is vfat, replace chars with alternatives.")
+
+(options, args) = parser.parse_args()
+
+if len(args) < 2:
+    parser.print_help()
+    sys.exit(1)
+
+(source, destination) = args
+
+musictuples = get_music(source, destination)
+
+if options.vfat:
+    musictuples = [
+        (safe_fatpath(destpath), sourcepath)
+        for (destpath, sourcepath) in musictuples
+    ]
+
+copy_music(musictuples)
