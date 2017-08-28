@@ -19,3 +19,4 @@ text/x-c++=emacsclient.desktop
 text/x-patch=emacsclient.desktop
 text/x-matlab=emacsclient.desktop
 text/html=emacsclient.desktop
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-base.desktop
