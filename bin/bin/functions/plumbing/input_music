@@ -12,8 +12,16 @@ def handle_zip(file):
     tempdir = tempfile.mkdtemp()
     with zipfile.ZipFile(file, "r") as zf:
         zf.extractall(tempdir)
-        musiclist = get_music(tempdir)
+        musiclist = get_music(tempdir, MUSIC)
         copy_music(musiclist)
+    shutil.rmtree(tempdir)
+
+def handle_mp3(file):
+    tempdir = tempfile.mkdtemp()
+    destination = os.path.join(tempdir, os.path.basename(file))
+    shutil.copy(file, destination)
+    musiclist = get_music(tempdir, MUSIC)
+    copy_music(musiclist)
     shutil.rmtree(tempdir)
 
 
@@ -37,3 +45,5 @@ if __name__ == '__main__':
         (filetype, encoding) = mimetypes.guess_type(input)
         if filetype == "application/zip":
             handle_zip(input)
+        if filetype == "audio/mpeg":
+            handle_mp3(input)
