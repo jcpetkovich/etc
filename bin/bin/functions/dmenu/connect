@@ -1,13 +1,17 @@
 #!/usr/bin/env dash
 
-where=$(echo home out \
+what=$(echo home out vpn-on vpn-off \
                | tr ' ' '\n' \
                | dmenu 'Resolvconf' -no-custom)
 
-if [ $where = "home" ]; then
-		echo "nameserver $HOME_SERVER" | sudo -A tee /etc/resolv.conf.head > /dev/null
-		sudo -A wpa_cli reconfigure
-else
-		echo "" | sudo -A tee /etc/resolv.conf.head > /dev/null
-		sudo -A wpa_cli reconfigure
-fi
+case $what in
+    home) echo "nameserver $HOME_SERVER" | \
+                sudo -A tee /etc/resolv.conf.head > /dev/null
+		      sudo -A wpa_cli reconfigure ;;
+    out) echo "" | sudo -A tee /etc/resolv.conf.head > /dev/null
+         sudo -A wpa_cli reconfigure ;;
+    vpn-on) sudo -A ufw enable
+            sudo -A rc-service openvpn.TORONTO restart ;;
+    vpn-off) sudo -A ufw disable
+             sudo -A rc-service openvpn.TORONTO stop ;;
+esac
