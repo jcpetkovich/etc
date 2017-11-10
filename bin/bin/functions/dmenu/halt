@@ -20,7 +20,10 @@ while cmd=$(echo 'lock\nlogout\nsuspend\nreboot\nshutdown' \
           | dmenu 'Session' -no-custom) || exit
 do
   case $cmd in
-    lock)    slock ;;
+      lock)    pkill -x -TERM compton
+               slock
+               compton -b
+               ;;
     # lock)    xscreensaver-command -lock ;;
     logout)  pkill -x -TERM X ;;
     suspend) [ -e /sbin/systemctl ] && sudo systemctl suspend || sudo pm-suspend ;;
