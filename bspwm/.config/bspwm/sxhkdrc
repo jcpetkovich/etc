@@ -118,8 +118,13 @@ super + y
       bspc node last.leaf -n focused
 
 # swap the current node and the biggest node
-super + g
-      bspc node -s biggest
+super + v
+      bspc node -s biggest.local
+
+super + semicolon
+      [ $(bspc config window_gap) = "0" ] && \
+      bspc config window_gap $BSPC_WINDOW_GAP || \
+      bspc config window_gap 0
 
 #
 # state/flags
