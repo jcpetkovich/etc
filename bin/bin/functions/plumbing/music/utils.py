@@ -34,6 +34,13 @@ def get_meta(filepath):
         meta["album"] = muta["TALB"].text[0]
     elif "album" in muta:
         meta["album"] = muta["album"][0]
+    else:
+        # assume "single" and album == title
+        meta["album"] = muta["TIT2"].text[0]
+
+    # clean for paths
+    meta["artist"] = quote_for_path(meta["artist"])
+    meta["album"] = quote_for_path(meta["album"])
     return meta
 
 def get_music(musicdir, targetdir):
@@ -87,3 +94,7 @@ def copy_music(musictuples):
 
 def safe_fatpath(path):
     return re.sub(r"[\"*:<>?\\|]", "_", path).encode('ascii', 'ignore')
+
+def quote_for_path(path):
+    # some albums use / in their names, don't include these
+    return path.replace("/", "-")
