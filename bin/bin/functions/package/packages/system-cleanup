@@ -46,7 +46,7 @@ function cleanup() {
     sudo emerge -c || fail "Couldn't remove old packages"
     success "Finished deleting old pakages"
     info "Starting revdep-rebuild...\n"
-    sudo revdep-rebuild -i || fail "revdep-rebuild failed"
+    sudo python2 /usr/bin/revdep-rebuild -i || fail "revdep-rebuild failed"
     success "Finished revdep-rebuild"
 }
 
