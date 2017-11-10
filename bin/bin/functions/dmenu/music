@@ -101,7 +101,7 @@ do
               | dmenu "$(info)" "${cmd%% *}" -no-custom) || break
     do
       case "$cmd" in
-        toggle\ on | toggle\ off) mpc toggle
+        toggle\ on* | toggle\ off*) mpc toggle
                                     exit ;;
 
         next*) mpc play
