@@ -3,17 +3,14 @@
 sxhkd -c ~/.config/bspwm/sxhkdrc -m -1 &
 
 bspc config border_width        10
-bspc config window_gap          30
+bspc config window_gap          $BSPC_WINDOW_GAP
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
-bspc config focus_by_distance    true
-bspc config history_aware_focus  true
 bspc config click_to_focus       true
 
-# theme
-bspc config focused_border_color "#ef255b"
+. ~/.config/bspwm/theme
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
@@ -22,3 +19,6 @@ bspc rule -a Chromium desktop=^2
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+
+# hooks
+~/.config/bspwm/pseudotile_hook.bash &
