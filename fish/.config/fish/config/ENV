@@ -22,7 +22,8 @@ if test (hostname) = "tricorder"
 	# resource constrained
 	set -xg BROWSER "qutebrowser"
 else
-	set -xg BROWSER "firefox"
+	set -xg BROWSER "browser"
+  set -xg GDK_SCALE 2
 end
 set -xg LANG en_US.UTF-8         # bugs out some stuff but fixes more
 set -xg RSENSE_HOME $HOME/jc-public/site-lisp/rsense-0.3
@@ -66,6 +67,10 @@ set -xg MASTER 2000
 set -xg BW 0
 set -xg ACTIVE 0xffffff
 set -xg INACTIVE 0x333333
+
+# bspwm
+set -xg PSEUDOTILE_DESKTOPS "I"
+set -xg BSPC_WINDOW_GAP 30
 
 # status
 set -xg STATUS_TIMEOUT 2000
