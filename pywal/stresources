@@ -1,0 +1,3 @@
+st.background: {background}
+st.foreground: {foreground}
+st.cursorColor: {cursor}
