@@ -1,22 +1,23 @@
 
 [Default Applications]
 application/pdf=emacsclient.desktop
+application/x-shellscript=emacsclient.desktop
 text/english=emacsclient.desktop
+text/html=emacsclient.desktop
 text/plain=emacsclient.desktop
-text/x-makefile=emacsclient.desktop
+text/x-c++=emacsclient.desktop
 text/x-c++hdr=emacsclient.desktop
 text/x-c++src=emacsclient.desktop
+text/x-c=emacsclient.desktop
 text/x-chdr=emacsclient.desktop
 text/x-csrc=emacsclient.desktop
 text/x-java=emacsclient.desktop
+text/x-makefile=emacsclient.desktop
+text/x-matlab=emacsclient.desktop
 text/x-moc=emacsclient.desktop
 text/x-pascal=emacsclient.desktop
+text/x-patch=emacsclient.desktop
+text/x-python=emacsclient.desktop
 text/x-tcl=emacsclient.desktop
 text/x-tex=emacsclient.desktop
-application/x-shellscript=emacsclient.desktop
-text/x-c=emacsclient.desktop
-text/x-c++=emacsclient.desktop
-text/x-patch=emacsclient.desktop
-text/x-matlab=emacsclient.desktop
-text/html=emacsclient.desktop
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-base.desktop
