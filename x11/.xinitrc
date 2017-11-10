@@ -4,8 +4,11 @@ if [ -f ~/bin/xinitrc.systemspecific ]; then
   source ~/bin/xinitrc.systemspecific
 fi
 
-# Select background
-nitrogen --restore
+# restore theme
+if which wal > /dev/null ; then
+    wal -R
+    ~/etc/pywal/post-wal-hook.py
+fi
 
 # set pointer theme
 xsetroot -cursor_name left_ptr
@@ -32,8 +35,6 @@ pidof gpaste-client >/dev/null || gpaste-client &
 
 # music!
 mpd
-
-# sxhkd &
 
 # start x
 exec ck-launch-session bspwm

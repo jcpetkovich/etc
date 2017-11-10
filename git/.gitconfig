@@ -8,3 +8,5 @@
 [github]
 	user = 
 	password = 
+[magit]
+	hideCampaign = true

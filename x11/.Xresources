@@ -2,29 +2,30 @@
 
 st.font:			PragmataPro Mono:pixelsize=23
 st.bold_font:			1
-st.background:  col15
-st.foreground:  col0
-st.cursorColor: col8
+! st.background:  col15
+! st.foreground:  col0
+! st.cursorColor: col8
 st.termname:			st-256color
 st.shell:			/bin/sh
 st.bellvolume:			100
 st.tabspaces:			8
 st.chscale:			1.0
 st.cwscale:			1.0
+st.borderpx: 56
 
-st.color0:  col0
-st.color8:  col8
-st.color1:  col1
-st.color9:  col9
-st.color2:  col2
-st.color10: col10
-st.color3:  col3
-st.color11: col11
-st.color4:  col4
-st.color12: col12
-st.color5:  col5
-st.color13: col13
-st.color6:  col6
-st.color14: col14
-st.color7:  col7
-st.color15: col15
+! st.color0:  col0
+! st.color8:  col8
+! st.color1:  col1
+! st.color9:  col9
+! st.color2:  col2
+! st.color10: col10
+! st.color3:  col3
+! st.color11: col11
+! st.color4:  col4
+! st.color12: col12
+! st.color5:  col5
+! st.color13: col13
+! st.color6:  col6
+! st.color14: col14
+! st.color7:  col7
+! st.color15: col15
