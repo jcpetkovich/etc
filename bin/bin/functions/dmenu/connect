@@ -10,8 +10,7 @@ case $what in
 		      sudo -A wpa_cli reconfigure ;;
     out) echo "" | sudo -A tee /etc/resolv.conf.head > /dev/null
          sudo -A wpa_cli reconfigure ;;
-    vpn-on) sudo -A ufw enable
-            sudo -A rc-service openvpn.TORONTO restart ;;
+    vpn-on) sudo -A /home/jcp/bin/functions/network/vpn-toronto ;;
     vpn-off) sudo -A ufw disable
              sudo -A rc-service openvpn.TORONTO stop ;;
 esac
