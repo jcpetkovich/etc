@@ -94,6 +94,14 @@ super + control + n
 super + q
       draw status
 
+# XF86 media keys
+XF86AudioRaiseVolume
+      volumeup
+XF86AudioLowerVolume
+      volumedown
+XF86AudioMute
+      amixer set Master toggle
+
 
 # ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
 
