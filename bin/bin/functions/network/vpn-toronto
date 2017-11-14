@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Toronto VPN
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# .......................................................... openvpn via TORONTO
+
+
+HOSTNAME=ca.torguardvpnaccess.com
+VPN_CONFIG=/etc/openvpn/TORONTO.conf
+LOGFILE=$HOME/.toronto.ufw.log
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+    DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+source "${DIR}/vpn-default"

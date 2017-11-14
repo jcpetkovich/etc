@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Germany VPN
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# .......................................................... openvpn via Germany
+
+
+HOSTNAME=frank.gr.torguardvpnaccess.com
+VPN_CONFIG=/etc/openvpn/GERMANY.conf
+LOGFILE=$HOME/.germany.ufw.log
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+    DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+source "${DIR}/vpn-default"

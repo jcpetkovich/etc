@@ -1,0 +1,30 @@
+# -*- mode: sh; sh-shell: dash -*-
+
+# first disable the firewall so that we can resolve the ip of the vpn
+ufw disable
+
+CURRENT_IP=$(getent hosts $HOSTNAME | head -n1 | awk '{ print $1 }')
+
+# update the vpn config
+sed -E -i 's/remote .* ([0-9]+)/remote '"$CURRENT_IP"' \1/' $VPN_CONFIG
+
+if [ ! -f $LOGFILE ]; then
+    # /usr/sbin/ufw allow from $CURRENT_IP to any port 22 proto tcp
+    echo $CURRENT_IP > $LOGFILE
+else
+
+    OLD_IP=$(cat $LOGFILE)
+    if [ "$CURRENT_IP" = "$OLD_IP" ] ; then
+        echo IP address has not changed
+    else
+        ufw delete allow out from any to $OLD_IP
+        ufw allow out from any to $CURRENT_IP
+        echo $CURRENT_IP > $LOGFILE
+    fi
+fi
+
+ufw enable
+
+CONFIGFILE="$(basename $VPN_CONFIG)"
+
+/etc/init.d/openvpn."${CONFIGFILE%%.conf}" restart
