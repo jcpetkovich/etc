@@ -103,6 +103,20 @@ XF86AudioMute
       amixer set Master toggle
 
 
+
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ................................................................... HYPERSPACE
+
+# move to northeast corner
+super + ctrl + alt + shift + u
+
+# move to southeast corner
+super + ctrl + alt + shift + e
+        wtp $BSPC_WINDOW_GAP $BSPC_WINDOW_GAP \
+        $((3200 / 3 - $BSPC_WINDOW_GAP * 4)) $(( $(( 1800 - $BSPC_WINDOW_GAP * 4)) / 3)) \
+        $(pfw)
+
 # ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
 
 # ................................................................ bspwm hotkeys
@@ -204,13 +218,11 @@ super + ctrl + shift + space
 # resize tiled/floating
 #
 
-# expand the tiled space in the given direction
+# done
 super + alt + {h,j,k,l}
-      bspc node {@west -r -40,@south -r +40,@north -r -40,@east -r +40}
+      ~/.config/bspwm/bin/resizer {right -40 0,bottom 0 40,bottom 0 -40,right 40 0}
 
-# contract the tiled space in the given direction
-super + alt + shift + {h,j,k,l}
-      bspc node {@east -r -40,@north -r +40,@south -r -40,@west -r +40}
+# bspc node {@east -r -40,@north -r +40,@south -r -40,@west -r +40}
 
 # move a floating window
 super + {Left,Down,Up,Right}
