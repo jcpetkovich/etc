@@ -5,7 +5,10 @@ sxhkd -c ~/.config/bspwm/sxhkdrc -m -1 &
 bspc config border_width        10
 bspc config window_gap          $BSPC_WINDOW_GAP
 
-bspc config split_ratio          0.52
+# split ratio
+bspc config split_ratio          0.5
+
+
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 bspc config click_to_focus       true
@@ -14,11 +17,18 @@ bspc config click_to_focus       true
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
+# split ratio for pseudotile desktops
+# for desk in $PSEUDOTILE_DESKTOPS ; do
+#     DID=$(bspc query -D -d $desk)
+#     bspc rule -a '*' -o desktop=$DID split_ratio=0.5
+# done
+
 bspc rule -a Gimp desktop=^8 state=floating follow=on
 bspc rule -a Chromium desktop=^2
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a Pinentry state=floating
 
 # hooks
 ~/.config/bspwm/pseudotile_hook.bash &
