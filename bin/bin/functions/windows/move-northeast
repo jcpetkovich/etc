@@ -1,0 +1,6 @@
+#!/usr/bin/env dash
+
+
+wtp $BSPC_WINDOW_GAP $BSPC_WINDOW_GAP \
+$((3200 / 3 - $BSPC_WINDOW_GAP * 4)) $(( $(( 1800 - $BSPC_WINDOW_GAP * 4)) / 3)) \
+$(pfw)
