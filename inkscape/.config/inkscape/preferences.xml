@@ -184,9 +184,9 @@
       <eventcontext
          id="spiral"
          style="fill:none;"
+         expansion="1"
          usecurrent="0"
          revolution="3"
-         expansion="1"
          t0="0" />
     </group>
     <group
@@ -329,7 +329,7 @@
        style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
        unitid="3"
        show_bbox="1"
-       unit="px" />
+       unit="mm" />
     <eventcontext
        id="text"
        usecurrent="0"
@@ -338,7 +338,11 @@
        show_sample_in_list="1"
        style="fill:black;fill-opacity:1;stroke:none;font-family:Sans;font-style:normal;font-weight:normal;font-size:20px;line-height:125%;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:Courier;font-stretch:normal;font-variant:normal"
        selcue="1"
-       align_mode="1" />
+       align_mode="1">
+      <group
+         display_unit="9"
+         id="lineheight" />
+    </eventcontext>
     <eventcontext
        id="nodes"
        selcue="1"
@@ -385,7 +389,8 @@
        rotation_variation="0"
        scale_variation="0"
        standard_deviation="70"
-       mean="0" />
+       mean="0"
+       offset="100" />
     <eventcontext
        id="gradient"
        selcue="1"
@@ -425,9 +430,12 @@
        offsetunits="pt"
        threshold="5" />
     <group
+       offset="5"
+       scale="100"
+       precision="2"
        id="measure"
        fontsize="10"
-       unit="px" />
+       unit="mm" />
   </group>
   <group
      id="palette">
@@ -463,6 +471,9 @@
       <dash
          id="dash-1-48"
          style="stroke-dasharray:1,48" />
+      <dash
+         id="dash-empty"
+         style="stroke-dasharray:0 11" />
       <dash
          id="dash-2-1"
          style="stroke-dasharray:2,1" />
@@ -569,8 +580,8 @@
        panel_wrap="0"
        x="0"
        y="0"
-       w="1059"
-       h="548"
+       w="1068"
+       h="614"
        state="2"
        panel_border="0"
        page="0"
@@ -651,10 +662,18 @@
        default=""
        append_extension="1"
        path=""
-       x="330"
-       y="499"
-       w="356"
-       h="369">
+       x="0"
+       y="0"
+       w="1059"
+       h="857"
+       panel_size="1"
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
+       panel_border="0"
+       visible="0"
+       state="2"
+       placement="1">
       <group
          id="exportarea"
          value="page" />
@@ -678,7 +697,7 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/jcp/" />
+       path="/home/jcp/prj/wiki/ZF_Data_Details_files/" />
     <group
        id="import"
        enable_preview="1"
@@ -705,8 +724,8 @@
        rotate_cumulatei="1"
        x="0"
        y="0"
-       w="1059"
-       h="939"
+       w="1068"
+       h="1021"
        visible="1"
        state="2"
        placement="1" />
@@ -752,8 +771,6 @@
        id="colorpickerwindow" />
     <group
        id="undo-history" />
-    <group
-       id="filtereffects" />
     <group
        id="transparency"
        on-focus="1.0"
@@ -872,8 +889,8 @@
        id="wheelscroll"
        value="40" />
     <group
-       id="spacepans"
-       value="0" />
+       id="spacebarpans"
+       value="1" />
     <group
        id="wheelzooms"
        value="0" />
@@ -1015,6 +1032,7 @@
        check_on_reading="0"
        check_on_editing="0"
        check_on_writing="0"
+       sort_attributes="0"
        allowrelativecoordinates="1" />
     <group
        id="externalresources">
@@ -1066,6 +1084,9 @@
        partialdynamic="0"
        floatallowed="0" />
     <group
+       id="spacepans"
+       value="0" />
+    <group
        value="1"
        id="bitmapoversample" />
     <group
@@ -1092,7 +1113,7 @@
        height="1760"
        x="0"
        y="34"
-       fullscreen="1"
+       fullscreen="0"
        id="geometry"
        maximized="1" />
     <group
