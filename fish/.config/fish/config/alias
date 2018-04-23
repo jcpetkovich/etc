@@ -13,7 +13,7 @@ alias E='sudo -e'
 alias ssh='env TERM=xterm-256color ssh'      # TERM=xterm since most things misinterpret st
 alias x='extract'
 alias r='R'
-alias py='jupyter console'
+alias py='ipython'
 if which netcat > /dev/null 2>&1
 	alias nc='netcat'
 end
