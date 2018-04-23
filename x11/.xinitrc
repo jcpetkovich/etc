@@ -34,7 +34,8 @@ compton -b
 pidof gpaste-client >/dev/null || gpaste-client &
 
 # music!
+start-pulseaudio-x11
 mpd
 
 # start x
-exec ck-launch-session bspwm
+exec ck-launch-session dwmloop
