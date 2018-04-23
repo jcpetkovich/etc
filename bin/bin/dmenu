@@ -38,7 +38,7 @@ unquote() {
 # displays
 if is display =3200 ;then
 		# padding=620
-		padding=441
+		padding=443
 		fontsize=22
 		lines=12
 fi
