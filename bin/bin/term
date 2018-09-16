@@ -16,7 +16,7 @@
 # Note:  title may not contain spaces, use hyphen or underscore in place
 
 SHELL=/bin/dash
-TERM=st
+TERM="${HOME}/bin/functions/st"
 FONT="PragmataPro"
 
 # first parameter may be title
