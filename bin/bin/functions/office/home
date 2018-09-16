@@ -1,0 +1,5 @@
+#!/usr/bin/env dash
+
+if [ x$(hostname) = xtellan ] ; then
+    xrandr --output eDP1 --auto --output DP1 --off
+fi

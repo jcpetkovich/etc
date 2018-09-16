@@ -1,0 +1,7 @@
+#!/usr/bin/env dash
+
+if [ x$(hostname) = xtellan ] ; then
+    xrandr --output eDP1 --auto --output DP1 --mode 1920x1080 --scale 1.6666x1.6666  --right-of eDP1 --panning 3200x1800+3200+0
+    sudo rc-service dhcpcd restart
+fi
+
