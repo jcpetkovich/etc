@@ -16,25 +16,15 @@ default_flags = [
 '-I',
 '/usr/lib64/R/include',
   '-I',
-  '/home/jcp/R/x86_64-pc-linux-gnu-library/3.3/Rcpp/include',
+  '/home/jcp/R/x86_64-pc-linux-gnu-library/3.4/Rcpp/include',
   '-I',
-  '/home/jcp/R/x86_64-pc-linux-gnu-library/3.3/RcppArmadillo/include',
+  '/home/jcp/R/x86_64-pc-linux-gnu-library/3.4/RcppArmadillo/include',
   '-I',
-  '/home/jcp/R/x86_64-pc-linux-gnu-library/3.3/RcppEigen/include',
+  '/home/jcp/R/x86_64-pc-linux-gnu-library/3.4/RcppEigen/include',
 # Python extensions
   '-I',
-  '/usr/include/python3.4m',
+  '/usr/include/python3.6m/',
 # This path will only work on OS X, but extra paths that don't exist are not harmful
-'-isystem',
-'/System/Library/Frameworks/Python.framework/Headers',
-'-isystem',
-'/usr/include',
-'-isystem',
-'/usr/local/include',
-'-isystem',
-'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1',
-'-isystem',
-'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
 ]
 
 def DirectoryOfThisScript():
