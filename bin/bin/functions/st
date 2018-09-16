@@ -8,6 +8,6 @@
 
 export SHELL=/bin/fish
 
-eval "/usr/bin/st $@"
+eval "${HOME}/.local/bin/st $@"
 
 # vim: set ft=sh: #
