@@ -12,11 +12,19 @@ go get -u \
    github.com/PuerkitoBio/goquery  \
    github.com/goerr/goerr  \
    github.com/golang/lint/golint  \
-   github.com/nsf/gocode  \
+   github.com/mdempsky/gocode  \
    golang.org/x/tools/cmd/godoc \
    golang.org/x/tools/cmd/gorename  \
+   golang.org/x/tools/cmd/goimports  \
+   github.com/zmb3/gogetdoc \
    golang.org/x/tools/cmd/guru  \
+   github.com/haya14busa/gopkgs/cmd/gopkgs \
+   github.com/davidrjenni/reftools/cmd/fillstruct \
+   github.com/josharian/impl \
+   github.com/alecthomas/gometalinter \
    github.com/tools/godep
+
+go get -u github.com/cweill/gotests/...
 
 # Just try and get everything
 go get -u golang.org/x/tools/cmd/...
