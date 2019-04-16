@@ -21,92 +21,95 @@ FONT="PragmataPro"
 
 # first parameter may be title
 if [ "$1" ] ;then
-		if echo "$1" | egrep -qv 'FLOAT|FORTUNE|MAX|STACK|FONTSIZE|WAIT|MUX|SHELL|ATDIR' ;then
-				title="-t \"$1\""
-				shift
-		fi
+    if echo "$1" | egrep -qv 'FLOAT|FORTUNE|MAX|STACK|FONTSIZE|WAIT|MUX|SHELL|ATDIR' ;then
+        title="-t \"$1\""
+        shift
+    fi
 fi
 
 getmux() {
-		muxcmd="tmux"
-		tmux ls \
-				| awk -F: '$1 ~ /[[:digit:]]+/ {print $0}' \
-				| grep -vq attached && muxcmd="tmux at"
+    muxcmd="tmux"
+    tmux ls \
+        | awk -F: '$1 ~ /[[:digit:]]+/ {print $0}' \
+        | grep -vq attached && muxcmd="tmux at"
 }
 
 while [ "$1" ]
 do
-	case $1 in
-		FLOAT) name='-c DWMFLOAT'
-					 geometry='-g 100x30+0+0'
-					 shift ;;
+  case $1 in
+    FLOAT) name='-c DWMFLOAT'
+           geometry='-g 100x30+0+0'
+           shift ;;
 
-		MAX) # name='-name max'
-				 shift ;;
+    MAX) # name='-name max'
+         shift ;;
 
-		FONTSIZE) fn="-f '$FONT:size=$2'"
-							shift 2 ;;
+    FONTSIZE) fn="-f '$FONT:size=$2'"
+              shift 2 ;;
 
-		FORTUNE) # touch /tmp/term:fortune
-						 shift ;;
+    FORTUNE) # touch /tmp/term:fortune
+             shift ;;
 
-		STACK) stack=true
-					 shift ;;
+    STACK) stack=true
+           shift ;;
 
-		TABBED) tabbed='-pe tabbed'
-						shift ;;
+    TABBED) tabbed='-pe tabbed'
+            shift ;;
 
-		TR) # tr='+tr'
-				shift ;;
+    TR) # tr='+tr'
+        shift ;;
 
-		WAIT) foreground=true
-					shift ;;
+    WAIT) foreground=true
+          shift ;;
 
-		MUX) getmux
-				 shift ;;
+    MUX) getmux
+         shift ;;
 
-		ATDIR) shift
-					 atdir="$(focuseddir)" ;;
+    ATDIR) shift
+           atdir="$(focuseddir)" ;;
 
-		SHELL) shift
-					 process="$@"
-					 if ! [ -z "$muxcmd" ]; then
-							 [ "$*" ] && cmd="$muxcmd -c '$SHELL -c \'$@\''"
-					 else
-							 [ "$*" ] && cmd="$SHELL -c '$@'"
-					 fi
-					 break ;;
+    SHELL) shift
+           process="$@"
+           if ! [ -z "$muxcmd" ]; then
+               [ "$*" ] && cmd="$muxcmd -c '$SHELL -c \'$@\''"
+           else
+               [ "$*" ] && cmd="$SHELL -c '$@'"
+           fi
+           break ;;
 
-		*) process="$@"
-			 cmd="$@"
-			 break ;;
-	esac
+    *) process="$@"
+       cmd="$@"
+       break ;;
+  esac
 done
 
 # ugly hack for st
 if ! [ -z "$cmd" ]; then
-		tmp=$(mktemp)
-		echo "#!/usr/bin/env dash\n$cmd\nrm $tmp\n" > $tmp
-		chmod +x $tmp
-		cmd="-e $tmp"
+    tmp=$(mktemp)
+    echo "#!/usr/bin/env dash\n$cmd\nrm $tmp\n" > $tmp
+    chmod +x $tmp
+    cmd="-e $tmp"
 elif ! [ -z "$muxcmd" ]; then
-		cmd="-e $muxcmd"
+    cmd="-e $muxcmd"
 fi
 
 # if we are to execute at the current directory
 if ! [ -z "$atdir" ]; then
-		cd "$atdir"
+    cd "$atdir"
 fi
 
 if [ $stack ] || ! hlwm ;then
-		eval "$TERM $title $name $geometry $fn $cmd"
+    eval "$TERM $title $name $geometry $fn $cmd"
+    if [ x$tmp != x ]; then
+        rm $tmp
+    fi
 else
-		eval "focus $TERM $title $name $geometry $fn $cmd"
+    eval "focus $TERM $title $name $geometry $fn $cmd"
 fi
 
 # wait for process to complete
 if [ $foreground ] ;then
-	pwait "$process"
+  pwait "$process"
 fi
 
 # vim: set ft=sh: #
