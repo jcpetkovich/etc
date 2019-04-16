@@ -28,6 +28,9 @@ source ~/.config/fish/config/alias
 # prep fasd
 source ~/.config/fish/config/fasd
 
+# pred direnv
+eval (direnv hook fish)
+
 # drop greeting
 function fish_greeting
 end

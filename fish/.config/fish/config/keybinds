@@ -52,7 +52,6 @@ function fish_user_key_bindings
 	bind $argv -M visual -m insert \el __fish_list_current_token
 
 	# Show current command
-	alias __show_command='set tok (commandline -pt); if test $tok[1]; echo; whatis $tok[1]; commandline -f repaint; end'
 	bind $argv -m insert \ew __show_command
 	bind $argv -M insert \ew __show_command
 	bind $argv -M visual -m insert \ew __show_command
