@@ -168,11 +168,13 @@
       </eventcontext>
       <eventcontext
          id="arc"
-         style="fill:red;"
+         style="font-variant-east_asian:normal;opacity:0.98000004;vector-effect:none;fill:#0c7cba;fill-opacity:1;stroke:#a8afb3;stroke-width:0.99999998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:0;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          end="0"
          start="0"
-         usecurrent="1"
-         open="0" />
+         usecurrent="0"
+         open="0"
+         rx="17.7923"
+         ry="17.7923" />
       <eventcontext
          id="star"
          magnitude="5"
@@ -340,8 +342,8 @@
        selcue="1"
        align_mode="1">
       <group
-         id="lineheight"
-         display_unit="9" />
+         display_unit="9"
+         id="lineheight" />
     </eventcontext>
     <eventcontext
        id="nodes"
@@ -430,12 +432,12 @@
        offsetunits="pt"
        threshold="5" />
     <group
-       unit="px"
-       fontsize="10"
-       id="measure"
-       precision="2"
+       offset="5"
        scale="100"
-       offset="5" />
+       precision="2"
+       id="measure"
+       fontsize="10"
+       unit="px" />
   </group>
   <group
      id="palette">
@@ -580,7 +582,7 @@
        panel_wrap="0"
        x="0"
        y="0"
-       w="1061"
+       w="582"
        h="614"
        state="2"
        panel_border="0"
@@ -593,16 +595,16 @@
        id="textandfont"
        x="0"
        y="0"
-       w="1057"
-       h="796"
+       w="1059"
+       h="1018"
        panel_size="1"
        panel_ratio="100"
        panel_mode="1"
        panel_wrap="0"
        panel_border="0"
-       visible="1"
+       visible="0"
        state="2"
-       placement="5" />
+       placement="1" />
     <group
        id="transformation"
        applyseparately="0" />
@@ -615,13 +617,13 @@
        sel-as-groups="0"
        x="0"
        y="0"
-       w="1057"
-       h="796"
+       w="582"
+       h="586"
        state="2"
        align-to="1"
        panel_border="0"
        visible="1"
-       placement="5" />
+       placement="1" />
     <group
        id="xml" />
     <group
@@ -657,7 +659,7 @@
        panel_ratio="100"
        panel_mode="1"
        panel_wrap="0"
-       page="23"
+       page="9"
        x="1071"
        y="599"
        w="1811"
@@ -667,10 +669,18 @@
        id="gradienteditor" />
     <group
        id="object"
-       x="837"
-       y="508"
-       w="268"
-       h="413" />
+       x="0"
+       y="0"
+       w="1059"
+       h="1018"
+       panel_size="1"
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
+       panel_border="0"
+       visible="0"
+       state="2"
+       placement="1" />
     <group
        id="export"
        default=""
@@ -678,29 +688,29 @@
        path=""
        x="0"
        y="0"
-       w="1057"
-       h="796"
+       w="1059"
+       h="1018"
        panel_size="1"
        panel_ratio="100"
        panel_mode="1"
        panel_wrap="0"
        panel_border="0"
-       visible="1"
+       visible="0"
        state="2"
-       placement="5">
+       placement="1">
       <group
          id="exportarea"
-         value="page" />
+         value="drawing" />
       <group
          id="defaultxdpi"
          value="500" />
     </group>
     <group
        id="save_as"
-       default="org.inkscape.output.svg.inkscape"
+       default="org.inkscape.output.png.cairo"
        append_extension="1"
        enable_preview="1"
-       path="/home/jcp"
+       path="/home/jcp/pdfplots"
        use_current_dir="1" />
     <group
        id="save_copy"
@@ -711,7 +721,7 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/jcp/" />
+       path="/home/jcp/pdfplots/" />
     <group
        id="import"
        enable_preview="1"
@@ -739,10 +749,10 @@
        x="0"
        y="0"
        w="1059"
-       h="1020"
-       visible="1"
+       h="1021"
+       visible="0"
        state="2"
-       placement="2"
+       placement="1"
        initial_color="#7ab648" />
     <group
        id="gridtiler" />
@@ -792,27 +802,27 @@
        on-blur="0.50"
        animate-time="100" />
     <group
-       h="198"
-       w="338"
-       y="0"
-       x="0"
+       id="livepatheffect"
+       panel_size="1"
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
        state="2"
-       panel_wrap="0"
-       panel_mode="1"
-       panel_ratio="100"
-       panel_size="1"
-       id="livepatheffect" />
-    <group
-       id="documentmetadata"
-       panel_size="1"
-       panel_ratio="100"
-       panel_mode="1"
-       panel_wrap="0"
        x="0"
        y="0"
-       w="343"
+       w="338"
+       h="198" />
+    <group
+       state="2"
        h="483"
-       state="2" />
+       w="343"
+       y="0"
+       x="0"
+       panel_wrap="0"
+       panel_mode="1"
+       panel_ratio="100"
+       panel_size="1"
+       id="documentmetadata" />
   </group>
   <group
      id="printing">
@@ -1031,6 +1041,7 @@
        masks="65535" />
     <group
        id="svgoutput"
+       disable_optimizations="0"
        usenamedcolors="0"
        numericprecision="8"
        minimumexponent="-8"
@@ -1099,14 +1110,14 @@
        partialdynamic="0"
        floatallowed="0" />
     <group
-       value="0"
-       id="spacepans" />
+       id="spacepans"
+       value="0" />
     <group
-       id="bitmapoversample"
-       value="1" />
+       value="1"
+       id="bitmapoversample" />
     <group
-       id="threading"
-       numthreads="1" />
+       numthreads="1"
+       id="threading" />
     <group
        id="rendering" />
   </group>
@@ -1122,7 +1133,7 @@
      org.inkscape.output.pdf.cairorenderer.areaDrawing="0" />
   <group
      id="desktop"
-     style="fill-opacity:1;font-size:20px;stroke-width:1;stroke-miterlimit:0;stroke-dasharray:none;stroke:#a8afb3;stroke-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;-inkscape-font-specification:Arial;font-family:Arial;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:middle;text-align:center;writing-mode:lr;line-height:125%;fill:#0c7cba;stroke-dashoffset:0;opacity:0.98;fill-rule:nonzero">
+     style="fill-opacity:0.066313;font-size:20px;stroke-width:4;stroke-miterlimit:0;stroke-dasharray:none;stroke:#00ff24;stroke-opacity:1;stroke-linecap:butt;stroke-linejoin:miter;-inkscape-font-specification:Arial;font-family:Arial;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:middle;text-align:center;writing-mode:lr;line-height:125%;fill:#ff0000;stroke-dashoffset:0;opacity:1;fill-rule:nonzero">
     <group
        width="3200"
        height="1800"
@@ -1230,14 +1241,14 @@
   <group
      id="whiteboard">
     <group
-       id="server"
-       name="jabber.org"
-       port="5222"
+       ssl="0"
        username=""
-       ssl="0" />
+       port="5222"
+       name="jabber.org"
+       id="server" />
     <group
-       id="room"
+       server="gristle.org"
        name="inkboard"
-       server="gristle.org" />
+       id="room" />
   </group>
 </inkscape>
