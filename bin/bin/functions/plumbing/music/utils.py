@@ -93,7 +93,18 @@ def copy_music(musictuples):
         shutil.copy(source, destination)
 
 def safe_fatpath(path):
-    return re.sub(r"[\"*:<>?\\|]", "_", path).encode('ascii', 'ignore')
+    if not path.startswith("/"):
+        raise Exception("Invalid path: {}".format(path))
+
+    # drop ascii nono's
+    path = re.sub(r"[\"*:<>?\\|]", "_", path)
+
+    # drop non-ascii chars
+    path = path.encode('ascii', 'ignore')
+
+    # split and rejoin
+    path = b"/".join([dir.strip() for dir in path.split(b"/")])
+    return path
 
 def quote_for_path(path):
     # some albums use / in their names, don't include these
