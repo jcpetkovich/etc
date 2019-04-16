@@ -1,0 +1,27 @@
+#!/usr/bin/env dash
+# jcpetkovich - 2016 (c) wtfpl
+
+# Pup (Python Updater)
+# ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+
+# ........................................................... Package management
+
+usage() {
+  echo "usage: $(basename $0) <package>*"
+  exit 1
+}
+
+if [ ! -f setup.py ]; then
+    echo "$(pwd): Must be a python package directory. Found no setup.py..."
+    exit 1
+fi
+
+for d in build dist ; do
+    if [ -d $d ]; then
+        echo "removing: $d"
+        rm -r $d
+    fi
+done
+
+python3 setup.py bdist_wheel
+pip3 install --upgrade dist/*.whl
