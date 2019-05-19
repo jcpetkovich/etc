@@ -6,7 +6,6 @@ ui = quiet
 [Account main]
 localrepository = main-local
 remoterepository = main-remote
-status_backend = sqlite
 
 [Repository main-local]
 type = Maildir
@@ -26,7 +25,6 @@ localfolders = ~/mail/personal
 [Account work]
 localrepository = work-local
 remoterepository = work-remote
-status_backend = sqlite
 
 [Repository work-local]
 type = Maildir

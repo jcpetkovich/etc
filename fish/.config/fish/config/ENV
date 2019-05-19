@@ -30,7 +30,7 @@ set -xg RSENSE_HOME $HOME/jc-public/site-lisp/rsense-0.3
 set -xg TMUXIFIER_LAYOUT_PATH ~/etc/tmux/layouts
 set -xg REQ_DIR ~/etc/plumbing/req
 set -xg USER_PATHS "$HOME/etc $HOME/labs $HOME/prj $HOME/.spacemacs.d $HOME/journal"
-set -xg HOME_SERVER 192.168.2.15
+set -xg HOME_SERVER 192.168.2.14
 set -xg SUDO_ASKPASS "$HOME/bin/askpass"
 
 set -xg XDG_DESKTOP_DIR $HOME
